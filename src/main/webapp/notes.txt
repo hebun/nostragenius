@@ -1,0 +1,89 @@
+Nostragenius.com
+
+Herkes  diledigini tahmin etsin ve yine herkes bu tahminlere Puan versin. Puanlama 2 çeşit olsun. 1. Puanlama girilen tahminin zorluk derecesini belirlesin. 2. Puanlara ise tahminin gerçekleşme oranına durumuna göre yapılsın. 
+Tahminciler ve 2. Cins puanlamayı yapacaklar mutlaka üye olmalılar. 
+Üyelikte user name, email adresi, şifre olmalı kayıtta. Üyelik talebinden sonra üyeye mail ile konfirmasyon gitmeli. Sonrasında teyitten sonra giriş yapabilmeli. Üyeler diledikleri kadar farklı tahminde bulunabilecekler. 
+Tahminde girilecek bilgiler
+1-	Tahminin adı
+2-	Tahminin ne olduğu( karakter sınırı koyalım )
+3-	Tahminin olacağı tarih ve saat.
+4-	Tahminle ilgili anahtar kelimeler Maximum 10 adet olsun.
+5-	Tahminin zorluk derecesi (tahmincinin puanlaması )
+
+Tahmin üye tarafından girildikten sonra otomatik olarak sistemde görünecek. Diğer üyeler ve ziyaretçiler görebilecekler ve zorluk derecesini kendi düşüncelerine göre girebilecekler. 
+
+Ayrıca tüm tahminlere yorum da yapılabilecek yorumu yalnızca üyeler yapabilecekler. 
+Her tahmin için yazılan yorum sayısı da zorluk derecesini yükseltsin belli bir çarpan ile.  Ayrıca zorluk derecesi ile ilgili girişleri de zorluk derecesini ortalamasını yükseltsin.
+Admin de isterse zorluk derecesini girebilsin ve bu giriş zorluk derecesi değerini daha yüksek bir oranda etkilesin.
+
+Zorluk derecesi 100 üzerinden olsun. 
+
+Süper Admin yorumları yayınlanmış olsa bile gerekirse silebilsin. Üyelik işlemlerini istediği gibi düzenleyebilsin. 
+
+Üyeler tahmin girdikleri andan itibaren şayet onunla ilgili yorum veya puanlaması gelmemiş ise istedikleri zaman silebilirler ancak hiçbir zaman tahminle ilgili içerik veya tarihte  değişiklik yapamazlar. Ancak keyword ilave edebilir veya düzenleyebilirler.
+
+Üyeler kendi panellerine girdikleri zaman bilgilerini düzenleyebilirler, tahminlerini görebilirler ve tahminlerini sürecini izleyebilirler. Üyeler panellerine girince tahminleri ile ilgili olarak tahminin hangi aşamada olduğunu, kaç yorum aldıklarını, yorumları, zorluk derecesi değerlendirmesini, tahminleri için tahmin ortağı olup olmadığını. Kendilerinin tahmin ortağı oldukları tahminleri ve onların durumlarını. Görebilecekler.
+
+Üyeler ayrıca diledikleri tahminlere ortak olup tahmin ortağı olarak görünebilirler. Bu durumda onlar da tahminin oluşma durumuna göre tahminin ortağı olarak puan alırlar. Ancak genel değerlendirmelerde;
+1-	En başarılı tahminler ilk 50
+User name, tahmin adı, puanı, user name tıklanabilecek.
+2-	En başarılı tahminciler ilk 50
+User name, puanları ve tahmin isimleri userlara tıklanabilecek.
+3-	En başarılı tahmin ortakları ilk 50. Liste halinde user name ve puanları olacak.
+Userlara tıklanabilecek.
+4-	En çok tahmin girenler ilk 50. Lıste halinde user name ve puanları olacak. Userlara tıklanabilecek.
+5-	En çok yorum girenler ilk 50. Liste halinde user name ve puanları olacak. Userlara tıklanabilecek.
+6-	Tahminler için en fazla sayıda zorluk derecesi puanlaması yapanlar ilk 50. Liste halinde user name ve puanları olacak. Userlara tıklanabilecek.
+7-	Tahminler için en fazla sayıda gerçekleşme derecesi puanlaması yapanlar ilk 50. Liste halinde user name ve puanları olacak. Userlara tıklanabilecek.
+
+Userlara genel olarak sistemde listelerde tıklandığı zaman görünecek bilgiler şunlar olabilir. Userlara ancak üyeler tıkladıkları zaman girebilecekler.
+A- yukarıdaki kriterler için sıralamaları ve puanları.
+B- sonuçlanmış tahminleri ve tahminlerinin puanları ve tahminlerinin sıralamadaki yerleri
+C- onlara mesaj atabilme imkanı. 
+
+
+Yukarıdaki kriterlerde puanlamaların nasıl yapılacağına dair matematiksel ilişkiyi ben ayrıca hazırlayacağım.
+
+Yukarıdaki C maddesinde belirtilen mesajlaşmalar tamamen üyelik panellerinden olacak ve biz süper admin olarak onları gerekirse izleyebileceğiz. Yani mesajları göreceğiz. Ama onaylama gereği yok.
+
+Herhangi bir tahmin yapıldığı zaman sistem şöyle işleyecek,
+O tahmin daha önce yapılmış tüm tahminler gibi listeye en alttan girecek ancak  6 saat sonra tahmin tarihine göre gerçekleşme tarihi ve saatine göre süresi en az kalanlar en üste listelenecek. 
+Bu 6 saat bizim tarafta adminlere sahte veya kötü niyetli tahminleri ve tahmincileri silme zamanı verecek. Listeye giren her tahmin için şikayet et ve yorum yap seçeneği olacak üyeler için.
+Listeleri gören kişiler veya üyeler tahmin ile ilgili yorum ve zorluk puanı vermeye başlayabilecekler bu süreçte. 
+Ilk yorum veya ilk zorluk puanı verildikten sonra tahmin kesinleşecek ve tahmini giren üye de onu artık değiştiremeyecek veya dilemeyecek. Silme gerektiren bir durum olursa bu durumda süper admin yetkili olacak.
+Sonrasında tahminin gerçekleşeceği tarih ve saatte artık bu tahmin yorum ve zorluk puanını verilebilir olmaktan çıkarılacak ve gerçekleşme puanı verilecek olan tahminler listesinde yer alacak. Bu listede en alttan başlayacak son gelen. Ve 48 saat o listede değerlendirme için kalacak. Bu 48 saat süre içinde üyeler üye panellerine giriş yaparak gerçekleşme puanı verecekler. 
+48 saat sonunda ise artık listeden kaldırılacaklar ve adminlere tarafından son değerlendirme için işlem yapılacak. Adminlere tahmini ve diğer kriterleri inceleyerek düzenleme, onaylama, değiştirme yaparak yayınlayabilecekler. Bu yayınlama noktasında hem tahminin son puanı, hem tahminci üyeye yazılacak puan, hem diğer üyelere katkıları için yazılacak puanlar hesaplanacak.
+
+Tahminin puanı hesaplanırken matematik şöyle olacak,
+Her üye bir tahmin için yalnızca bir zorluk derecesi puanı ve sonrasında da bir gerçekleşme puanı verebilir. Ikincisine izin olmayacak.
+
+Öncelikle tahminin zorluk derecesi puanı için hesaplama
+Puanlaması 100 üzerinden verilecek.
+Zorluk derecesi puanı toplam = ( Varsa Tahmincinin puanı x 10 + varsa üye olmayan ziyaretçilerin puanlamaları ortalaması x 10 + varsa üyelerin puan ortalaması x 30 + adminin puanı x 50 ) / 100 
+
+admin kendi puanlamasını yapana kadar sistem zorluk puanını tahminci, ziyaretçi ve üyelerin puanlamasını göre yapacak. Yani sürekli ortalama alacak yeni giriş olunca. 
+Admin panelinden tahminlere ilgili puanlamaları ve diğer bilgileri göreceği için uygun gördüğü zaman kendi değerlendirmesiyle puanını verecek. O zaman onun ağırlıklı puanı da ortalamayı etkileyecek. Sonra yine üyeler ve ziyaretçiler puanlamaları devam edebilecekler. Çünkü admin dilerse daha sonra da kendi puanını ihtiyaç duyarsa revize edebilecek.
+Bu arada puanlamada üye kontrolünün dışında IP kontrolü de yapalım. Ziyaretçiler 2 kez puanlama yapamasınlar. 
+
+Tahminin gerçekleşme puanının belirlenmesi
+Bu imkanı yalnızca üyelere vereceğiz üyeler tahminlere ilgili tahmin gerçekleşme saatinden gününden sonraki 48 saat içinde bu değerlendirmeyi yine 100 üzerinden yapabilecekler. Bunu hesaplanmasında ise (üyelerin ortalaması x 30 + adminin puanı x70 )/100 bu puanı belirleyecek.
+
+Elimizde 2 puan olacak sonuçta birincisi zorluk puanı ikincisi ise gerçekleşme puanı. 
+Toplam puanı ise ( zorluk puanı x gerçekleşme puanı ) /100 olacak. Bu puan hem tahminin son final puanı olacak. Hem de tahminci üyenin puanı, tahmin ortağı üyelerin puanı olacak. Üyelerin puanları her seferinde toplanıp tahmin sayısına bölünecek ortalaması bulunacak. 
+
+Sistemde biz süper admin olarak geçeceğiz ve her türlü yetki olacak düzenleme ve silme için. Ayrıca admin olarak da kullanıcılar tanımlayacağız bunlar içeriden veya dışarıdan olabilirler.
+Yetkileri ise,
+Yalnızca tahminler için zorluk derecesi puanlama, yorumları okuma ve değerlendirme, kötü niyetli yorumları silme, sorunlu üyeleri belirleme ve süper admine  bildirme, gerçekleşme derecesi puanlamasını yapmak olarak sınırlanacak.
+Adminlere admin sayısına göre ve tahmin sayısına göre eşit ağırlıklı ve sayıda olmak koşulu ile tahminler yönlendirilecek. Her admin kendisine sorumluluğu ve takibi verilen tahmin için çalışma yapabilecek.  Biz süper admin olarak adminlerin çalışmalarını takip edebileceğiz ve düzenleyebileceğiz. Admin olarak henüz işlem yapılmamış bir tahmini kendimize de alabileceğiz. Ayrıca tahmin dağıtımında gerekirse kriterleri de düzenleyebileceğiz. Yani her 100 tahminden kaçını süper admin olarak alacağımızı ve kaçını diğer adminlere dağıtacağımızı da istediğimiz zaman değiştirebileceğiz.
+Adminler için bazı imkanlar sağlayabiliriz bunlar
+Her 100 tahmin takibi ve sonuçlandırılması için süper trafik kırmızı paket
+
+Her 500 tahmin takibi ve sonuçlandırılması için sitematik  web paketi
+Verebiliriz.
+
+
+
+Ek notlar
+Parlaklık üyeleri kendi email ve şifreleri ile acaba sisteme direkt giriş yapabilirler mi buna izin verirsek çok iyi olur.
+
+Bu durumda onlara tahminci veya tahmin ortağı olarak kredileri artarsa paraclick tarafında kredi yüklemesi yapabiliriz.

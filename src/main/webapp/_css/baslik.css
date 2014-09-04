@@ -1,0 +1,64 @@
+.baslikKutu{
+font-family:Arial, Tahoma, Verdana;
+color:#FFF;
+display:block;
+padding:5px;
+height:20px;
+text-align:center;
+font-weight:bold;
+font-size:14px;
+line-height:20px;
+background-color: #012353;
+background-position: center center;
+border: 1px solid #012353;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+behavior: url(_css/ie-css3.htc);	
+
+}
+
+.baslikKutu1{
+font-family:Arial, Tahoma, Verdana;
+color:#012353;
+display:block;
+padding:5px;
+height:20px;
+text-align:center;
+font-weight:bold;
+font-size:14px;
+line-height:20px;
+background-color: #f4ac00;
+background-position: center center;
+border: 1px solid #f4ac00;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+behavior: url(_css/ie-css3.htc);	
+
+}
+
+.tahminBaslik{
+	display: block;
+	padding: 5px;
+	border-bottom-width: 2px;
+	border-bottom-style: solid;
+	border-bottom-color: #012353;
+	color: #012353;
+	font-size: 14px;
+	font-weight: bold;
+	font-family: Arial, Tahoma, Verdana;
+
+}
+
+.aramaBaslik{
+display:block;
+float:left;
+width:90px;
+text-align:center;
+font-family:Arial, Tahoma, Verdana;
+font-size:14px;
+font-weight:bold;
+color:#FFF;
+
+}

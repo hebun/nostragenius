@@ -1,0 +1,68 @@
+.ustSayfa{
+width:990px;
+height:100px;
+margin-left:auto;
+margin-right:auto;	
+
+}
+
+.menuKutu{
+	width: 990px;
+	height: 40px;
+	margin-left: auto;
+	margin-right: auto;
+	background-image: url(../_images/menuAltGolge.png);
+	background-repeat: no-repeat;
+	background-position: right top;
+
+}
+
+.sliderContent{
+width:990px;
+height:285px;
+margin-left:auto;
+margin-right:auto;
+
+}
+
+.logo{
+	width: 140px;
+	text-align: right;
+	float: left;
+	height: 90px;
+	padding-top: 5px;
+	padding-bottom: 5px;
+	margin-left: 60px;
+
+}
+
+.aramaAlan{
+	width: 716px;
+	float: right;
+	margin-left: 74px;
+	margin-top: 26px;
+	height: 76px;
+	background-image: url(../_images/menuGolge.png);
+	background-repeat: no-repeat;
+	background-position: center bottom;
+}
+
+.aramaKutu{
+	width: 670px;
+	margin-top:23px;
+	line-height:40px;
+	padding-top:15px;
+	height: 40px;
+	padding:5px;
+	background-color: #012353;
+	margin-left: 40px;
+	background-position: center center;
+	border: 1px solid #012353;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	border-radius: 5px;
+	behavior: url(_css/ie-css3.htc);
+	position: absolute;
+	z-index: 5;
+
+}

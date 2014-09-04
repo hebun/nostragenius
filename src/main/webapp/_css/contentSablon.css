@@ -1,0 +1,346 @@
+.ortaKutu{
+width:990px;
+margin-left:auto;
+margin-right:auto;
+margin-top:10px;
+margin-bottom:20px;
+
+}
+
+.tahminKutu{
+width:970px;
+margin-left:auto;
+margin-right:auto;
+margin-top:10px;
+margin-bottom:10px;
+background-color: #fff;
+background-position: center center;
+border: 1px solid #ccc;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+behavior: url(_css/ie-css3.htc);	
+padding:10px;
+}
+
+
+.tahminIcKutu1{
+float: left;
+width: 320px;
+
+}
+
+.tahminIcKutu2{
+float: left;
+width: 165px;
+margin-left:10px;
+
+}
+
+.tahminIcKutu3{
+float: left;
+width: 170px;
+margin-left:10px;
+
+}
+
+.tahminIcKutu4{
+float: left;
+width: 285px;
+margin-left:10px;
+
+}
+
+.tahminIcKutu5{
+float: left;
+width: 315px;
+margin-left:10px;
+
+}
+
+
+.tahminIcKutu6{
+float: left;
+width: 315px;
+margin-left:10px;
+
+}
+
+
+.tahminKutu .tahminIcKutu1 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminIcKutu1 ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.tahminKutu .tahminIcKutu1 ul li a {
+	display: block;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #111;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+.tahminKutu .tahminIcKutu1 ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu1 ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu1 ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+
+
+.tahminKutu .tahminIcKutu2 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminIcKutu2 ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.tahminKutu .tahminIcKutu2 ul li a {
+	display: block;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #111;
+}
+.tahminKutu .tahminIcKutu2 ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu2 ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu2 ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+
+.tahminKutu .tahminIcKutu3 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminIcKutu3 ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+.tahminKutu .tahminIcKutu3 ul li a {
+	display: block;
+		padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #111;
+}
+.tahminKutu .tahminIcKutu3 ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu3 ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu3 ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+
+.tahminKutu .tahminIcKutu4 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminIcKutu4 ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.tahminKutu .tahminIcKutu4 ul li a {
+	display: block;
+		padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #111;
+}
+.tahminKutu .tahminIcKutu4 ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu4 ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu4 ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+.tahminKutu .tahminIcKutu5 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminIcKutu5 ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.tahminKutu .tahminIcKutu5 ul li a {
+	display: block;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #111;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+.tahminKutu .tahminIcKutu5 ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu5 ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu5 ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+.tahminKutu .tahminIcKutu6 ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminIcKutu6 ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+}
+
+.tahminKutu .tahminIcKutu6 ul li a {
+	display: block;
+	border-bottom-width: 1px;
+	border-bottom-style: dotted;
+	border-bottom-color: #111;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+.tahminKutu .tahminIcKutu6 ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu6 ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminIcKutu6 ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #000;
+	text-decoration: none;
+	background-color: #CCC;
+}
+
+.masterPage{
+width:970px;
+padding:10px;
+
+}

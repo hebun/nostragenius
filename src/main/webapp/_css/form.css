@@ -1,0 +1,44 @@
+.siteArama{
+	width: 360px;
+	float: left;
+	margin-top: 4px;
+	height: 20px;
+	padding: 5px;
+	background-color: #fff;
+	border-radius: 5px;
+	
+}
+.aramaKutu .uyelikKutu a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: none;
+}
+.aramaKutu .uyelikKutu a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: none;
+}
+.aramaKutu .uyelikKutu a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 14px;
+	font-weight: bold;
+	color: #FFF;
+	text-decoration: none;
+}
+
+
+
+
+
+.aramaButon{
+width:22px;
+height:22px;
+float:left;
+display:block;
+margin-top:8px;
+margin-left:10px;
+}

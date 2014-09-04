@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+
+<f:view contentType="text/html">
+	<h:head>
+		<meta charset="utf-8" />
+		<title> Admin Panel</title>
+
+		<link rel="stylesheet" href="css/layout.css" type="text/css"
+			media="screen" />
+
+		<link rel="stylesheet" type="text/css"
+			href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
+		<script type="text/javascript" src="../_js/jquery.min.js"></script>
+		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+		<script type="text/javascript" src="../_js/client.js"></script>
+		<style>
+.error {
+	margin: 10px 0px;
+	padding: 5px 5px 5px 50px;
+	background-repeat: no-repeat;
+	background-position: 10px center;
+	-moz-border-radius: .5em;
+	-webkit-border-radius: .5em;
+	border-radius: .5em;
+	color: #D8000C;
+	background-color: #FFBABA;
+	font-size: 14px;
+	font-family: Arial, Tahoma, Verdana;
+}
+</style>
+		<link rel="stylesheet" type="text/css" media="all"
+			href="../_css/lightbox.css" />
+			<link rel="stylesheet" type="text/css" media="all"
+			href="../_css/jquery.fancybox.css" />
+		<script type="text/javascript" src="../_js/lightbox.min.js"></script>
+<script type="text/javascript" src="../_js/jquery.fancybox.pack.js"></script>
+		<ui:insert name="head"></ui:insert>
+	</h:head>
+
+
+	<h:body>
+
+		<header id="header"> <hgroup>
+		<h1 class="site_title">
+			<a href="index.xhtml">Nostragenius</a>
+		</h1>
+		<h2 class="section_title">Admin Panel</h2>
+		<div class="btn_view_site">
+			<a href="#{request.contextPath}/index.xhtml">Siteye Git</a>
+		</div>
+		</hgroup> </header>
+		<!-- end of header bar -->
+
+		<section id="secondary_bar">
+		<div class="user">
+			<p>Admin</p>
+		</div>
+		<div class="breadcrumbs_container">
+
+			<article class="breadcrumbs"> <a href="index.xhtml">
+				Admin</a>
+			<div class="breadcrumb_divider"></div>
+			<a >#{adminMaster.getCurrentPageName()}</a> </article>
+		</div>
+		</section>
+		<!-- end of secondary bar -->
+
+		<aside id="sidebar" class="column">
+
+		<hr />
+		<h3>Menu</h3>
+		<ul style="font-weight: bold">
+			<li class="icn_categories"><a href="index.xhtml">Anasayfa</a></li>
+			<li class="icn_categories"><a href="categories.xhtml">Kategoriler</a></li>
+			<li class="icn_new_article"><a href="states.xhtml">Ürün
+					Durumları</a></li>
+			<li class="icn_categories"><a href="talepler.xhtml">Talepler</a></li>
+			<li class="icn_view_users"><a href="users.xhtml">Satıcılar</a></li>
+			<li class="icn_edit_article"><a href="products.xhtml">Ürünler</a></li>
+			<li class="icn_edit_article"><a href="bulten.xhtml">Bülten
+					Aboneleri</a></li>
+			<li class="icn_jump_back"><a href="logout.xhtml">Çıkış</a></li>
+		</ul>
+
+		</aside>
+		<!-- end of sidebar -->
+
+		<section id="main" class="column"> <ui:insert name="content">Default content
+
+</ui:insert> </section>
+	</h:body>
+</f:view>
+</html>

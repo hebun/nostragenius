@@ -1,0 +1,24 @@
+@CHARSET "UTF-8";
+#page {
+	width: 500px;
+	margin: 0px auto;
+}
+#gamesHolder {
+	background: url(shadow00.png) no-repeat center 295px;
+	padding: 0px;
+	margin-top: 0px;
+	width: 500px;
+}
+
+ul { padding: 0 0 0 15px; margin: 0; }
+
+.holder {
+	background: url(shadow00.png) no-repeat center bottom; padding: 17px 5px;  }
+.text { background-color: #f3f3f3; padding: 30px; margin-top: 10px; line-height: 20px; overflow: hidden; zoom: 1; }
+
+.holder h2 { font-family: Georgia; margin: 0; padding: 0px 0px 15px 0px; }
+
+code { display: block; background-color: #fff; padding: 10px; overflow: auto; }
+pre { margin: 10px 0px; padding: 0; }
+
+.download { width: 207px; height: 77px; background: url(download.png) no-repeat; float: right; }

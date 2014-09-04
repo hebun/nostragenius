@@ -1,0 +1,93 @@
+		
+		/**	style used for both examples **/
+
+		.menu {
+	height: 40px;
+	display: block;
+	margin: 0px;
+	padding: 0px;
+		}
+
+		.menu ul {
+			list-style: none;
+			padding: 0;
+			margin: 0;
+		}
+
+		.menu ul li {
+	/* width and height of the menu items */  
+	float: left;
+	overflow: hidden;
+	position: relative;
+	text-align: center;
+	line-height: 40px;
+		}
+
+		.menu ul li a {
+	/* must be postioned relative  */ 
+	position: relative;
+	display: block;
+	width: 110px;
+	height: 40px;
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: bold;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	text-decoration: none;
+
+	cursor: pointer;
+		}
+
+		.menu ul li a span {
+			/* all layers will be absolute positioned */
+			position: absolute;
+			left: 0;
+			width: 110px;
+				
+		}
+
+		.menu ul li a span.out {
+			top: 0px;
+		}
+
+		.menu ul li a span.over,
+		.menu ul li a span.bg {
+	/* hide */  
+	top: -40px;
+		}
+
+		/** 1st example **/
+
+		#menu {
+			background: #EEE;
+		}
+
+		#menu ul li a {
+			color: #000;
+		}
+
+		#menu ul li a span.over {
+			color: #012353;
+		}
+
+		#menu ul li span.bg {
+			/* height of the menu items */  
+			height: 40px;
+			background: url('bg_over.gif') center center no-repeat;
+		}
+		
+		/** 2nd example **/
+
+		#menu2 {
+			background: #f4ac00;		
+		}
+		
+		#menu2 ul li a {
+			color: #012353;
+		}
+
+		#menu2 ul li a span.over {
+			background: #012353;
+			color: #fff;
+		}

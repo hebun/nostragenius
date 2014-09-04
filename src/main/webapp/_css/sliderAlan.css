@@ -1,0 +1,60 @@
+.nostradamusHakkinda{
+width:200px;
+float:left;
+padding-top:15px;
+
+}
+
+.tahminYap{
+display:block;
+margin-top:11px;
+text-align:center;	
+
+}
+
+.uyelikKutu{
+float:left;
+display:block;
+margin-left:20px;
+margin-top:10px;
+line-height:20px;
+
+}
+
+.sliderKutu{
+	width: 552px;
+	float: left;
+	margin-left: 15px;
+	height: 275px;
+	background-image: url(../_images/sliderBG.png);
+	background-repeat: no-repeat;
+	background-position: center center;
+	margin-top: 10px;
+}
+
+.slider{
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 5px;
+	width: 500px;
+
+
+
+}
+#page #gamesHolder #games img {
+	position: absolute;
+	z-index: 1;
+}
+
+
+
+.adminOl{
+width:205px;
+float:left;
+
+padding-top:25px;
+margin-left:15px;
+margin-top:15px;
+
+
+}
