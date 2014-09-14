@@ -142,7 +142,6 @@ public abstract class Sql<T extends Sql<T>> {
 
 		}
 
-	
 	}
 
 	public static class Update extends Sql<Update> {
@@ -294,6 +293,27 @@ public abstract class Sql<T extends Sql<T>> {
 			}
 		}
 
+	}
+
+	public static class Count {
+		String table;
+		public Count(String table) {
+			this.table=table;
+		}
+		public int get(){
+			Select sql = new Sql.Select("count(*) as say").from(this.table);
+			System.out.println(sql.get());
+			
+			String say = sql.getTable().get(0).get("say");
+			int parseInt=0;
+			try {
+				parseInt = Integer.parseInt(say);
+			} catch (NumberFormatException e) {
+				e.printStackTrace();
+			}
+			return parseInt;
+			
+		}
 	}
 
 	public static class Select extends Sql<Select> {

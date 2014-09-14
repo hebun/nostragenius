@@ -2,14 +2,17 @@ package freela.util;
 
  
 import java.awt.image.BufferedImage;
+
 import javax.imageio.ImageIO;
 import javax.servlet.http.*;
 import javax.servlet.*;
+
 import java.io.*;
 import java.awt.*;
 import java.util.*;
 import java.awt.font.TextAttribute;
  
+@SuppressWarnings("serial")
 public class MyCaptcha extends HttpServlet {
  
     private int height = 0;

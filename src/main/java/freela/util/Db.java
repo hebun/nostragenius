@@ -25,7 +25,7 @@ public class Db {
 
 	public static String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 
-	public static String DB_URL = "jdbc:mysql://localhost:3306/fazlastoklar?useUnicode=true&characterEncoding=utf8";
+	public static String DB_URL = "jdbc:mysql://localhost:3306/nostra?useUnicode=true&characterEncoding=utf8";
 	public static String USER = "root";
 	public static String PASS = "2882";
 	public static boolean started = false;

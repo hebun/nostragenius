@@ -6,9 +6,10 @@ import org.junit.Test;
 
 public class TestNostra {
 /**
- * CURRENT: db design
+ * CURRENT: tahmin list in admin(dynamic columns with primeface)
  * TODO's:
- * - istatistiks in admin
+ * tahmin list in admin,
+ * tahmin detay in admin,
  * -content pages implementation
  * -dynamic columns in admin(primefaces)
  * CHECK: admin login check disabled
@@ -19,5 +20,8 @@ public class TestNostra {
 	public void test() {
 		fail("Not yet implemented");
 	}
-
+/**
+ * 
+ * 
+ */
 }

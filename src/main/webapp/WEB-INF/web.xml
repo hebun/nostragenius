@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
-  <display-name>nostragenius</display-name>
-  <servlet>
-    <servlet-name>Faces Servlet</servlet-name>
-    <servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
-    <load-on-startup>1</load-on-startup>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>Faces Servlet</servlet-name>
-    <url-pattern>*.xhtml</url-pattern>
-  </servlet-mapping>
-  
-  
-  
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns="http://java.sun.com/xml/ns/javaee"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd"
+	version="3.0">
+	<display-name>nostragenius</display-name>
 	<servlet>
-        <servlet-name>Captcha</servlet-name>
-        <servlet-class>freela.util.MyCaptcha</servlet-class>
-        <init-param>
-            <description>passing height</description>
-            <param-name>height</param-name>
-            <param-value>30</param-value>
-        </init-param>
-        <init-param>
-            <description>passing height</description>
-            <param-name>width</param-name>
-            <param-value>80</param-value>
-        </init-param>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>Captcha</servlet-name>
-        <url-pattern>/Captcha.jpg</url-pattern>
-    </servlet-mapping>
-	
+		<servlet-name>Faces Servlet</servlet-name>
+		<servlet-class>javax.faces.webapp.FacesServlet</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Faces Servlet</servlet-name>
+		<url-pattern>*.xhtml</url-pattern>
+	</servlet-mapping>
+	<servlet>
+		<servlet-name>Captcha</servlet-name>
+		<servlet-class>freela.util.MyCaptcha</servlet-class>
+		<init-param>
+			<description>passing height</description>
+			<param-name>height</param-name>
+			<param-value>30</param-value>
+		</init-param>
+		<init-param>
+			<description>passing height</description>
+			<param-name>width</param-name>
+			<param-value>80</param-value>
+		</init-param>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>Captcha</servlet-name>
+		<url-pattern>/Captcha.jpg</url-pattern>
+	</servlet-mapping>
+
 	<welcome-file-list>
 		<welcome-file>
 			index.xhtml
@@ -39,7 +39,7 @@
 	</welcome-file-list>
 	<context-param>
 		<param-name>jdbcurl</param-name>
-		<param-value>jdbc:mysql://localhost:3306/nostragenius?useUnicode=true&amp;characterEncoding=utf8
+		<param-value>jdbc:mysql://localhost:3306/nostra?useUnicode=true&amp;characterEncoding=utf8
 		</param-value>
 	</context-param>
 	<context-param>

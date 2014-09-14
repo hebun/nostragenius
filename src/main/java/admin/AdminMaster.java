@@ -17,14 +17,7 @@ public class AdminMaster {
 		pages = new HashMap<String, String>();
 
 		pages.put("index", "Anasayfa");
-		pages.put("categories", "Kategoriler");
-		pages.put("states", "Ürün	Durumları");
-		pages.put("talepler", "Talepler");
-		pages.put("users", "Satıcılar");
-		pages.put("products", "Ürünler");
-		pages.put("bulten", "Bülten Aboneleri");
-		pages.put("userDetail", "Satıcı Detay");
-		pages.put("proDetail", "Ürün Detay");
+		pages.put("tahmin", "Tahminler");
 	}
 
 	public String getCurrentPageName() {

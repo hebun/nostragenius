@@ -52,10 +52,9 @@ public class TestSql {
 
 	@Test
 	public void test() {
-		String id = "141";
-		Select select = new Select().from("user").where("id", "10").doNotUsePrepared();
-		String string = select.get();
-		System.out.println(string);
+		int i = new Sql.Count("user").get();
+		
+		System.out.println(i+"");
 
 	}
 
