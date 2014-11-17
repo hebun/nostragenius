@@ -1,0 +1,81 @@
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="head">
+
+		<link rel="stylesheet"
+			href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+
+		<script type="text/javascript" src="_js/jquery.maskedinput.min.js"></script>
+
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+			<div class="ortaKutu">
+				<div class="masterPage">
+					<div class="solSayfa">
+						<h:panelGroup rendered="#{not login.loggedIn}">
+							<div class="uyeUyari">
+								Bu işlemi yapabilmek için mutlaka üye girişi yapılması
+								gerekmektedir. Üye olmak için<a href="uye-ol.xhtml">
+									tıklayınız...</a>
+							</div>
+						</h:panelGroup>
+						<span class="baslikKutu2">TAHMİN YAP</span>
+						<h:form id="addTahmin">
+
+							<h:messages globalOnly="true" styleClass="error"></h:messages>
+							<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>
+
+							<label for="Rumuz">Tahmin Adı</label>
+							<h:inputText name="Rumuz" id="Rumuz" styleClass="textField"
+								value="#{newTahmin.record.name}" required="true"
+								requiredMessage="#{reqMessage}"></h:inputText>
+							<h:message for="Rumuz" styleClass="error"></h:message>
+							<label for="AdSoyad">Tahminin ne olduğu</label>
+
+							<h:inputTextarea name="AdSoyad" id="AdSoyad"
+								value="#{newTahmin.record.content}" required="true"
+								requiredMessage="#{reqMessage}"></h:inputTextarea>
+							<h:message for="AdSoyad" styleClass="error"></h:message>
+							<label for="Parola">Tahminin olacağı tarih ve saat</label>
+
+
+							<p:calendar id="datetime" value="#{newTahmin.occurTime}"
+								pattern="y-M-d H:m:s" locale="tr" required="true"
+								requiredMessage="#{reqMessage}" />
+							<h:message for="datetime" styleClass="error"></h:message>
+							<label for="ParolaTekrar">Tahminle ilgili anahtar
+								kelimeler ( Maksimum 10 Adet )</label>
+							<h:inputTextarea name="ParolaTekrar"
+								value="#{newTahmin.record.keywords}" rows="4"></h:inputTextarea>
+							<span class="zorlukDerece">Tahminle İlgili Zorluk Derecesi</span>
+							<span class="zorlukDerece"> <p:rating
+									value="#{newTahmin.vote}" id="rating" stars="10" /></span>
+
+							<div class="clearLeft"></div>
+							<h:commandButton id="Kaydet" value="Kaydet"
+								action="#{newTahmin.save()}"></h:commandButton>
+
+
+						</h:form>
+					</div>
+					<div class="reklamAlan">
+						<span class="reklamKutu"><img
+							src="_images/nethizmet-banner.jpg" width="250" height="250" /></span> <span
+							class="reklamKutu"><img src="_images/web2navi-banner.jpg"
+							width="250" height="250" /></span>
+					</div>
+					<div class="clearLeft"></div>
+				</div>
+			</div>
+		</div>
+	</ui:define>
+</ui:composition>

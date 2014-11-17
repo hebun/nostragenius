@@ -1,5 +1,5 @@
 .siteArama{
-	width: 360px;
+	width: 260px;
 	float: left;
 	margin-top: 4px;
 	height: 20px;
@@ -8,6 +8,14 @@
 	border-radius: 5px;
 	
 }
+
+
+.radioButon{
+float:left;
+display:block;30px;
+	
+}
+
 .aramaKutu .uyelikKutu a:link {
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 14px;
@@ -30,8 +38,31 @@
 	text-decoration: none;
 }
 
+.sifreYenile a:link{
+	font-family:Arial, Tahoma, Verdana;
+display:block;
+width:120px;
+font-weight:bold;
+float:left;	
+padding:5px;
+text-decoration:none;
+margin-left:20px;
+margin-top:10px;
+color:#000;
+font-size:13px;
+}
 
+.zorlukDerece{
+		font-family: 'PT Sans', Arial, Tahoma, Verdana, Sans-Serif;
+	text-decoration: none;
+font-weight:bold;
+color:#000;
+font-size:16px;
+display:block;
+margin-top:5px;
+padding:5px;
 
+}
 
 
 .aramaButon{
@@ -41,4 +72,202 @@ float:left;
 display:block;
 margin-top:8px;
 margin-left:10px;
+}
+
+form label {
+display:block;
+padding:5px;
+font-weight:bold;
+color:#000;
+margin-top:10px;
+
+}
+
+form input[type="text"]{
+width:450px;
+display:block;
+margin-bottom:10px;
+padding:2px;
+height:20px;
+border-radius:5px;
+line-height:20px;
+}
+
+
+form input[type="password"]{
+width:450px;
+display:block;
+padding:2px;
+height:20px;
+border-radius:5px;
+margin-top:2px;
+line-height:20px;
+}
+
+form input[type="radio"]{
+width:20px;
+display:block;
+padding:2px;
+float:left;
+text-align:left;
+height:20px;
+border-radius:5px;
+margin-top:10px;
+line-height:20px;
+}
+
+.uyeGirisSubmit{
+display:block;
+float:left;
+width:100px;
+background-image: url(../_images/submitButon.png);
+	background-color: #005075;
+	background-repeat: repeat;
+	border: none;
+	padding: 5px;
+	font-family: Arial, verdana, Tahoma;
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #2a1800;
+	text-decoration: none;
+}
+
+form  input[type="submit"]{
+	display:block;
+	margin-top:10px;
+		width: 100px;
+	background-image: url(../_images/submitButon.png);
+	background-color: #005075;
+	background-repeat: repeat;
+	border: none;
+	padding: 5px;
+	font-family: Arial, verdana, Tahoma;
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #2a1800;
+	text-decoration: none;
+	
+
+ 	}
+
+
+
+
+form input[type="submit"]:hover {
+	display:block;
+		margin-top:10px;
+	width: 100px;
+	background-image: url(../_images/submitButon_hover.png);
+	background-color: #005075;
+	background-repeat: repeat;
+	border: none;
+	padding: 5px;
+	font-family: Arial, verdana, Tahoma;
+	font-size: 13px;
+	line-height: 20px;
+	font-weight: bold;
+	color: #2a1800;
+	text-decoration: none;
+	
+}
+
+form textarea{
+display:block;
+margin-top:10px;
+width:365px;
+padding:2px;
+border-radius:5px;
+margin-top:2px;
+line-height:20px;
+height:150px;
+}
+
+.uyeOl{
+display:block;
+margin-top:5px;
+width:610px;
+padding-left:10px;
+padding-right:10px;
+padding-bottom:10px;
+background-color: #fff;
+background-position: center center;
+border: 1px solid #CCC;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+behavior: url(_css/ie-css3.htc);	
+}
+
+.aramaAlan .aramaKutu form .siteArama {
+	width: 360px;
+	float: left;
+}
+
+.textArea{
+width:935px;
+padding:5px;
+height:200px;
+}
+
+
+.kayitTextfield{
+width:350px;
+display:block;
+padding:5px;	
+border: 1px solid #ccc;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+behavior: url(_css/ie-css3.htc);
+}
+
+
+form label {
+	font-family: 'PT Sans', Arial, Tahoma, Verdana, Sans-Serif;
+	text-decoration: none;
+display:block;
+padding:5px;
+font-weight:bold;
+color:#000;
+margin-top:10px;
+
+
+}
+
+.iletisimFormu{
+width:500px;
+float:left;
+padding:5px;
+margin-top:10px;
+
+}
+
+form textarea {
+width:500px;
+height:100px;
+padding:5px;
+
+}
+
+.harita{
+width:440px;
+float:left;
+padding:5px;
+margin-left:10px;
+margin-top:10px;
+
+}
+
+.textField{
+width:500px;
+padding:5px;
+line-height:20px;
+border: 1px solid #ccc;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+border-radius: 5px;
+behavior: url(_css/ie-css3.htc);	
+
 }

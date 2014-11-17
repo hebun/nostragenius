@@ -16,6 +16,7 @@ import java.util.logging.LogRecord;
 import java.util.logging.Logger;
 
 import javax.faces.application.FacesMessage;
+import javax.faces.application.FacesMessage.Severity;
 import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.mail.AuthenticationFailedException;
@@ -45,7 +46,6 @@ public class FaceUtils {
 	public static String emailFromAddress = "";
 
 	public static String uploadDir;
-	
 
 	public static String getRootUrl() {
 		HttpServletRequest request = (HttpServletRequest) FacesContext
@@ -89,8 +89,7 @@ public class FaceUtils {
 
 	public static <T> T getObjectById(Class<T> type, String table, String id) {
 
-		Sql.Select sql = new Sql.Select().from(table).where("id=", id)
-				;
+		Sql.Select sql = new Sql.Select().from(table).where("id=", id);
 
 		List<T> li = Db.preparedSelect(sql.get(), sql.params(), type);
 		T ret = null;
@@ -121,9 +120,16 @@ public class FaceUtils {
 	}
 
 	public static void addError(String id, String msg) {
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_ERROR,
-				msg, msg);
+		addMessage(FacesMessage.SEVERITY_ERROR, id, msg);
+	}
+
+	private static void addMessage(Severity sev, String id, String msg) {
+		FacesMessage message = new FacesMessage(sev, msg, msg);
 		FacesContext.getCurrentInstance().addMessage(id, message);
+	}
+
+	public static void addInfo(String msg) {
+		addMessage(FacesMessage.SEVERITY_INFO, null, msg);
 	}
 
 	public static void redirectTo(String url) {
@@ -170,7 +176,6 @@ public class FaceUtils {
 	public static void removeCookie(HttpServletResponse response, String name) {
 		addCookie(response, name, null, 0);
 	}
-
 
 	public static String getFormattedTime() {
 		Date time = Calendar.getInstance().getTime();
@@ -224,6 +229,37 @@ public class FaceUtils {
 			String username = SMTP_AUTH_USER;
 			String password = SMTP_AUTH_PWD;
 			return new PasswordAuthentication(username, password);
+		}
+	}
+
+	public static String getIp() {
+		HttpServletRequest request = (HttpServletRequest) FacesContext
+				.getCurrentInstance().getExternalContext().getRequest();
+		String ipAddress = request.getHeader("X-FORWARDED-FOR");
+		if (ipAddress == null) {
+			ipAddress = request.getRemoteAddr();
+		}
+		return ipAddress;
+	}
+
+	public static Object getSession(String string) {
+		Object object = FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().get(string);
+		return object;
+	}
+
+	public static String getUserId() {
+		Object obj = FaceUtils.getSession("user");
+		String userId = "0";
+		Map<String, String> user = null;
+		if (obj != null) {
+
+			user = (Map<String, String>) obj;
+			userId = user.get("id");
+			return userId;
+		} else {
+
+			return null;
 		}
 	}
 }

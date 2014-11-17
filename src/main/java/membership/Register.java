@@ -1,6 +1,7 @@
 package membership;
 
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import javax.mail.AuthenticationFailedException;
 import javax.mail.MessagingException;
 
 import freela.util.App;
+import freela.util.Db;
 import freela.util.FaceUtils;
 import freela.util.MyLogger;
 import freela.util.Sql;
@@ -25,6 +27,15 @@ public class Register implements Serializable {
 	Map<String, String> user;
 	@ManagedProperty(value = "#{app}")
 	App app;
+	private Date birthday;
+
+	public Date getBirthday() {
+		return birthday;
+	}
+
+	public void setBirthday(Date birthday) {
+		this.birthday = birthday;
+	}
 
 	String rePassword;
 
@@ -51,10 +62,11 @@ public class Register implements Serializable {
 			Insert insertUser = new Sql.Insert("user")
 					.add("email", user.get("email"))
 					.add("password", user.get("password"))
-					.add("firmaname", user.get("firmaname"))
-					.add("sabitno", user.get("sabitno"))
+					.add("namesurname", user.get("namesurname"))
+					.add("gender", user.get("gender"))
+
 					.add("cepno", user.get("cepno"))
-					.add("uname", user.get("name"))
+					.add("birthday", FaceUtils.getFormattedTime(birthday))
 					.add("uname", user.get("uname"))
 					.add("uuid", user.get("uuid"));
 
@@ -64,13 +76,14 @@ public class Register implements Serializable {
 					.add("userid", insertedId)
 					.add("tarih", FaceUtils.getFormattedTime()).run();
 
-			sendActivation(uuid.toString());
+			if (!Db.USER.equals("root"))// local controle
+				sendActivation(uuid.toString());
 
 			app.setCurrentInfoMessage("Aktivasyon Kodunuz Mail Adresinize Gönderildi. "
 					+ "Lütfen E-Mail Adresinizi Ziyaret Ediniz.");
 			return "bilgi";
 		} catch (Exception e) {
-			// e.printStackTrace();
+			e.printStackTrace();
 			log.severe(e.getMessage());
 			FaceUtils.addError("Hata olustu");
 			return null;
@@ -80,8 +93,8 @@ public class Register implements Serializable {
 	private void sendActivation(String uid)
 			throws AuthenticationFailedException, MessagingException {
 
-		List<Map<String, String>> table = new Sql.Select()
-				.from("mailcontent").where("name", "activation").getTable();
+		List<Map<String, String>> table = new Sql.Select().from("mailcontent")
+				.where("name", "activation").getTable();
 
 		String mc = table.get(0).get("content");
 
@@ -131,8 +144,6 @@ public class Register implements Serializable {
 	public void setRePassword(String rePassword) {
 		this.rePassword = rePassword;
 	}
-
-
 
 	private static final long serialVersionUID = 5950439051586912211L;
 

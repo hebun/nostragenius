@@ -398,6 +398,8 @@ public class Db {
 				list.add(hash);
 
 			}
+			if (debug)
+				FaceUtils.log.info(sql);
 			return list;
 
 		} catch (ClassNotFoundException e) {

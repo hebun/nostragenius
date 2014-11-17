@@ -10,6 +10,13 @@ border:0px;
 
 }
 
+.icon{
+width:20px;
+height:26px;
+float:left;
+text-align:right;	
+
+}
 
 
 .ustHeader{
@@ -22,7 +29,7 @@ border:0px;
 
 .contentSablon{
 	width: 100%;
-	background-color: #fff;
+	background-color: #FFF;
 	margin: 0px;
 	padding: 0px;
 	

@@ -72,7 +72,9 @@ Listeleri gören kişiler veya üyeler tahmin ile ilgili yorum ve zorluk puanı 
 Ilk yorum veya ilk zorluk puanı verildikten sonra tahmin kesinleşecek ve tahmini giren üye de onu artık
  değiştiremeyecek veya dilemeyecek. Silme gerektiren bir durum olursa bu durumda süper admin yetkili olacak.
 Sonrasında tahminin gerçekleşeceği tarih ve saatte artık bu tahmin yorum ve zorluk puanını verilebilir
- olmaktan çıkarılacak ve gerçekleşme puanı verilecek olan tahminler listesinde yer alacak. Bu listede en alttan başlayacak son gelen. Ve 48 saat o listede değerlendirme için kalacak. Bu 48 saat süre içinde üyeler üye panellerine giriş yaparak gerçekleşme puanı verecekler. 
+ olmaktan çıkarılacak ve gerçekleşme puanı verilecek olan tahminler listesinde yer alacak. Bu listede en 
+ alttan başlayacak son gelen. Ve 48 saat o listede değerlendirme için kalacak. Bu 48 saat süre içinde 
+ üyeler üye panellerine giriş yaparak gerçekleşme puanı verecekler. 
 48 saat sonunda ise artık listeden kaldırılacaklar ve adminlere tarafından son değerlendirme için işlem 
 yapılacak. Adminlere tahmini ve diğer kriterleri inceleyerek düzenleme, onaylama, değiştirme yaparak
  yayınlayabilecekler. Bu yayınlama noktasında hem tahminin son puanı, hem tahminci üyeye yazılacak puan,

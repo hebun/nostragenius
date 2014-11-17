@@ -7,8 +7,60 @@ margin-bottom:20px;
 
 }
 
+
+.sayfalama{
+width:930px;
+margin-left:auto;
+margin-right:auto;
+padding:5px;
+margin-top:5px;
+}
+
+.sayfalama ul {
+margin:0px;
+padding:0px;
+list-style-type:none;
+}
+
+.sayfalama ul li {
+float:left;	
+
+}
+
+.sayfalama ul li a{
+display:block;
+margin-left:3px;
+margin-right:3px;
+padding:5px;
+background-color:#4ab3e2;
+
+}
+
+.sayfalama ul li a:link{
+color:#003;
+font-family:Arial, Tahoma, Verdana;
+font-size:12px;
+text-decoration:none;
+}
+
+.sayfalama ul li a:visited{
+color:#003;
+font-family:Arial, Tahoma, Verdana;
+font-size:12px;
+text-decoration:none;
+}
+
+.sayfalama ul li a:hover{
+color:#4ab3e2;
+font-family:Arial, Tahoma, Verdana;
+font-size:12px;
+text-decoration:none;
+background-color:#012353;
+border: 1px; solid #012353;
+}
+
 .tahminKutu{
-width:970px;
+width:950px;
 margin-left:auto;
 margin-right:auto;
 margin-top:10px;
@@ -23,37 +75,142 @@ behavior: url(_css/ie-css3.htc);
 padding:10px;
 }
 
+.solSayfa{
+width:630px;
+float:left;
+padding:20px;
+
+
+}
+
+.reklamAlan{
+width:280px;
+padding:10px;
+float:left;
+
+}
+
 
 .tahminIcKutu1{
 float: left;
-width: 320px;
+width: 390px;
+
+}
+
+.toplamPuan{
+display:block;
+width:170px;
+float:left;
+
+}
+
+.enIyitahminciler{
+float: left;
+width: 245px;
+margin-right:7px;
+margin-left:7px;
+
+}
+
+.yorumAlan{
+float: left;
+width:930px;
+margin-left:auto;
+margin-right:auto;
+display:block;
+margin-right:7px;
+margin-left:7px;
+
+}
+
+.tahminKutu .enIyitahminciler ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .enIyitahminciler ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	
+
+
+}
+
+.tahminKutu .enIyitahminciler ul li a {
+	display: block;
+
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	height:20px;
+	line-height:20px;
+}
+.tahminKutu .enIyitahminciler ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .enIyitahminciler ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .enIyitahminciler ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #F4AC00;;
+	text-decoration: none;
+	
+}
+
+
+.tahminYorumKutu{
+float: left;
+width: 155px;
+margin-left:3px;
+
+}
+
+
+.tahminYorumYapPuanVer{
+float: left;
+width: 310px;
+margin-left:3px;
 
 }
 
 .tahminIcKutu2{
 float: left;
-width: 165px;
+width: 385px;
 margin-left:10px;
 
 }
 
 .tahminIcKutu3{
 float: left;
-width: 170px;
+width: 150px;
 margin-left:10px;
 
 }
 
 .tahminIcKutu4{
 float: left;
-width: 285px;
+width: 200px;
 margin-left:10px;
 
 }
 
 .tahminIcKutu5{
 float: left;
-width: 315px;
+width: 290px;
 margin-left:10px;
 
 }
@@ -61,7 +218,7 @@ margin-left:10px;
 
 .tahminIcKutu6{
 float: left;
-width: 315px;
+width: 250px;
 margin-left:10px;
 
 }
@@ -77,13 +234,14 @@ margin-left:10px;
 	background-image: url(../_images/arrow.png);
 	background-repeat: no-repeat;
 	background-position: left center;
+	display:block;
+
+
 }
 
 .tahminKutu .tahminIcKutu1 ul li a {
 	display: block;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #111;
+
 	padding-top: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
@@ -107,9 +265,99 @@ margin-left:10px;
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 12px;
 	font-weight: normal;
-	color: #000;
+	color: #F4AC00;
 	text-decoration: none;
-	background-color: #CCC;
+
+}
+
+
+.tahminKutu .tahminYorumKutu ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminKutu .tahminYorumKutu ul li {
+	background-image: url(../_images/arrow.png);
+	background-repeat: no-repeat;
+	background-position: left center;
+	padding-left: 5px;
+	line-height: 20px;
+}
+
+.tahminKutu .tahminYorumKutu ul li a {
+	display: block;
+
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+.tahminKutu .tahminYorumKutu ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminYorumKutu ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .tahminYorumKutu ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #F4AC00;
+	text-decoration: none;
+	
+}
+
+
+.tahminYorumYapPuanVer ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+
+.tahminYorumYapPuanVer ul li {
+
+	padding-left: 5px;
+	line-height: 20px;
+}
+
+.tahminYorumYapPuanVer ul li a {
+	display: block;
+
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+}
+.tahminYorumYapPuanVer ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminYorumYapPuanVer ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminYorumYapPuanVer ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #F4AC00;
+	text-decoration: none;
+	
 }
 
 
@@ -131,9 +379,7 @@ margin-left:10px;
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #111;
+
 }
 .tahminKutu .tahminIcKutu2 ul li a:link {
 	font-family: Arial, Tahoma, Verdana;
@@ -153,13 +399,14 @@ margin-left:10px;
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 12px;
 	font-weight: normal;
-	color: #000;
+	color: #F4AC00;
 	text-decoration: none;
-	background-color: #CCC;
+
 }
 
 
 .tahminKutu .tahminIcKutu3 ul {
+
 	margin: 0px;
 	padding: 0px;
 	list-style-type: none;
@@ -169,6 +416,9 @@ margin-left:10px;
 	background-image: url(../_images/arrow.png);
 	background-repeat: no-repeat;
 	background-position: left center;
+		font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	text-align:left;
 }
 .tahminKutu .tahminIcKutu3 ul li a {
 	display: block;
@@ -176,9 +426,7 @@ margin-left:10px;
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #111;
+
 }
 .tahminKutu .tahminIcKutu3 ul li a:link {
 	font-family: Arial, Tahoma, Verdana;
@@ -198,9 +446,9 @@ margin-left:10px;
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 12px;
 	font-weight: normal;
-	color: #000;
+	color: #F4AC00;
 	text-decoration: none;
-	background-color: #CCC;
+
 }
 
 
@@ -222,9 +470,7 @@ margin-left:10px;
 	padding-right: 5px;
 	padding-bottom: 5px;
 	padding-left: 10px;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #111;
+
 }
 .tahminKutu .tahminIcKutu4 ul li a:link {
 	font-family: Arial, Tahoma, Verdana;
@@ -244,9 +490,9 @@ margin-left:10px;
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 12px;
 	font-weight: normal;
-	color: #000;
+	color: #F4AC00;
 	text-decoration: none;
-	background-color: #CCC;
+
 }
 
 .tahminKutu .tahminIcKutu5 ul {
@@ -263,9 +509,7 @@ margin-left:10px;
 
 .tahminKutu .tahminIcKutu5 ul li a {
 	display: block;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #111;
+
 	padding-top: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
@@ -289,9 +533,9 @@ margin-left:10px;
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 12px;
 	font-weight: normal;
-	color: #000;
+	color: #F4AC00;
 	text-decoration: none;
-	background-color: #CCC;
+
 }
 
 .tahminKutu .tahminIcKutu6 ul {
@@ -308,9 +552,7 @@ margin-left:10px;
 
 .tahminKutu .tahminIcKutu6 ul li a {
 	display: block;
-	border-bottom-width: 1px;
-	border-bottom-style: dotted;
-	border-bottom-color: #111;
+
 	padding-top: 5px;
 	padding-right: 5px;
 	padding-bottom: 5px;
@@ -334,13 +576,167 @@ margin-left:10px;
 	font-family: Arial, Tahoma, Verdana;
 	font-size: 12px;
 	font-weight: normal;
-	color: #000;
+	color: #F4AC00;
 	text-decoration: none;
-	background-color: #CCC;
+
+}
+
+.uyeUyari{
+display:block;
+padding:10px;
+margin-bottom:5px;
+color:#111;
+font-family: Arial, Tahoma, Verdana;
+font-size:14px;
+text-decoration:none;
+
+}
+
+.uyeUyari a:link{
+font-family: Arial, Tahoma, Verdana;
+font-size:14px;
+text-decoration:none;
+color:#111;	
+font-weight:bold;	
+}
+
+.uyeUyari a:visited{
+font-family: Arial, Tahoma, Verdana;
+font-size:14px;
+text-decoration:none;
+color:#111;	
+font-weight:bold;	
+}
+
+.uyeUyari a:hover{
+font-family: Arial, Tahoma, Verdana;
+font-size:14px;
+text-decoration:none;
+color:#f4ac00;
+font-weight:bold;	
+
 }
 
 .masterPage{
 width:970px;
 padding:10px;
 
+}
+
+.reklamKutu{
+display:block;
+background-color:#CCC;
+width:250px;
+height:250px;
+text-align:center;
+line-height:250px;
+margin-bottom:20px;
+margin-left:auto;
+margin-right:auto;
+
+}
+
+.yorumYap{
+width:970px;
+margin-left:auto;
+margin-right:auto;
+margin-top:10px;
+	
+}
+
+.uyeYorumGiris{
+display:block;
+margin-left:10px;
+width:650px;
+padding:5px;
+float:left;
+}
+
+.misafirYorumGiris{
+display:block;
+margin-left:10px;
+padding:5px;
+width:250px;
+float:left;	
+
+}.yorumYap .tahminKutu .tahminYorumKutu ul li a {
+	display: block;
+	margin: 0px;
+	padding: 5px;
+	height: 20px;
+}
+
+.spanLink{
+	text-decoration: none;
+	color: #f4ac00;
+	font-size: 14px;
+	font-weight: bold;
+	margin-left:30px;
+	text-align:right;
+	float:right;
+	display:block;
+	margin-top:0px;
+}
+
+.tahminKutu .toplamPuan ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+.tahminKutu .toplamPuan ul li {
+	display: block;
+	padding-top: 6px;
+	padding-right: 5px;
+	padding-bottom: 6px;
+	padding-left: 5px;
+	text-align: left;
+}
+.tahminKutu .yorumAlan ul {
+	margin: 0px;
+	padding: 0px;
+	list-style-type: none;
+}
+.tahminKutu .yorumAlan ul li {
+	display: block;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	height: 20px;
+	line-height: 20px;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+	border-bottom-color: #CCC;
+}
+.tahminKutu .yorumAlan ul li a {
+	display: block;
+	padding-top: 5px;
+	padding-right: 5px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	height: 20px;
+	line-height: 20px;
+	border: 1px solid #CCC;
+}
+
+.tahminKutu .yorumAlan ul li a:link {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .yorumAlan ul li a:visited {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #111;
+	text-decoration: none;
+}
+.tahminKutu .yorumAlan ul li a:hover {
+	font-family: Arial, Tahoma, Verdana;
+	font-size: 12px;
+	font-weight: normal;
+	color: #F4AC00;
+	text-decoration: none;
 }

@@ -4,12 +4,13 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:p="http://primefaces.org/ui">
 <f:view contentType="text/html">
 
 	<h:head>
 		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<title>NostraGenius</title>
+		<link rel="stylesheet" type="text/css" href="_css/faces.css" />
 		<link rel="stylesheet" type="text/css" href="_css/css-styles.css" />
 		<link rel="stylesheet" type="text/css" href="_css/style-menu.css" />
 		<link rel="stylesheet" href="_css/slider-styles.css" type="text/css" />
@@ -17,10 +18,10 @@
 			type="text/css" />
 
 
-		<script type="text/javascript" src="_js/jquery.min.js"></script>
+
 		<script type="text/javascript" src="_js/menu-script.js"></script>
 
-		<script type="text/javascript" src="_js/jquery-1.4.2.js"></script>
+
 		<script type="text/javascript" src="_js/coin-slider.min.js"></script>
 
 		<ui:insert name="head"></ui:insert>
@@ -29,43 +30,90 @@
 	<h:body>
 		<div class="ustHeader">
 			<div class="ustSayfa">
+
 				<div class="logo">
-					<a href="index.html"><img src="_images/nostragenius-logo.png"
+					<a href="index.xhtml"><img src="_images/nostragenius-logo.png"
 						width="132" height="91" /></a>
 				</div>
 				<div class="aramaAlan">
 					<div class="aramaKutu">
-						<span class="aramaBaslik">Tahmin Ara</span>
-						<form action="#" method="post" enctype="multipart/form-data">
-							<input type="text" name="Arama" class="siteArama" /> <input
-								name="" type="image" src="_images/aramaButon.png"
+						<h:form id="searchForm">
+							<span class="aramaBaslik">Tahmin Ara</span>
+
+							<input type="text" name="Arama" class="siteArama" />
+							<input name="" type="image" src="_images/aramaButon.png"
 								class="aramaButon" />
-						</form>
-						<span class="uyelikKutu"><a href="#">Üye Giriş |</a> <a
-							href="#">Yeni Üyelik</a> </span>
+
+							<h:panelGroup rendered="#{not login.loggedIn}">
+								<span class="uyelikKutu"><a href="yorum-yap.xhtml">Üye
+										Giriş |</a> <a href="uye-ol.xhtml">Yeni Üyelik</a> </span>
+							</h:panelGroup>
+							<h:panelGroup styleClass="uyelikKutu"
+								rendered="#{login.loggedIn}">
+
+
+								<h:commandLink id="exitLink" action="#{login.logout}"> 
+						Çıkış |
+					</h:commandLink>
+								<a href="uye-profil.xhtml">Profilim</a>
+
+							</h:panelGroup>
+						</h:form>
 					</div>
 				</div>
 				<div class="clearBoth"></div>
+
 			</div>
 		</div>
 		<div class="menuAlan">
 			<div class="menuKutu">
 				<div id="menu2" class="menu">
 					<ul>
-						<li><a href="javascript:;">ANASAYFA</a></li>
-						<li><a href="javascript:;">TAHMİN YAP</a></li>
-						<li><a href="javascript:;">YORUM YAP</a></li>
-						<li><a href="javascript:;">PUAN VER</a></li>
-						<li><a href="javascript:;">İLETİŞİM</a></li>
+						<li><a href="index.xhtml">ANASAYFA</a></li>
+						<li><a href="tahmin-yap.xhtml">TAHMİN YAP</a></li>
+						<li><a href="yorum-yap.xhtml">YORUM YAP</a></li>
+						<li><a href="yorum-yap.xhtml">PUAN VER</a></li>
+						<li><a href="iletisim.xhtml">İLETİŞİM</a></li>
 					</ul>
 				</div>
 			</div>
 		</div>
-		<div id="content">
-			<ui:insert name="content">
+
+		<ui:insert name="content">
 Default 
 			</ui:insert>
-		</div>
+
+<h:outputScript>
+
+ 
+    PrimeFaces.locales['tr'] = {
+    closeText: 'kapat',
+    prevText: 'geri',
+    nextText: 'ileri',
+    currentText: 'bugün',
+    monthNames: ['Ocak','Şubat','Mart','Nisan','Mayıs','Haziran','Temmuz','Ağustos','Eylül','Ekim','Kasım','Aralık'],
+    monthNamesShort: ['Oca','Şub','Mar','Nis','May','Haz', 'Tem','Ağu','Eyl','Eki','Kas','Ara'],
+    dayNames: ['Pazar','Pazartesi','Salı','Çarşamba','Perşembe','Cuma','Cumartesi'],
+    dayNamesShort: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+    dayNamesMin: ['Pz','Pt','Sa','Ça','Pe','Cu','Ct'],
+    weekHeader: 'Hf',
+    firstDay: 1,
+    isRTL: false,
+    showMonthAfterYear: false,
+    yearSuffix: '',
+    timeOnlyTitle: 'Zaman Seçiniz',
+    timeText: 'Zaman',
+    hourText: 'Saat',
+    minuteText: 'Dakika',
+    secondText: 'Saniye',
+    ampm: false,
+    month: 'Ay',
+    week: 'Hafta',
+    day: 'Gün',
+    allDayText : 'Tüm Gün'
+};
+
+</h:outputScript>
 		<div class="altFooter">
 			<div class="altSayfa">© Copyright Nostragenius.com</div>
 		</div>

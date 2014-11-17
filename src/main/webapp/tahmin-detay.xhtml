@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="head">
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+
+			<div class="ortaKutu">
+				<div class="masterPage">
+					<span class="baslikKutu2">TAHMİN DETAY</span>
+					<div class="yorumYap">
+						<h:form>
+							<p:growl id="messages" showDetail="false" />
+							<span class="spanBaslik">Tahminci : <span
+								style="font-weight: normal"> #{tahminDet.record.uname}</span></span>
+							<span class="spanBaslik">Tahmin : <span
+								style="font-weight: normal"> #{tahminDet.record.name}</span>
+							</span>
+							<span class="spanBaslik">TahminDetay : <span
+								style="font-weight: normal"> #{tahminDet.record.content}</span></span>
+							<span class="spanBaslik">Tahmin Ortakları : <h:panelGroup
+									id="pcount" style="font-weight: normal"> #{tahminDet.partnerCount}</h:panelGroup>
+								<p:commandLink styleClass="spanLink"
+									actionListener="#{tahminDet.onPartner}"
+									update="messages,makePartner,pcount" id="makePartner"
+									value="#{tahminDet.partnerText}"
+									disabled="#{tahminDet.partnerDisabled}">
+
+								</p:commandLink>
+							</span>
+							<span class="spanBaslik">Tahminin Olacağı Tarih ve Saat :
+								<span style="font-weight: normal">
+									#{tahminDet.record.occurTime}</span>
+							</span>
+
+							<span class="spanBaslik">Tahminin Zorluk Derecesi: <h:outputText
+									value="#{tahminDet.difPoint}"></h:outputText> <span
+								style="padding-left: 310px;"> Sen de Zorluk Derecesi Gir
+									: </span> <p:rating pt:style="float:right"
+									disabled="#{tahminDet.voted}" value="#{tahminDet.vote}"
+									id="rating" stars="10">
+									<p:ajax event="rate" listener="#{tahminDet.onrate}"
+										update="messages,rating" />
+
+								</p:rating>
+							</span>
+							<span class="spanBaslik">Tahminle İlgili Yapılmış Yorumlar
+								: <span style="font-weight: normal">
+									#{tahminDet.commentCount}</span> <a class="spanLink" href="yapilmis-yorumlar.xhtml?tid=#{tahminDet.id}"> Sen
+									de Yorum Yap</a>
+							</span>
+						</h:form>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

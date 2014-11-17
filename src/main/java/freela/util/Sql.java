@@ -1,5 +1,6 @@
 package freela.util;
 
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -249,6 +250,10 @@ public abstract class Sql<T extends Sql<T>> {
 
 		public Insert add(String key, Object value) {
 
+			if (value == null) {
+				throw new RuntimeException("the value for key '" + key
+						+ "' is null");
+			}
 			this.fields.put(key, value);
 			return this;
 
@@ -297,22 +302,24 @@ public abstract class Sql<T extends Sql<T>> {
 
 	public static class Count {
 		String table;
+
 		public Count(String table) {
-			this.table=table;
+			this.table = table;
 		}
-		public int get(){
+
+		public int get() {
 			Select sql = new Sql.Select("count(*) as say").from(this.table);
 			System.out.println(sql.get());
-			
+
 			String say = sql.getTable().get(0).get("say");
-			int parseInt=0;
+			int parseInt = 0;
 			try {
 				parseInt = Integer.parseInt(say);
 			} catch (NumberFormatException e) {
 				e.printStackTrace();
 			}
 			return parseInt;
-			
+
 		}
 	}
 

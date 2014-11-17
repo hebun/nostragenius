@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<ui:define name="head">
+
+		<link rel="stylesheet"
+			href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+		<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script type="text/javascript" src="_js/client.js"></script>
+		<script type="text/javascript" src="_js/jquery.maskedinput.min.js"></script>
+
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+			<div class="ortaKutu">
+				<div class="masterPage">
+					<div class="solSayfa">
+						<span class="baslikKutu2">YENİ ÜYELİK</span>
+						<h:form id="registerForm">
+							<h:messages globalOnly="true" styleClass="error"></h:messages>
+							<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>
+
+							<label for="Rumuz">Kullanıcı Adı</label>
+							<h:inputText id="uname" name="Rumuz" styleClass="textField"
+								value="#{register.user.uname}" required="true"
+								requiredMessage="#{reqMessage}">
+
+							</h:inputText>
+							<h:message for="uname" styleClass="error"></h:message>
+							<label for="AdSoyad">Ad Soyad</label>
+							<h:inputText id="namesurname" name="AdSoyad"
+								value="#{register.user.namesurname}" styleClass="textField"
+								required="true" requiredMessage="#{reqMessage}"></h:inputText>
+							<h:message for="namesurname" styleClass="error"></h:message>
+
+							<label for="Parola">Parola</label>
+							<h:inputSecret name="Parola" id="password" styleClass="textField"
+								value="#{register.user.password}"
+								pt:placeholder="En az 4 basamaklı olmalı" required="true"
+								requiredMessage="#{reqMessage}"></h:inputSecret>
+							<h:message for="password" styleClass="error"></h:message>
+
+
+							<label for="ParolaTekrar">Parola Tekrar</label>
+							<h:inputSecret name="ParolaTekrar" id="rePassword"
+								styleClass="textField" value="#{register.rePassword}"
+								required="true" requiredMessage="#{reqMessage}"></h:inputSecret>
+							<h:message for="rePassword" styleClass="error"></h:message>
+
+							<label for="EMail">E-Mail :</label>
+							<h:inputText name="EMail" required="true"
+								requiredMessage="#{reqMessage}" value="#{register.user.email}"
+								id="email" styleClass="textField"></h:inputText>
+							<h:message for="email" styleClass="error"></h:message>
+
+							<label for="CepTel">Cep Tel :</label>
+							<h:inputText id="CepTel" value="#{register.user.cepno}"
+								styleClass="textField" name="CepTel"></h:inputText>
+							<h:message for="CepTel" styleClass="error"></h:message>
+
+							<label for="Cinsiyet">Cinsiyet :</label>
+							<h:selectOneRadio value="#{register.user.gender}">
+								<f:selectItem itemValue="Bay" itemLabel="Bay" />
+								<f:selectItem itemValue="Bayan" itemLabel="Bayan" />
+							</h:selectOneRadio>
+							<div class="clearLeft"></div>
+
+							<label for="DogumTarihi">Doğum Tarihi :</label>
+							<h:inputText id="expiredate" styleClass="datepicker"
+								pt:placeholder="Son satış tarihi " label="Tarih" required="true"
+								requiredMessage="#{reqMessage}" tabindex="6"
+								value="#{register.birthday}"
+								converterMessage="Tarih uygun degil">
+								<f:convertDateTime pattern="dd.M.yyyy"></f:convertDateTime>
+							</h:inputText>
+							<h:commandButton id="Gonder" action="#{register.save()}"
+								value="Gönder"></h:commandButton>
+						</h:form>
+					</div>
+					<div class="reklamAlan">
+						<span class="reklamKutu"><img
+							src="_images/nethizmet-banner.jpg" width="250" height="250" /></span> <span
+							class="reklamKutu"><img src="_images/web2navi-banner.jpg"
+							width="250" height="250" /></span>
+					</div>
+					<div class="clearLeft"></div>
+				</div>
+			</div>
+		</div>
+		<h:outputScript>
+		
+		$("[id='registerForm:CepTel']").mask("(0999) 999 99 99");
+
+		</h:outputScript>
+	</ui:define>
+</ui:composition>

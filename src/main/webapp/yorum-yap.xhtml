@@ -1,0 +1,173 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<ui:define name="head">
+
+		<link rel="stylesheet"
+			href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
+		<script type="text/javascript" src="_js/client.js"></script>
+		<script type="text/javascript" src="_js/jquery.maskedinput.min.js"></script>
+
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+			<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>
+			<div class="ortaKutu">
+				<div class="masterPage">
+					<span class="baslikKutu2">YORUM YAP - PUAN VER</span>
+					<div class="yorumYap">
+						<div class="uyeYorumGiris">
+							<span class="yorumYapBaslik"><img
+								src="_images/admin-icon.png" width="16" height="20"
+								class="imageLeft" />Üye Girişi Yapacağım ()</span><span
+								class="yorumYapBaslik"><img
+								src="_images/misafir-icon.png" width="20" height="20"
+								class="imageLeft" />Misafir Olarak Devam Edeceğim () </span>
+							<div class="clearLeft"></div>
+
+							<h:form class="uyeOl">
+								<h:messages globalOnly="true" styleClass="error"></h:messages>
+								<label for="Rumuz">Kullanıcı Adı veya Email Adresi</label>
+
+								<h:inputText id="Kullanici" name="Rumuz"
+									value="#{login.username}" required="true"
+									requiredMessage="#{reqMessage}" styleClass="textField"></h:inputText>
+								<h:message for="Kullanici" styleClass="error"></h:message>
+								<label for="Parola">Parola</label>
+
+								<h:inputSecret id="password" styleClass="textField"
+									value="#{login.password}" required="true"
+									requiredMessage="#{reqMessage}"></h:inputSecret>
+								<h:message for="password" styleClass="error"></h:message>
+								<h:panelGrid columns="2">
+								<h:commandButton id="Gonder" action="#{login.login}"
+									value="Giriş Yap"></h:commandButton>
+								<span class="sifreYenile"><a href="forgotpassword.xhtml">Şifremi
+										Unuttum!</a></span>
+										</h:panelGrid>
+								<div class="clearLeft"></div>
+							</h:form>
+
+						</div>
+						<div class="reklamAlan">
+							<span class="reklamKutu"><img
+								src="_images/nethizmet-banner.jpg" width="250" height="250" /></span>
+						</div>
+						<div class="clearLeft"></div>
+						<span class="baslikKutu2">YORUM YAPABİLECEĞİNİZ BAŞLIKLAR
+							VEYA PUAN VEREBİLECEĞİNİZ TAHMİNLER</span>
+						<div class="tahminKutu">
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">TAHMİNLER</span>
+								<ul>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+									<li><a href="#">Tahmin</a></li>
+								</ul>
+							</div>
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">TAHMİNCİLER</span>
+								<ul>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+									<li><a href="#">Tahminci</a></li>
+
+								</ul>
+							</div>
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">TAHMİN ZAMANI</span>
+								<ul>
+									<li><a href="#">Gün / Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+									<li><a href="#">Gün /Saat</a></li>
+								</ul>
+							</div>
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">ZORLUK DERECESİ</span>
+								<ul>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+									<li
+										style="background-image: none; height: 31px; line-height: 20px;"><img
+										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+
+								</ul>
+							</div>
+							<div class="tahminYorumYapPuanVer">
+								<span class="tahminBaslik">YORUMLAR</span>
+								<ul>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+									<li><a href="#">Adet 11</a></li>
+								</ul>
+							</div>
+							<div class="clearLeft"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

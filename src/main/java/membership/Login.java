@@ -1,13 +1,17 @@
 package membership;
 
+import static freela.util.FaceUtils.log;
+
 import java.io.Serializable;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import freela.util.App;
@@ -20,6 +24,7 @@ import freela.util.Sql.Update;
 @ManagedBean
 public class Login implements Serializable {
 	private static final String COOKIE_NAME = "remember";
+
 	private String username;
 
 	public String getUsername() {
@@ -28,6 +33,16 @@ public class Login implements Serializable {
 
 	public void setUsername(String username) {
 		this.username = username;
+	}
+
+	private String preUrl;
+
+	public String getPreUrl() {
+		return preUrl;
+	}
+
+	public void setPreUrl(String preUrl) {
+		this.preUrl = preUrl;
 	}
 
 	String password;
@@ -116,7 +131,13 @@ public class Login implements Serializable {
 			}
 			FacesContext.getCurrentInstance().getExternalContext()
 					.getSessionMap().put("user", user);
-			return "index";
+			if (preUrl == null)
+				return "index";
+			else {
+				String hold = preUrl;
+				preUrl = null;
+				return hold;
+			}
 		} else {
 			FaceUtils.addError("Kullanıcı ve/veya şifre yanlış.");
 			loggedIn = false;
@@ -124,7 +145,47 @@ public class Login implements Serializable {
 		}
 	}
 
+	public String forgotPassword() {
+
+		List<Map<String, String>> userTable = new Sql.Select().from("user")
+				.where("email", username).and("state", "ACTIVE").getTable();
+
+		if (userTable.size() == 0) {
+			FaceUtils
+					.addError("Bu E-Mail adresi ile kayıtlı kullanıcı bulunamadı.");
+			return null;
+		}
+
+		List<Map<String, String>> table = new Sql.Select().from("mailcontent")
+				.where("name", "resetpassword").getTable();
+
+		String mc = table.get(0).get("content");
+
+		String uid = UUID.randomUUID().toString();
+
+		new Sql.Insert("resetpassword").add("code", uid)
+				.add("userid", userTable.get(0).get("id"))
+				.add("tarih", FaceUtils.getFormattedTime()).run();
+
+		mc = mc.replaceAll("#link#", FaceUtils.getRootUrl()
+				+ "/resetpassword?code=" + uid);
+
+		try {
+			FaceUtils.postMail(
+					new String[] { "ismettung@gmail.com", username },
+					"nostragenius.com Şifre Yenile", mc, "");
+		} catch (MessagingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		app.setCurrentInfoMessage("Ayrıntılı talimatlar E-Posta adresinize gönderildi");
+
+		return "bilgi";
+	}
+
 	public String logout() {
+		log.severe("here");
 		username = "";
 		password = "";
 		user = null;
@@ -136,8 +197,6 @@ public class Login implements Serializable {
 				COOKIE_NAME);
 		return "index?faces-redirect=true";
 	}
-
-
 
 	public Map<String, String> getUser() {
 		return user;

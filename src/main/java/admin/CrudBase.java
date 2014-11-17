@@ -33,9 +33,9 @@ public class CrudBase {
 	}
 
 	public void initColumns() {
-		columns = Db.select(new Sql.Select("header,name").from("gridfield")
-				.where("tableName=", this.table).and("state=", "0").get(),
-				ColumnModel.class);
+		columns = new Sql.Select("header,name").from("gridfield")
+				.where("tableName=", this.table).and("state=", "0")
+				.getType(ColumnModel.class);
 
 	}
 

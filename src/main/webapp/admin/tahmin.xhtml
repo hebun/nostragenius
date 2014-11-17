@@ -7,6 +7,73 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	<ui:define name="content">
 		
+	
+
+		<h:form>
+			<h:panelGrid style="width:100%;" rendered="#{tahmin.hasMessage}">
+				<h4 class="#{tahmin.messageType}">#{tahmin.message}</h4>
+			</h:panelGrid>
+
+			<article class="module width_3_quarter" style="width: 95%;">
+
+				<header>
+					<h3 class="tabs_involved">Tahminler</h3>
+
+				</header>
+
+				<div class="tab_container">
+
+					<div id="tab1" class="tab_content">
+						<h:dataTable value="#{tahmin.tahmins}" var="m" id="betDt1"
+							styleClass="tablesorter"
+							columnClasses="column1,column2,column3,column4,column5">
+							<c:forEach items="#{tahmin.columns}" var="c">
+
+								<h:column>
+									<f:facet name="header">#{c.header}</f:facet>
+
+									<h:outputLink rendered="#{c.name=='pname'}"
+										value="proDetail?id=#{m.id}">#{m[c.name]}</h:outputLink>
+									<h:outputLink rendered="#{c.name=='uname'}"
+										value="userDetail?id=#{m.userid}">#{m[c.name]}</h:outputLink>
+
+									<h:outputText rendered="#{c.name!='pname' and c.name!='uname'}">#{m[c.name]}</h:outputText>
+
+								</h:column>
+							</c:forEach>
+						
+
+						</h:dataTable>
+
+					</div>
+				</div>
+			</article>
+
+		</h:form>
+
+		<h:outputScript>
+$(document).ready(function() 
+    	{ 
+      	  $(".tablesorter").tablesorter(); 
+   	 } 
+	);
+	</h:outputScript>
+
+	</ui:define>
+	<ui:define name="head">
+		<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
+		<style type="text/css">
+.delButton {
+	background-image: url(images/icn_trash.png)
+}
+
+.column1 {
+	width: 15%;
+}
+.column2 {
+	width: 30%;
+}
+</style>
 
 	</ui:define>
 </ui:composition>
