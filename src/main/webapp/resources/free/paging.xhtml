@@ -1,0 +1,37 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+<composite:interface>
+	<composite:attribute name="bean" />
+</composite:interface>
+
+<composite:implementation
+	xmlns:composite="http://java.sun.com/jsf/composite">
+
+	<div class="sayfalama">
+		<ul>
+	
+			<c:forEach  var="i" begin="0" end="#{cc.attrs.bean.pageCount-1}"
+				>
+				
+				<li style="background-image: none;">
+
+				<p:commandLink rendered="#{cc.attrs.bean.pageCount>1}"  disabled="${i==cc.attrs.bean.currentPage}"
+						actionListener="${cc.attrs.bean.loadData(i)}"
+						value="${i+1}" update=":cs"></p:commandLink></li>
+			</c:forEach>
+
+			<div class="clearLeft"></div>
+		</ul>
+
+	</div>
+
+</composite:implementation>
+</html>

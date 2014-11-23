@@ -33,7 +33,7 @@
 									actionListener="#{tahminDet.onPartner}"
 									update="messages,makePartner,pcount" id="makePartner"
 									value="#{tahminDet.partnerText}"
-									disabled="#{tahminDet.partnerDisabled}">
+									disabled="#{tahminDet.partnerDisabled}" rendered="#{not tahminDet.occured}">
 
 								</p:commandLink>
 							</span>
@@ -44,7 +44,8 @@
 
 							<span class="spanBaslik">Tahminin Zorluk Derecesi: <h:outputText
 									value="#{tahminDet.difPoint}"></h:outputText> <span
-								style="padding-left: 310px;"> Sen de Zorluk Derecesi Gir
+								style="padding-left: 310px;"><h:outputText rendered="#{tahminDet.occured}" value="Gerçekleşme Derecesi Gir"></h:outputText>
+								<h:outputText rendered="#{not tahminDet.occured}" value="Sen de Zorluk Derecesi Gir"></h:outputText>
 									: </span> <p:rating pt:style="float:right"
 									disabled="#{tahminDet.voted}" value="#{tahminDet.vote}"
 									id="rating" stars="10">

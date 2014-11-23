@@ -68,7 +68,8 @@ public class Register implements Serializable {
 					.add("cepno", user.get("cepno"))
 					.add("birthday", FaceUtils.getFormattedTime(birthday))
 					.add("uname", user.get("uname"))
-					.add("uuid", user.get("uuid"));
+					.add("uuid", user.get("uuid"))
+					.add("state", "PENDING");
 
 			int insertedId = insertUser.run();
 

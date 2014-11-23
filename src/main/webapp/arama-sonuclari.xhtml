@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	<ui:define name="head">
+
+			<link rel="stylesheet"
+			href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
+
+		<script type="text/javascript" src="_js/jquery.maskedinput.min.js"></script>
+
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+			<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>
+			<div class="ortaKutu">
+				<div class="masterPage">
+				
+					<div class="yorumYap">
+					
+						<span class="baslikKutu2">Arama Sonuçları</span>
+						<div class="tahminKutu">
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">TAHMİNLER</span>
+								<ul>
+									<ui:repeat var="tah" value="#{search.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.name}</a></li>
+										</ui:repeat>
+								</ul>
+							</div>
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">TAHMİNCİLER</span>
+								<ul>
+									<ui:repeat var="tah" value="#{search.data}">
+											<li><a href="tahminciler.xhtml?taid=#{tah.uid}">
+													#{tah.uname}</a></li>
+										</ui:repeat>
+
+								</ul>
+							</div>
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">TAHMİN ZAMANI</span>
+								<ul>
+									<ui:repeat var="tah" value="#{search.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.occurTime}</a></li>
+										</ui:repeat>
+								</ul>
+							</div>
+							<div class="tahminYorumKutu">
+								<span class="tahminBaslik">ZORLUK DERECESİ</span>
+								<ul>
+							<ui:repeat var="tah" value="#{search.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.hitPoint}</a></li>
+										</ui:repeat>
+
+								</ul>
+							</div>
+							<div class="tahminYorumYapPuanVer">
+								<span class="tahminBaslik">YORUMLAR</span>
+								<ul>
+									<ui:repeat var="tah" value="#{search.data}">
+											<li><a href="yapilmis-yorumlar.xhtml?tid=#{tah.id}">
+													#{tah.ccount}</a></li>
+										</ui:repeat>
+								</ul>
+							</div>
+							<div class="clearLeft"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

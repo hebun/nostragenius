@@ -9,6 +9,7 @@ import java.util.Map;
 public abstract class Sql<T extends Sql<T>> {
 	protected String fieldList;
 
+	public static final String ISNULL = " is null ";
 	protected String tableName;
 	protected boolean isBuilt = false;
 	protected String currentSql = "";
@@ -44,6 +45,10 @@ public abstract class Sql<T extends Sql<T>> {
 
 			@Override
 			public String getValue() {
+
+				if (value == null)
+					throw new RuntimeException("SQL: the value of key '" + fkey
+							+ "' is null");
 				return value.toString();
 			}
 
@@ -302,14 +307,21 @@ public abstract class Sql<T extends Sql<T>> {
 
 	public static class Count {
 		String table;
+		String key, value;
 
 		public Count(String table) {
 			this.table = table;
 		}
 
+		public Count where(String key, String value) {
+			this.key = key;
+			this.value = value;
+			return this;
+		}
+
 		public int get() {
-			Select sql = new Sql.Select("count(*) as say").from(this.table);
-			System.out.println(sql.get());
+			Select sql = new Sql.Select("count(*) as say").from(this.table)
+					.where(key, value);
 
 			String say = sql.getTable().get(0).get("say");
 			int parseInt = 0;
@@ -325,6 +337,7 @@ public abstract class Sql<T extends Sql<T>> {
 
 	public static class Select extends Sql<Select> {
 
+		public static final String COUNT = " count(id) as say ";
 		String secondTable, thirdTable;
 		String secondAlias, firstAlias, thirdAlias;
 		boolean isJoin = false, isSecondJoin = false;

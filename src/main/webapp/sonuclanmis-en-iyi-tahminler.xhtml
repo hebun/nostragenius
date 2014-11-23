@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:free="http://java.sun.com/jsf/composite/free">
+	<ui:define name="head">
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+			<div class="ortaKutu">
+			<h:form id="cs">
+				<div class="masterPage">
+					<span class="baslikKutu2">SONUÇLANMIŞ EN İYİ TAHMİNLER</span>
+					<div class="yorumYap">
+						<div class="clearLeft"></div>
+						<div class="tahminKutu">
+							<div class="tahminIcKutu1">
+								<span class="tahminBaslik">GERÇEKLEŞME DERECESİ</span>
+								<ul>
+									<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.hitPoint}</a></li>
+							</ui:repeat>
+							</ul>
+							</div>
+							<div class="tahminIcKutu2">
+								<span class="tahminBaslik">TAHMİN</span>
+								<ul>
+								<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.name}</a></li>
+							</ui:repeat>
+								</ul>
+							</div>
+							<div class="tahminIcKutu3">
+								<span class="tahminBaslik">TAHMİNCİ</span>
+								<ul>
+										<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.uname}</a></li>
+							</ui:repeat>
+								</ul>
+							</div>
+							<div class="tahminIcKutu4">
+								<span class="tahminBaslik">TAHMİN ORTAK SAYISI</span>
+								<ul>
+									<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.pcount}</a></li>
+							</ui:repeat>
+								</ul>
+							</div>
+							<div class="tahminIcKutu4">
+								<span class="tahminBaslik">TOPLAM PUAN</span>
+								<ul>
+								<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.point}</a></li>
+							</ui:repeat>
+								</ul>
+							</div>
+							<div class="clearLeft"></div>
+						</div>
+					</div>
+				<free:paging bean="#{bestTahmins}"></free:paging>
+				</div>
+				</h:form>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

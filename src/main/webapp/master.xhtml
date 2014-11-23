@@ -28,6 +28,7 @@
 	</h:head>
 
 	<h:body>
+	<p:growl></p:growl>
 		<div class="ustHeader">
 			<div class="ustSayfa">
 
@@ -40,9 +41,11 @@
 						<h:form id="searchForm">
 							<span class="aramaBaslik">Tahmin Ara</span>
 
-							<input type="text" name="Arama" class="siteArama" />
-							<input name="" type="image" src="_images/aramaButon.png"
-								class="aramaButon" />
+							<h:inputText name="Arama" styleClass="siteArama" value="#{master.searchText}"></h:inputText>
+							<h:commandButton styleClass="aramaButon" value="" image="_images/aramaButon.png"
+								action="#{master.search}">
+								<f:param name="key" value="#{master.searchText}"></f:param>
+							</h:commandButton>
 
 							<h:panelGroup rendered="#{not login.loggedIn}">
 								<span class="uyelikKutu"><a href="yorum-yap.xhtml">Üye
@@ -83,7 +86,7 @@
 Default 
 			</ui:insert>
 
-<h:outputScript>
+		<h:outputScript>
 
  
     PrimeFaces.locales['tr'] = {

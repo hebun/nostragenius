@@ -2,6 +2,7 @@ package freela.util;
 
 import java.io.IOException;
 import java.text.DateFormat;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
@@ -43,7 +44,7 @@ public class FaceUtils {
 	public static String SMTP_AUTH_USER = "";
 	public static String SMTP_AUTH_PWD = "";
 
-	public static String emailFromAddress = "";
+	public static String emailFromAddress = "info@nostragenius.com";
 
 	public static String uploadDir;
 
@@ -179,6 +180,7 @@ public class FaceUtils {
 
 	public static String getFormattedTime() {
 		Date time = Calendar.getInstance().getTime();
+
 		return getFormattedTime(time);
 
 	}
@@ -188,6 +190,19 @@ public class FaceUtils {
 
 		String formattedTime = dateFormat.format(time);
 		return formattedTime;
+	}
+
+	public static Date getTimeFromString(String time) {
+		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd H:m:s");
+
+		Date ret = null;
+		try {
+			ret = dateFormat.parse(time);
+		} catch (ParseException e) {
+			log.warning("date pars ex:" + e.getMessage());
+		}
+		return ret;
+
 	}
 
 	public static void postMail(String recipients[], String subject,
@@ -246,6 +261,12 @@ public class FaceUtils {
 		Object object = FacesContext.getCurrentInstance().getExternalContext()
 				.getSessionMap().get(string);
 		return object;
+	}
+
+	public static void setSession(String key, Object value) {
+		Object object = FacesContext.getCurrentInstance().getExternalContext()
+				.getSessionMap().put(key, value);
+
 	}
 
 	public static String getUserId() {

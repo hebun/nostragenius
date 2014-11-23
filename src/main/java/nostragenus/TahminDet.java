@@ -14,6 +14,7 @@ import org.primefaces.event.RateEvent;
 
 import freela.util.ASCIITable;
 import freela.util.BaseBean;
+import freela.util.Db;
 import freela.util.FaceUtils;
 import freela.util.Sql;
 import freela.util.Sql.Insert;
@@ -26,14 +27,33 @@ public class TahminDet extends BaseBean implements Serializable {
 
 	int partnerCount, commentCount;
 	int vote;
+	boolean occured;
+
+	public boolean isOccured() {
+		return occured;
+	}
+
+	public void setOccured(boolean occured) {
+		this.occured = occured;
+	}
 
 	private String id;
+
 	public String getId() {
 		return id;
 	}
 
 	public void setId(String id) {
 		this.id = id;
+	}
+
+	String ownerId;
+	public String getOwnerId() {
+		return ownerId;
+	}
+
+	public void setOwnerId(String ownerId) {
+		this.ownerId = ownerId;
 	}
 
 	private boolean isVoted;
@@ -110,15 +130,20 @@ public class TahminDet extends BaseBean implements Serializable {
 		} else {
 
 		}
-		Select checkVote = new Sql.Select().doNotUsePrepared()
-				.from("difficulty").where("tahminId", id);
-		if (userId.equals("0"))
-			checkVote.and("ip", FaceUtils.getIp());
-		else {
-			checkVote.and("userId", userId).or("ip", FaceUtils.getIp() + "");
+		String hitTable = "difficulty";
+		if(occured)
+			hitTable="tahminhit";
+		String checkSql = "select * from " + hitTable + " where tahminId=" + id + "";
+
+		if (userId.equals("0")) {
+			checkSql += " and ip='" + FaceUtils.getIp() + "'";
+
+		} else {
+			checkSql += " and (userId=" + userId + " or ip='"
+					+ FaceUtils.getIp() + "')";
 
 		}
-		List<Map<String, String>> tableDif = checkVote.getTable();
+		List<Map<String, String>> tableDif = Db.selectTable(checkSql);
 		if (tableDif.size() != 0) {
 			isVoted = true;
 			vote = Integer.parseInt(tableDif.get(0).get("vote"));
@@ -129,36 +154,7 @@ public class TahminDet extends BaseBean implements Serializable {
 	}
 
 	public void calcDif() {
-		log.info("tidc:" + id);
-		List<Map<String, String>> dif = new Select(
-				"tahminId,voteType, avg(vote) as ort").from("difficulty")
-				.where("tahminId", id).groupBy("voteType,tahminId").getTable();
-		double point = 0.0;
-		int deno = 0;
-		for (Map<String, String> map : dif) {
-			if (map.get("voteType").equals("1")
-					|| map.get("voteType").equals("2")) {
-				point += Double.parseDouble(map.get("ort"));
-				deno++;
-			} else if (map.get("voteType").equals("3")) {
-				point += Double.parseDouble(map.get("ort")) * 3;
-				deno+=3;
-			} else if (map.get("voteType").equals("4")) {
-				point += Double.parseDouble(map.get("ort")) * 5;
-				deno+=5;
-			}
-		}
-		point = point / deno;
-		DecimalFormat df = new DecimalFormat("####0.0");
-		difPoint = String.valueOf(point);
-		log.info(difPoint);
-		
-		difPoint= df.format(point);
-		try {
-			new ASCIITable().printTable(dif, false);
-		} catch (Exception e) {
-			
-		}
+		difPoint = Nostra.getDifPoint(id);
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -176,7 +172,7 @@ public class TahminDet extends BaseBean implements Serializable {
 		}
 
 		Insert tahminDif = new Sql.Insert("tahminpartner").doNotUsePrepared()
-				.add("userId", userId).add("tahminId", id + "");
+				.add("userId", userId).add("tahminId", id + "").add("ownerId", record.get("user.id"));
 		tahminDif.run();
 		checkCounts();
 		checkPartner();
@@ -199,13 +195,16 @@ public class TahminDet extends BaseBean implements Serializable {
 			voteType = "2";
 		}
 
-		Insert tahminDif = new Sql.Insert("difficulty").doNotUsePrepared()
+		String table2 = "difficulty";
+		if(occured)
+			table2="tahminhit";
+		Insert tahminDif = new Sql.Insert(table2).doNotUsePrepared()
 				.add("userId", userId).add("voteType", voteType)
 				.add("vote", vote + "").add("tahminId", id + "")
 				.add("ip", FaceUtils.getIp());
 		tahminDif.run();
 		checkVote();
-		FaceUtils.addInfo("Zorluk derecesi kaydedildi.");
+		FaceUtils.addInfo(!occured?"Zorluk derecesi kaydedildi.":"Gerçekleşme Derecesi Kaydedildi.");
 
 	}
 
@@ -220,10 +219,20 @@ public class TahminDet extends BaseBean implements Serializable {
 				.on("user.id", "tahmin.userId").where("tahmin.id", id)
 				.getTable().get(0);
 
+		checkOccured();
 		checkCounts();
 		checkVote();
 		checkPartner();
 		calcDif();
+	}
+
+	public void checkOccured() {
+
+		List<Map<String, String>> list = new Sql.Select().from("tahmin")
+				.where("id", id)
+				.and("occurTime<", FaceUtils.getFormattedTime()).getTable();
+		this.occured = list.size() > 0;
+
 	}
 
 	private void checkCounts() {

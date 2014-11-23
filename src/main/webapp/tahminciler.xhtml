@@ -1,0 +1,102 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:free="http://java.sun.com/jsf/composite/free">
+	<ui:define name="head">
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon" >
+			<h:form  id="cs">
+				<div class="ortaKutu"  >
+					<div class="masterPage">
+						<span class="baslikKutu2">TAHMİNCİLER</span>
+						<div class="yorumYap">
+							<span class="spanBaslik">Tahminci :
+								#{tahminci.record.uname}</span> <span class="spanBaslik">Tahminci
+								Genel Puanı : #{tahminci.userPoint}</span>
+							<div class="clearLeft"></div>
+							<span class="baslikKutu2"><span class="baslik3"><img
+									src="_images/daire_kirmizi.png" width="20" height="26"
+									class="icon" /> Tümüyle Sona Erenler</span> <span class="baslik3"><img
+									src="_images/daire_sari.png" width="20" height="26"
+									class="icon" /> Zamanı Dolanlar</span><span class="baslik3"><img
+									src="_images/daire_yesil.png" width="20" height="26"
+									class="icon" /> Devam Edenler</span></span>
+							<div class="tahminKutu">
+								<div class="tahminYorumKutu">
+									<span class="tahminBaslik">TAHMİN ADI</span>
+									<ul>
+										<ui:repeat var="tah" value="#{tahminci.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.name}</a></li>
+										</ui:repeat>
+									</ul>
+								</div>
+								<div class="tahminYorumKutu">
+									<span class="tahminBaslik">TAHMİN ZAMANI</span>
+									<ul>
+										<ui:repeat var="tah" value="#{tahminci.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.occurTime}</a></li>
+										</ui:repeat>
+
+									</ul>
+								</div>
+								<div class="tahminYorumKutu">
+									<span class="tahminBaslik">ZORLUK DERECESİ</span>
+									<ul>
+										<ui:repeat var="tah" value="#{tahminci.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.difPoint}</a></li>
+										</ui:repeat>
+
+									</ul>
+								</div>
+								<div class="tahminYorumKutu">
+									<span class="tahminBaslik">YORUMLAR</span>
+									<ul>
+										<ui:repeat var="tah" value="#{tahminci.data}">
+											<li><a href="yapilmis-yorumlar.xhtml?tid=#{tah.id}">
+													#{tah.ccount} yorum</a></li>
+										</ui:repeat>
+									</ul>
+								</div>
+								<div class="tahminYorumKutu">
+									<span class="tahminBaslik">TAHMİN ORTAKLIĞI</span>
+									<ul>
+										<ui:repeat var="tah" value="#{tahminci.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.tpcount}</a></li>
+										</ui:repeat>
+									</ul>
+								</div>
+								<div class="tahminYorumKutu">
+									<span class="tahminBaslik">İŞLEM DURUMU</span>
+									<ul>
+										<ui:repeat var="tah" value="#{tahminci.data}">
+											<li style="background-image: none;"><a
+												href="tahmin-detay.xhtml?tid=#{tah.id}"> <img
+													src="_images/daire_#{tahminci.getStateColor(tah.occurTime)}.jpg"
+													width="20" height="20" /></a></li>
+										</ui:repeat>
+
+									</ul>
+								</div>
+								<div class="clearLeft"></div>
+							</div>
+							<free:paging bean="#{tahminci}"></free:paging>
+						</div>
+					</div>
+				</div>
+			</h:form>
+		</div>
+	</ui:define>
+</ui:composition>

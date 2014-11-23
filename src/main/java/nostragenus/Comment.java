@@ -63,9 +63,12 @@ public class Comment extends BaseBean implements Serializable {
 	}
 
 	private void loadComments() {
-		this.data = new Sql.Select().from("comment").join("user")
+		this.allData= new Sql.Select().from("comment").join("user")
 				.on("comment.userId", "user.id").where("tahminId", id)
 				.getTable();
+		
+		this.loadData(); 
+		
 	}
 
 	public void save() {

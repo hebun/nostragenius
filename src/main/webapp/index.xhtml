@@ -6,7 +6,9 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
-	xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:free="http://java.sun.com/jsf/composite/free">
 	<ui:define name="head">
 
 	</ui:define>
@@ -16,8 +18,8 @@
 				<div class="nostradamusHakkinda">
 					<a href="#"><img src="_images/nostradamus-hakkinda.jpg"
 						width="200" height="160" /></a> <span class="tahminYap"><a
-						href="tahmin-yap.xhtml"><img src="_images/tahmin-yap-buton.jpg"
-							width="163" height="99" /></a></span>
+						href="tahmin-yap.xhtml"><img
+							src="_images/tahmin-yap-buton.jpg" width="163" height="99" /></a></span>
 				</div>
 				<div class="sliderKutu">
 					<div class="slider">
@@ -66,18 +68,26 @@
 		</div>
 		<div class="contentSablon">
 			<div class="ortaKutu">
+				<a href="sonuclanmis-en-iyi-tahminler.xhtml">sonuclanmis en iyi tahminler</a> | 
+				 <a href="en-iyi-tahminciler.xhtml">en iyi tahminciler</a> | 
+				 <a href="en-iyi-tahmin-ortaklari.xhtml">en iyi tahmin ortaklari</a> | 
+				 
 				<span class="baslikKutu">İŞLEM YAPILABİLECEK EN SON TAHMİNLER
-					<span class="baslik3">Tahmin Ortağı Olabilirsiniz</span> <span
-					class="baslik3">Zorluk Derecesi Girebilirsiniz</span><span
+				<h:panelGroup rendered="#{login.loggedIn}">
+					<span class="baslik3">Tahmin Ortağı Olabilirsiniz</span><span
 					class="baslik3">Yorum Yapabilirsiniz</span>
+					</h:panelGroup>
+					 <span
+					class="baslik3">Zorluk Derecesi Girebilirsiniz</span>
 				</span>
 
 				<div class="tahminKutu">
 					<div class="tahminIcKutu1">
 						<span class="tahminBaslik">TAHMİNLER</span>
 						<ul>
-							<ui:repeat var="tah" value="#{index.activeTahmins}">
-								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}"> #{tah.name}</a></li>
+							<ui:repeat var="tah" value="#{index.data}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.name}</a></li>
 							</ui:repeat>
 
 						</ul>
@@ -85,7 +95,7 @@
 					<div class="tahminIcKutu2">
 						<span class="tahminBaslik">TAHMİNCİLER</span>
 						<ul>
-							<ui:repeat var="tah" value="#{index.activeTahmins}">
+							<ui:repeat var="tah" value="#{index.data}">
 								<li><a href="#"> #{tah.uname}</a></li>
 							</ui:repeat>
 						</ul>
@@ -93,72 +103,47 @@
 					<div class="tahminIcKutu3">
 						<span class="tahminBaslik">TAHMİN TARİHİ</span>
 						<ul>
-							<ui:repeat var="tah" value="#{index.activeTahmins}">
+							<ui:repeat var="tah" value="#{index.data}">
 								<li
-									style="background-image: none; height: 25px;
-									 line-height: 25px;">#{fn:substring(tah.occurTime,0,16)}</li>
+									style="background-image: none; height: 25px; line-height: 25px;">#{fn:substring(tah.occurTime,0,16)}</li>
 							</ui:repeat>
 						</ul>
 					</div>
 					<div class="clearLeft"></div>
 				</div>
-				<div class="sayfalama">
-					<ul>
-						<li><a href="#">İlk Sayfa</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">Son Sayfa</a></li>
-						<div class="clearLeft"></div>
-					</ul>
-
-				</div>
+			<free:paging bean="#{index}"></free:paging>
+			
 				<span class="baslikKutu1">SONUÇLANMIŞ ( EN İYİ TAHMİNLER -
 					TAHMİNCİLER - TAHMİN ORTAKLARI )</span>
 				<div class="tahminKutu">
 					<div class="tahminIcKutu1">
 						<span class="tahminBaslik">EN İYİ TAHMİNLER</span>
 						<ul>
-							<li><a href="#">Tahmin 1</a></li>
-							<li><a href="#">Tahmin 2</a></li>
-							<li><a href="#">Tahmin 3</a></li>
-							<li><a href="#">Tahmin 4</a></li>
-							<li><a href="#">Tahmin 5</a></li>
+							<ui:repeat var="tah" value="#{index.doneTahmins}">
+								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+										#{tah.name}</a></li>
+							</ui:repeat>
 						</ul>
 					</div>
 					<div class="tahminIcKutu5">
 						<span class="tahminBaslik">EN İYİ TAHMİNCİLER</span>
 						<ul>
-							<li><a href="#">Tahminci 1</a></li>
-							<li><a href="#">Tahminci 2</a></li>
-							<li><a href="#">Tahminci 3</a></li>
-							<li><a href="#">Tahminci 4</a></li>
-							<li><a href="#">Tahminci 5</a></li>
+							<ui:repeat var="tah" value="#{index.bestUsers}">
+								<li><a href="tahminciler.xhtml?taid=#{tah.taid}"> #{tah.uname}</a></li>
+							</ui:repeat>
 						</ul>
 					</div>
 					<div class="tahminIcKutu6">
 						<span class="tahminBaslik">EN İYİ TAHMİN ORTAKLARI</span>
 						<ul>
-							<li><a href="#">Tahmin Ortağı 1</a></li>
-							<li><a href="#">Tahmin Ortağı 2</a></li>
-							<li><a href="#">Tahmin Ortağı 3</a></li>
-							<li><a href="#">Tahmin Ortağı 4</a></li>
-							<li><a href="#">Tahmin Ortağı 5</a></li>
+						<ui:repeat var="tah" value="#{index.bestPartners}">
+								<li><a href="tahminciler.xhtml?taid=#{tah.taid}"> #{tah.uname}</a></li>
+							</ui:repeat>
 						</ul>
 					</div>
 					<div class="clearLeft"></div>
 				</div>
-				<div class="sayfalama">
-					<ul>
-						<li><a href="#">İlk Sayfa</a></li>
-						<li><a href="#">1</a></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">Son Sayfa</a></li>
-						<div class="clearLeft"></div>
-					</ul>
-
-				</div>
+		
 			</div>
 		</div>
 

@@ -7,7 +7,8 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
 	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
-	xmlns:p="http://primefaces.org/ui">
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:free="http://java.sun.com/jsf/composite/free">
 	<ui:define name="head">
 
 	</ui:define>
@@ -16,9 +17,10 @@
 			<div class="ortaKutu">
 				
 				<div class="masterPage">
-					<h:form id="commentForm">
+				
 					<p:growl id="messages" showDetail="false" />
 						<div class="yorumYap">
+						<h:form id="cs">
 							<span class="spanBaslik">Tahmin Adı : <span
 								style="font-weight: normal"> #{comment.record.name}</span>
 							</span> <span class="spanBaslik">Tahminci : <span
@@ -43,19 +45,11 @@
 									</ui:repeat>
 								</div>
 							</h:panelGroup>
-							<div class="sayfalama">
-								<ul>
-									<li><a href="#">İlk Sayfa</a></li>
-									<li><a href="#">1</a></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">Son Sayfa</a></li>
-
-								</ul>
-
-							</div>
+				<free:paging bean="#{comment}"></free:paging>
+				</h:form>
 						</div>
 						<div class="yorumYap">
+							<h:form id="commentForm">
 							<div class="clearLeft"></div>
 							<span class="baslikKutu2">SEN DE YORUM YAP</span>
 							<h:panelGroup rendered="#{login.loggedIn}">
@@ -65,22 +59,23 @@
 									<h:inputTextarea name="YorumYap" id="YorumYap"
 										styleClass="textArea" required="true"
 										value="#{comment.content}"  requiredMessage="#{reqMessage}"></h:inputTextarea>
-									<p:commandButton value="Gönder"  update="commentForm,commentList,messages" actionListener="#{comment.save}" >
+									<p:commandButton value="Gönder"  update="commentForm,:cs,:messages" actionListener="#{comment.save}" >
 									</p:commandButton>
 
 
-								</div>
+								</div> 
 							</h:panelGroup>
 							<h:panelGroup rendered="#{not login.loggedIn}">
 								<div class="uyeUyari">
 									Bu işlemi yapabilmek için mutlaka üye girişi yapılması
 									gerekmektedir. Üye olmak için<a href="uye-ol.xhtml">
-										tıklayınız. </a> Üye iseniz <h:commandLink value="buradan" action="#{comment.login()}"></h:commandLink> 
+										tıklayınız. </a> Üye iseniz <h:commandLink value="buradan" action="#{comment.login}"></h:commandLink> 
 									 giriş yapabilirsiniz.
 								</div>
 							</h:panelGroup>
+							</h:form>
 						</div>
-					</h:form>
+					
 				</div>
 			</div>
 

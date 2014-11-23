@@ -8,11 +8,9 @@
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 	<ui:define name="head">
 
-		<link rel="stylesheet"
+			<link rel="stylesheet"
 			href="http://code.jquery.com/ui/1.10.3/themes/smoothness/jquery-ui.css" />
 
-		<script src="http://code.jquery.com/ui/1.10.3/jquery-ui.js"></script>
-		<script type="text/javascript" src="_js/client.js"></script>
 		<script type="text/javascript" src="_js/jquery.maskedinput.min.js"></script>
 
 
@@ -33,7 +31,7 @@
 								class="imageLeft" />Misafir Olarak Devam Edeceğim () </span>
 							<div class="clearLeft"></div>
 
-							<h:form class="uyeOl">
+							<h:form class="uyeOl" rendered="#{not login.loggedIn}">
 								<h:messages globalOnly="true" styleClass="error"></h:messages>
 								<label for="Rumuz">Kullanıcı Adı veya Email Adresi</label>
 
@@ -68,98 +66,48 @@
 							<div class="tahminYorumKutu">
 								<span class="tahminBaslik">TAHMİNLER</span>
 								<ul>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
-									<li><a href="#">Tahmin</a></li>
+									<ui:repeat var="tah" value="#{resentTahmins.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.name}</a></li>
+										</ui:repeat>
 								</ul>
 							</div>
 							<div class="tahminYorumKutu">
 								<span class="tahminBaslik">TAHMİNCİLER</span>
 								<ul>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
-									<li><a href="#">Tahminci</a></li>
+									<ui:repeat var="tah" value="#{resentTahmins.data}">
+											<li><a href="tahminciler.xhtml?taid=#{tah.uid}">
+													#{tah.uname}</a></li>
+										</ui:repeat>
 
 								</ul>
 							</div>
 							<div class="tahminYorumKutu">
 								<span class="tahminBaslik">TAHMİN ZAMANI</span>
 								<ul>
-									<li><a href="#">Gün / Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
-									<li><a href="#">Gün /Saat</a></li>
+									<ui:repeat var="tah" value="#{resentTahmins.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.occurTime}</a></li>
+										</ui:repeat>
 								</ul>
 							</div>
 							<div class="tahminYorumKutu">
 								<span class="tahminBaslik">ZORLUK DERECESİ</span>
 								<ul>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
-									<li
-										style="background-image: none; height: 31px; line-height: 20px;"><img
-										src="_images/zorluk-derece.jpg" width="140" height="20" /></li>
+							<ui:repeat var="tah" value="#{resentTahmins.data}">
+											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
+													#{tah.hitPoint}</a></li>
+										</ui:repeat>
 
 								</ul>
 							</div>
 							<div class="tahminYorumYapPuanVer">
 								<span class="tahminBaslik">YORUMLAR</span>
 								<ul>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
-									<li><a href="#">Adet 11</a></li>
+									<ui:repeat var="tah" value="#{resentTahmins.data}">
+											<li><a href="yapilmis-yorumlar.xhtml?tid=#{tah.id}">
+													#{tah.ccount}</a></li>
+										</ui:repeat>
 								</ul>
 							</div>
 							<div class="clearLeft"></div>

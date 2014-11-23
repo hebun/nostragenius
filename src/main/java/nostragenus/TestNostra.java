@@ -9,13 +9,13 @@ public class TestNostra {
  * CURRENT:
  * tahmin yap page.
  * ISSUES:
- * -datetime background
- * -register message for password not working
+ * +datetime background
+ * *register message for password not working
  * *datepicker too big
  * -local controle activation/register
- * -mailcontents are old
- * -message resource bundle
- * -yorum yapabilirsiniz vs in index page
+ * *mailcontents are old
+ * +message resource bundle
+ * *yorum yapabilirsiniz vs in index page
  * -time format in index
  * -user or ip condition in sql
  * -go back to page after login.
@@ -23,6 +23,12 @@ public class TestNostra {
  * -paging in yorumlar
  * -order issue in index tahmins list
  * -6 hours pause for tahmin in index
+ * -menu effect/jquery problems in yorum yap and index
+ * -bestusers should include partner tahmins
+ * -dont recalculate tahmin points before 10 mins
+ * -in add tahmin check logged in users
+ * -do not update done tahmins in nostra.getbesttahmins
+ * 
  * admin/
  * CURRENT: tahmin list in admin(dynamic columns with primeface)
  * TODO's:
@@ -41,5 +47,7 @@ public class TestNostra {
 /**
  * -puan ver yorum yap ve giris ayni sayfaya bakiyor. bu sayfada uye girs yapcm misfarim gibi yazilar var. 
  * -tahmin gir sayfasinda anahtar kelimeler nasil girilecek. virgul ile ayrilacak(belirtilmiyor) yada boslukla mi(iki kelimelik anahtar kelimeler olamayicak)
+ * -en iyi tahminler sayfasindaki toplam puan neyin puani
+ * -en iyi tahminler sayfasindaki liste asagi kayiyor.
  */
 }

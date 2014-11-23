@@ -29,7 +29,7 @@
 							</div>
 						</h:panelGroup>
 						<span class="baslikKutu2">TAHMİN YAP</span>
-						<h:form id="addTahmin">
+						<h:form id="addTahmin" rendered="#{login.loggedIn}">
 
 							<h:messages globalOnly="true" styleClass="error"></h:messages>
 							<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>

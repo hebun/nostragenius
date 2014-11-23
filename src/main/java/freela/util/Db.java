@@ -302,9 +302,12 @@ public class Db {
 	public static void close(String caller) {
 
 		try {
-			stmt.close();
+			if (stmt != null)
+				stmt.close();
 			conn.close();
 		} catch (SQLException e) {
+			FaceUtils.log.warning(e.getMessage());
+		} catch (Exception e) {
 			FaceUtils.log.warning(e.getMessage());
 		}
 		started = false;
@@ -410,6 +413,8 @@ public class Db {
 			FaceUtils.log.warning(e.getMessage());
 			return null;
 
+		} finally {
+			close("");
 		}
 
 	}

@@ -28,9 +28,11 @@ public class NewTahmin extends BaseBean implements Serializable {
 	public App getApp() {
 		return app;
 	}
-public void setApp(App app) {
+
+	public void setApp(App app) {
 		this.app = app;
 	}
+
 	private Date occurTime;
 
 	public Date getOccurTime() {
@@ -40,8 +42,6 @@ public void setApp(App app) {
 	public void setOccurTime(Date occurTime) {
 		this.occurTime = occurTime;
 	}
-
-	
 
 	private int vote = 0;
 
@@ -67,15 +67,20 @@ public void setApp(App app) {
 			return null;
 		}
 
+		String userId = FaceUtils.getUserId();
+		
 		Insert addTahmin = new Sql.Insert(table)
 				.add("name", record.get("name"))
 				.add("content", record.get("content"))
 				.add("keywords", record.get("keywords"))
 				.add("occurTime", FaceUtils.getFormattedTime(occurTime))
-				.add("creationTime", FaceUtils.getFormattedTime());
+				.add("creationTime", FaceUtils.getFormattedTime())
+				.add("userId", userId);
 
 		int tahminId = addTahmin.run();
-
+		new Sql.Insert("tahminpartner").add("ownerId", userId)
+				.add("tahminId", tahminId).add("userId", userId)
+				.run();
 		Object obj = FaceUtils.getSession("user");
 		Map<String, String> user = null;
 		if (obj != null) {
