@@ -100,14 +100,14 @@ public class Register implements Serializable {
 		String mc = table.get(0).get("content");
 
 		mc = mc.replaceAll("#link#",
-				FaceUtils.getRootUrl() + "/activation?code=" + uid).replaceAll(
+				FaceUtils.getRootUrl() + "/activation.xhtml?code=" + uid).replaceAll(
 				"#fullname#", user.get("uname"));
 
 		log.info(mc);
 
 		FaceUtils.postMail(
 				new String[] { "ismettung@gmail.com", user.get("email") },
-				"fazlastoklar.com aktivasyon", mc, "");
+				"nostragenius.com aktivasyon", mc, "");
 
 	}
 

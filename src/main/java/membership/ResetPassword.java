@@ -39,8 +39,8 @@ public class ResetPassword extends BaseBean implements Serializable {
 			return null;
 		}
 
-		Db.update(new Sql.Update("user").add("password", newPassword)
-				.where("id", this.data.get(0).get("userid")).get());
+		new Sql.Update("user").add("password", newPassword)
+				.where("id", this.data.get(0).get("userid")).run();
 		
 		app.setCurrentInfoMessage("Şifreniz güncellendi. Şimdi giriş yapabilirsiniz.");
 

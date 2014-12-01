@@ -3,6 +3,7 @@ package membership;
 import static freela.util.FaceUtils.log;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 import java.util.UUID;
@@ -15,6 +16,7 @@ import javax.mail.MessagingException;
 import javax.servlet.http.HttpServletResponse;
 
 import freela.util.App;
+import freela.util.Db;
 import freela.util.FaceUtils;
 import freela.util.Sql;
 import freela.util.Sql.Select;
@@ -112,7 +114,13 @@ public class Login implements Serializable {
 		Sql.Select select = new Select().from("user").where("email", username)
 				.and("password", password);
 
-		List<Map<String, String>> table = select.getTable();
+		String sql="select * from user where password=? and (email=? or uname=?)";
+		List<String> params=new ArrayList<String>();
+		params.add(password);
+		params.add(username);
+		params.add(username);
+		
+		List<Map<String, String>> table = Db.preparedSelect(sql, params);
 
 		if (table.size() > 0) {
 			if (table.get(0).get("state").toString().equals("PENDING")) {
@@ -168,7 +176,7 @@ public class Login implements Serializable {
 				.add("tarih", FaceUtils.getFormattedTime()).run();
 
 		mc = mc.replaceAll("#link#", FaceUtils.getRootUrl()
-				+ "/resetpassword?code=" + uid);
+				+ "/resetpassword.xhtml?code=" + uid);
 
 		try {
 			FaceUtils.postMail(

@@ -18,7 +18,7 @@ public class Tahmin extends CrudBase implements Serializable{
 	
 	public Tahmin() {
 		this.table="tahmin";
-		tahmins=new  Sql.Select().from(this.table).getTable();
+		tahmins=new  Sql.Select().from(this.table).join("user").on("tahmin.userId", "user.id").getTable();
 		initColumns();
 	}
 

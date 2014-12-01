@@ -21,8 +21,7 @@ $(document).ready(function() {
 
 	$(".datepicker").datepicker({
 		dateFormat : "dd.mm.yy",
-		regional : "tr",
-	    minDate: 0
+		regional : "tr"
 	});
 
 });

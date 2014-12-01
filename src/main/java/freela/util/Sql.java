@@ -1,6 +1,5 @@
 package freela.util;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.List;
@@ -320,6 +319,10 @@ public abstract class Sql<T extends Sql<T>> {
 		}
 
 		public int get() {
+			if (key == null || value == null) {
+				key = "1";
+				value = "1";
+			}
 			Select sql = new Sql.Select("count(*) as say").from(this.table)
 					.where(key, value);
 

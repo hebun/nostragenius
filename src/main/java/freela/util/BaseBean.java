@@ -122,7 +122,7 @@ public class BaseBean {
 			this.data = this.allData.subList(fromIndex,
 					toIndex);
 		}
-		System.out.println(this.data);
+		
 
 	}
 }

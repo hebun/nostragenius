@@ -37,7 +37,7 @@ import javax.servlet.http.Part;
 import freela.util.Sql.Select;
 
 public class FaceUtils {
-	public static final MyLogger log = new MyLogger(MyLogger.INFO);
+	public static final MyLogger log = new MyLogger(MyLogger.WARNING);
 
 	public static String SMTP_HOST_NAME = "localhost"; // or
 

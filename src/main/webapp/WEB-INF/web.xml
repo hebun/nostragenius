@@ -57,11 +57,11 @@
 	</context-param>
 	<context-param>
 		<param-name>mailuser</param-name>
-		<param-value>ismet@freela.jvmhost.net</param-value>
+		<param-value>info@fazlastoklar.com</param-value>
 	</context-param>
 	<context-param>
 		<param-name>mailpassword</param-name>
-		<param-value>ZMA8~~3vu~iu</param-value>
+		<param-value>6n7924</param-value>
 	</context-param>
 
 	<context-param>

@@ -70,6 +70,7 @@ public class Index extends BaseBean implements Serializable {
 				.where("creationTime<", FaceUtils.getFormattedTime())
 				.and("occurTime>", FaceUtils.getFormattedTime())
 				.order("occurTime").desc().getTable();
+		System.out.println(allData);
 		this.activeTahmins=this.data;
 		loadData();
 

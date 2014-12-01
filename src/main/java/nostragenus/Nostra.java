@@ -19,7 +19,7 @@ import freela.util.Sql;
 import freela.util.Sql.Select;
 
 public class Nostra {
-	public static final int RECORD_COUNT=2;
+	public static final int RECORD_COUNT=10;
 	public static final String BESTUSERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as ort,count(tp.id) as say FROM `tahminpartner` "
 			+ "as tp join user as u on u.id=tp.userId join tahmin as t "
 			+ "		on tp.tahminId=t.id group by u.uname,taid";
