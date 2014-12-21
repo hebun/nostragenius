@@ -2,9 +2,19 @@ package admin;
 
 import java.io.Serializable;
 
+import freela.util.FaceUtils;
+
 public class ColumnModel implements Serializable{
 	private String header;
 	private String name;
+	private int id;
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
+	}
 	public ColumnModel(){
 		
 	}

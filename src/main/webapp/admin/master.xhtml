@@ -13,11 +13,7 @@
 		<link rel="stylesheet" href="css/layout.css" type="text/css"
 			media="screen" />
 
-		<link rel="stylesheet" type="text/css"
-			href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css" />
-		<script type="text/javascript" src="../_js/jquery.min.js"></script>
-		<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-		<script type="text/javascript" src="../_js/client.js"></script>
+		
 		<style>
 .error {
 	margin: 10px 0px;
@@ -33,12 +29,7 @@
 	font-family: Arial, Tahoma, Verdana;
 }
 </style>
-		<link rel="stylesheet" type="text/css" media="all"
-			href="../_css/lightbox.css" />
-			<link rel="stylesheet" type="text/css" media="all"
-			href="../_css/jquery.fancybox.css" />
-		<script type="text/javascript" src="../_js/lightbox.min.js"></script>
-<script type="text/javascript" src="../_js/jquery.fancybox.pack.js"></script>
+	
 		<ui:insert name="head"></ui:insert>
 	</h:head>
 
@@ -77,13 +68,15 @@
 		<ul style="font-weight: bold">
 			<li class="icn_categories"><a href="index.xhtml">Anasayfa</a></li>
 			<li class="icn_categories"><a href="tahmin.xhtml">Tahminler</a></li>
+			<li class="icn_categories"><a href="users.xhtml">Kullanicilar</a></li>
 			<li class="icn_jump_back"><a href="logout.xhtml">Çıkış</a></li>
 		</ul>
 
 		</aside>
 		<!-- end of sidebar -->
 
-		<section id="main" class="column"> <ui:insert name="content">Default content
+		<section id="main" class="column">
+		 <ui:insert name="content">Default content
 
 </ui:insert> </section>
 	</h:body>

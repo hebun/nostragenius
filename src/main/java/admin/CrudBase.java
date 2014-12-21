@@ -1,9 +1,12 @@
 package admin;
 
 import java.util.List;
+import java.util.Map;
 
 import freela.util.Db;
+import freela.util.FaceUtils;
 import freela.util.Sql;
+import freela.util.Sql.Update;
 
 public class CrudBase {
 	String table;
@@ -13,19 +16,10 @@ public class CrudBase {
 	String newCat;
 	String editRowId = "0";
 	List<ColumnModel> columns;
+	List<Map<String, String>> data;
+	Map<String, String> selected;
 
-	public String getEditRowId() {
-		return editRowId;
-	}
-
-	public void setEditRowId(String editRowId) {
-		this.editRowId = editRowId;
-	}
-
-	public String editRow(String id) {
-		editRowId = id;
-		return null;
-	}
+	
 
 	public CrudBase() {
 
@@ -33,10 +27,33 @@ public class CrudBase {
 	}
 
 	public void initColumns() {
-		columns = new Sql.Select("header,name").from("gridfield")
-				.where("tableName=", this.table).and("state=", "0")
-				.getType(ColumnModel.class);
+		columns = new Sql.Select("id,header,name").from("gridfield")
+				.where("tableName=", this.table).getType(ColumnModel.class);
 
+	}
+
+	public void delete() {
+		new Sql.Delete(table).where("id", selected.get("id")).run();
+		data.remove(selected);
+		selected = null;
+		FaceUtils.addInfo("Kayit Silindi");
+	}
+
+	public void updateColumns() {
+		for (ColumnModel columnModel : columns) {
+
+			Sql.Update update = new Update("gridfield").add("header",
+					columnModel.getHeader());
+
+			if (columnModel.getHeader() == null
+					|| columnModel.getHeader().equals("")) {
+				update.add("state", "1");
+
+			}
+			update.where("id", columnModel.getId());
+			update.run();
+
+		}
 	}
 
 	public void inform(String type, String message) {
@@ -111,6 +128,34 @@ public class CrudBase {
 	public void errorOccured() {
 		this.error("Hata Oluştu.");
 
+	}
+	public List<Map<String, String>> getData() {
+		return data;
+	}
+
+	public void setData(List<Map<String, String>> data) {
+		this.data = data;
+	}
+
+	public Map<String, String> getSelected() {
+		return selected;
+	}
+
+	public void setSelected(Map<String, String> selected) {
+		this.selected = selected;
+	}
+
+	public String getEditRowId() {
+		return editRowId;
+	}
+
+	public void setEditRowId(String editRowId) {
+		this.editRowId = editRowId;
+	}
+
+	public String editRow(String id) {
+		editRowId = id;
+		return null;
 	}
 
 }

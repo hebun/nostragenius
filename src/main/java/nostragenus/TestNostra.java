@@ -4,6 +4,8 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
+import admin.User;
+
 public class TestNostra {
 /**
  * CURRENT:
@@ -42,7 +44,14 @@ public class TestNostra {
 	
 	@Test
 	public void test() {
-		fail("Not yet implemented");
+		
+	}
+	@Test
+	public void testAdminUser(){
+		User user=new User();
+		user.getColumns().get(1).setHeader("from Test");
+		user.updateColumns();
+		
 	}
 /**
  * -puan ver yorum yap ve giris ayni sayfaya bakiyor. bu sayfada uye girs yapcm misfarim gibi yazilar var. 

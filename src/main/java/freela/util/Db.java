@@ -443,11 +443,11 @@ public class Db {
 						String input = f.getName();
 						input = input.substring(0, 1).toUpperCase()
 								+ input.substring(1);
-						Method met;
+						Method met = null;
 						Class<?> type2 = f.getType();
-
+						Object object=null;
 						try {
-							Object object = rs.getObject(f.getName());
+							 object = rs.getObject(f.getName());
 
 							met = type.getMethod("set" + input, type2);
 							if (object != null)
@@ -458,7 +458,8 @@ public class Db {
 							FaceUtils.log.info(e.getMessage());
 
 						} catch (Exception e) {
-							FaceUtils.log.info(e.toString());
+							
+							//FaceUtils.log.info(object+"=="+met.toString()+"==="+ e.toString());
 
 						}
 					}

@@ -28,37 +28,12 @@ public class Login implements Serializable {
 	private static final String COOKIE_NAME = "remember";
 
 	private String username;
-
-	public String getUsername() {
-		return username;
-	}
-
-	public void setUsername(String username) {
-		this.username = username;
-	}
-
 	private String preUrl;
-
-	public String getPreUrl() {
-		return preUrl;
-	}
-
-	public void setPreUrl(String preUrl) {
-		this.preUrl = preUrl;
-	}
 
 	String password;
 	private boolean loggedIn;
 	Map<String, String> user;
 	private boolean remember;
-
-	public boolean isRemember() {
-		return remember;
-	}
-
-	public void setRemember(boolean remember) {
-		this.remember = remember;
-	}
 
 	String newPassword;
 
@@ -67,13 +42,7 @@ public class Login implements Serializable {
 	@ManagedProperty(value = "#{app}")
 	App app;
 
-	public App getApp() {
-		return app;
-	}
-
-	public void setApp(App app) {
-		this.app = app;
-	}
+	UserType userType;
 
 	public String update() {
 
@@ -114,12 +83,12 @@ public class Login implements Serializable {
 		Sql.Select select = new Select().from("user").where("email", username)
 				.and("password", password);
 
-		String sql="select * from user where password=? and (email=? or uname=?)";
-		List<String> params=new ArrayList<String>();
+		String sql = "select * from user where password=? and (email=? or uname=?)";
+		List<String> params = new ArrayList<String>();
 		params.add(password);
 		params.add(username);
 		params.add(username);
-		
+
 		List<Map<String, String>> table = Db.preparedSelect(sql, params);
 
 		if (table.size() > 0) {
@@ -139,6 +108,9 @@ public class Login implements Serializable {
 			}
 			FacesContext.getCurrentInstance().getExternalContext()
 					.getSessionMap().put("user", user);
+
+			this.userType = UserType.valueOf(user.get("state"));
+
 			if (preUrl == null)
 				return "index";
 			else {
@@ -248,9 +220,49 @@ public class Login implements Serializable {
 		this.password = password;
 	}
 
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public boolean isRemember() {
+		return remember;
+	}
+
+	public void setRemember(boolean remember) {
+		this.remember = remember;
+	}
+
+	public String getPreUrl() {
+		return preUrl;
+	}
+
+	public void setPreUrl(String preUrl) {
+		this.preUrl = preUrl;
+	}
+
 	public String test() {
 
 		return "";
 
+	}
+
+	public App getApp() {
+		return app;
+	}
+
+	public void setApp(App app) {
+		this.app = app;
+	}
+
+	public UserType getUserType() {
+		return userType;
+	}
+
+	public void setUserType(UserType userType) {
+		this.userType = userType;
 	}
 }

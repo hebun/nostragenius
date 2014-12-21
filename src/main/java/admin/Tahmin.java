@@ -9,6 +9,7 @@ import javax.faces.bean.ViewScoped;
 
 import freela.util.Sql;
 
+@SuppressWarnings("serial")
 @ManagedBean
 @ViewScoped
 public class Tahmin extends CrudBase implements Serializable{

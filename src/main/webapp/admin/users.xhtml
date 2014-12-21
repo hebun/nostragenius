@@ -1,0 +1,124 @@
+<ui:composition template="/admin/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
+	<ui:define name="content">
+
+
+
+		<h:form id="form">
+			<p:growl id="message" />
+			<h:panelGrid style="width:100%;" rendered="#{user.hasMessage}">
+				<h4 class="#{user.messageType}">#{user.message}</h4>
+			</h:panelGrid>
+			<header>
+				<h3 class="tabs_involved">Kullanicilar</h3>
+
+			</header>
+			<p:fieldset legend="Yardim" toggleable="true" collapsed="true"
+				toggleTitle="Yardim" toggleSpeed="500">
+				<ul style="margin-left: 20px;">
+					<li>Bir alana göre sıralamak için o alanın başlıgına tıklayın.
+						Ters yönde sıralama için bir daha tıklayın.<br />
+					</li>
+					<li>Alanların yerlerini sürükle-bırak ile değiştirebilirsiniz.</li>
+					<li>Alanların büyüklüklerini değiştirebilrsiniz.</li>
+					<li>Sütun başlıklarını değiştirmek veya tablodan kaldırmak
+						için tabloyu düzenle bütonuna tıklayın.</li>
+					<li>Bir kayıt ile ilgili işlem yapmak için o kaydın üstüne sağ
+						tıklayın.</li>
+				</ul>
+Ilk 3 maddedeki ozellikler geçicidir, sayfa yenilenince eski haline gelir. Diğerleri ise kalıcıdır ve bütün kullanıcıları etkiler.
+</p:fieldset>
+			<p:contextMenu for="betDt2">
+				<p:menuitem value="Düzenle" icon="ui-icon-search" />
+				<p:menuitem value="Sil" icon="ui-icon-close"
+					onclick="PF('deleteDialog').show()" />
+
+			</p:contextMenu>
+			<p:dataTable resizableColumns="true" value="#{user.data}" var="u"
+				id="betDt2" widgetVar="usersDt" rows="50" paginator="true"
+				paginatorTemplate="{PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown} "
+				paginatorPosition="bottom" paginatorAlwaysVisible="false"
+				rowsPerPageTemplate="20,50,100" emptyMessage="Kayit Bulunamadi"
+				draggableColumns="true" rowKey="#{u.id}"
+				selection="#{user.selected}" selectionMode="single">
+				<f:facet name="header">
+
+					<p:outputPanel>
+
+						<h:outputText value="Butun Alanlarda Ara:" />
+						<p:inputText id="globalFilter" onkeyup="PF('usersDt').filter()"
+							style="width:150px" placeholder="Aranacak Kelime" />
+
+					</p:outputPanel>
+
+				</f:facet>
+				<c:forEach items="#{user.columns}" var="c">
+
+					<p:column rendered="#{not empty c.header}" filterBy="#{u[c.name]}"
+						sortBy="#{u[c.name]}" filterStyle="display:none">
+						<f:facet name="header">#{c.header}</f:facet>
+
+
+						<p:outputLabel>
+									#{u[c.name]}</p:outputLabel>
+
+					</p:column>
+				</c:forEach>
+				<f:facet name="footer">
+					<p:commandButton process="betDt2" type="button"
+						value="Tabloyu Duzenle" update=":form:carDetail"
+						onclick="PF('carDialog').show()" />
+				</f:facet>
+			</p:dataTable>
+
+			<p:dialog header="Tablo Alanlar" widgetVar="carDialog" modal="true"
+				showEffect="slide" hideEffect="explode" resizable="false">
+				<p:outputPanel id="carDetail" style="text-align:center;">
+					<h:outputText value="Bir alanı tablodan kaldırmak için boş bırakın"></h:outputText>
+					<p:panelGrid columns="2" columnClasses="label,value">
+						<f:facet name="header">
+						</f:facet>
+
+
+						<c:forEach items="#{user.columns}" var="col">
+
+							<h:outputLabel value="#{col.name}"></h:outputLabel>
+
+							<h:inputText value="#{col.header}"></h:inputText>
+						</c:forEach>
+
+						<f:facet name="footer">
+
+							<p:commandButton style="margin-left:120px" update=":form:betDt2"
+								value="Kaydet" action="#{user.updateColumns}"></p:commandButton>
+						</f:facet>
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
+
+		</h:form>
+		<h:form>
+			<!--*********** BEGIN DELETE Dialog Box ***********-->
+			<p:confirmDialog message="Bu kaydı silmek istediğinize emin misniz?"
+				header="Kaydı Sil" severity="alert" widgetVar="deleteDialog">
+				<p:commandButton id="confirm" value="Evet"
+					update=":form:betDt2 :form:message"
+					oncomplete="PF('deleteDialog').hide()"
+					actionListener="#{user.delete()}" />
+				<p:commandButton id="decline" value="Hayır" style="float:right"
+					onclick="PF('deleteDialog').hide()" type="button" />
+			</p:confirmDialog>
+			<!--*********** END DELETE Dialog Box ***********-->
+		</h:form>
+	</ui:define>
+	<ui:define name="head">
+
+
+	</ui:define>
+</ui:composition>

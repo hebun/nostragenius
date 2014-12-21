@@ -47,7 +47,7 @@ public abstract class Sql<T extends Sql<T>> {
 
 				if (value == null)
 					throw new RuntimeException("SQL: the value of key '" + fkey
-							+ "' is null");
+							+ "' is null in where statement");
 				return value.toString();
 			}
 

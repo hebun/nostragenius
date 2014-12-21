@@ -18,6 +18,7 @@ public class AdminMaster {
 
 		pages.put("index", "Anasayfa");
 		pages.put("tahmin", "Tahminler");
+		pages.put("users", "Kullanıcılar");
 	}
 
 	public String getCurrentPageName() {

@@ -35,6 +35,14 @@ public class App implements Serializable {
 
 			Db.USER = parameters.get("jdbcuser").toString();
 
+			if(Db.USER.equals("root"))
+			{
+				Db.debug=true;
+				FaceUtils.log.setLevel(MyLogger.INFO);
+			}
+			else{
+				FaceUtils.log.setLevel(MyLogger.WARNING);
+			}
 			Db.PASS = parameters.get("jdbcpassword").toString();
 
 			Db.debug = parameters.get("javax.faces.PROJECT_STAGE").equals(

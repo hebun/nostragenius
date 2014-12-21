@@ -20,7 +20,7 @@ public class AdminHome {
 		stats.put("tahmin", new Sql.Count("tahmin").get()+"");
 		stats.put("comment", new Sql.Count("comment").get()+"");
 		
-		
+		 
 	}
 	
 	public Map<String, String> getStats() {
