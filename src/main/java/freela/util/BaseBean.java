@@ -39,7 +39,12 @@ public class BaseBean {
 	protected int pageCount;
 
 	public int getPageCount() {
+	
 		return pageCount;
+	}
+
+	public Object[] createArray(int size) {
+		return new Object[size];
 	}
 
 	public void setPageCount(int pageCount) {
@@ -93,9 +98,12 @@ public class BaseBean {
 	}
 
 	public void loadData() {
+
 		pageCount = allData.size() / Nostra.RECORD_COUNT;
-		if(allData.size()%Nostra.RECORD_COUNT>0){
+	
+		if (allData.size() % Nostra.RECORD_COUNT > 0) {
 			pageCount++;
+		
 		}
 		this.loadData(currentPage++);
 
@@ -108,21 +116,18 @@ public class BaseBean {
 			this.data = this.allData;
 		else {
 			int toIndex = Nostra.RECORD_COUNT * (page + 1);
-		
+
 			if (toIndex >= this.allData.size()) {
 
-				toIndex = this.allData.size() ;
+				toIndex = this.allData.size();
 
 			}
 			int fromIndex = page * Nostra.RECORD_COUNT;
-			log.info("fromindex:"+fromIndex);
-	log.info("toindex:"+ toIndex );
-			
-			
-			this.data = this.allData.subList(fromIndex,
-					toIndex);
+			log.info("fromindex:" + fromIndex);
+			log.info("toindex:" + toIndex);
+
+			this.data = this.allData.subList(fromIndex, toIndex);
 		}
-		
 
 	}
 }

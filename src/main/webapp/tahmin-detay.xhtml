@@ -33,7 +33,8 @@
 									actionListener="#{tahminDet.onPartner}"
 									update="messages,makePartner,pcount" id="makePartner"
 									value="#{tahminDet.partnerText}"
-									disabled="#{tahminDet.partnerDisabled}" rendered="#{not tahminDet.occured}">
+									disabled="#{tahminDet.partnerDisabled}"
+									rendered="#{not tahminDet.occured}">
 
 								</p:commandLink>
 							</span>
@@ -43,21 +44,29 @@
 							</span>
 
 							<span class="spanBaslik">Tahminin Zorluk Derecesi: <h:outputText
-									value="#{tahminDet.difPoint}"></h:outputText> <span
-								style="padding-left: 310px;"><h:outputText rendered="#{tahminDet.occured}" value="Gerçekleşme Derecesi Gir"></h:outputText>
-								<h:outputText rendered="#{not tahminDet.occured}" value="Sen de Zorluk Derecesi Gir"></h:outputText>
-									: </span> <p:rating pt:style="float:right"
-									disabled="#{tahminDet.voted}" value="#{tahminDet.vote}"
-									id="rating" stars="10">
+									value="#{tahminDet.difPoint}"></h:outputText>
+									
+									 <span
+								style="padding-left: 310px;"><h:outputText
+										rendered="#{tahminDet.occured and login.loggedIn}"
+										value="Gerçekleşme Derecesi Gir:"></h:outputText>
+										
+									 <h:outputText	rendered="#{not tahminDet.occured}"
+										value="Sen de Zorluk Derecesi Gir:"></h:outputText>  </span> 
+										<p:rating rendered="#{not tahminDet.occured or login.loggedIn}"
+									pt:style="float:right" disabled="#{tahminDet.voted}"
+									value="#{tahminDet.vote}" id="rating" stars="10">
 									<p:ajax event="rate" listener="#{tahminDet.onrate}"
 										update="messages,rating" />
 
 								</p:rating>
+								
 							</span>
 							<span class="spanBaslik">Tahminle İlgili Yapılmış Yorumlar
 								: <span style="font-weight: normal">
-									#{tahminDet.commentCount}</span> <a class="spanLink" href="yapilmis-yorumlar.xhtml?tid=#{tahminDet.id}"> Sen
-									de Yorum Yap</a>
+									#{tahminDet.commentCount}</span> <a class="spanLink"
+								href="yapilmis-yorumlar.xhtml?tid=#{tahminDet.id}"> Sen de
+									Yorum Yap</a>
 							</span>
 						</h:form>
 					</div>

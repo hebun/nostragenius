@@ -69,6 +69,14 @@ public class Tahminci extends BaseBean implements Serializable {
 				.order("occurTime").desc();
 		allData = select.getTable();
 
+		for (Map<String, String> map : allData) {
+			if(map.get("difPoint").equals("NULL")){
+				map.put("difPoint",Nostra.getDifPoint(map.get("id")));
+			}
+			if(map.get("hitPoint").equals("NULL")){
+				map.put("hitPoint",Nostra.getHitPoint(map.get("id")));
+			}
+		}
 		
 		loadData();
 		userPoint = Nostra.getUserPoint(userId);

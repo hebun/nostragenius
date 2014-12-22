@@ -7,6 +7,7 @@ import java.util.Calendar;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Date;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ import freela.util.Sql;
 import freela.util.Sql.Select;
 
 public class Nostra {
-	public static final int RECORD_COUNT=10;
+	public static final int RECORD_COUNT = 10;
 	public static final String BESTUSERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as ort,count(tp.id) as say FROM `tahminpartner` "
 			+ "as tp join user as u on u.id=tp.userId join tahmin as t "
 			+ "		on tp.tahminId=t.id group by u.uname,taid";
@@ -37,13 +38,28 @@ public class Nostra {
 		for (Map<String, String> map : dif) {
 			if (map.get("voteType").equals("1")
 					|| map.get("voteType").equals("2")) {
-				point += Double.parseDouble(map.get("ort"));
+				double d = 0;
+				try {
+					d = Double.parseDouble(map.get("ort"));
+				} catch (NumberFormatException e) {
+				}
+				point += d;
 				deno++;
 			} else if (map.get("voteType").equals("3")) {
-				point += Double.parseDouble(map.get("ort")) * 3;
+				double d = 0;
+				try {
+					d = Double.parseDouble(map.get("ort")) * 3;
+				} catch (NumberFormatException e) {
+				}
+				point += d;
 				deno += 3;
 			} else if (map.get("voteType").equals("4")) {
-				point += Double.parseDouble(map.get("ort")) * 5;
+				double d = 0;
+				try {
+					d = Double.parseDouble(map.get("ort")) * 5;
+				} catch (NumberFormatException e) {
+				}
+				point += d;
 				deno += 5;
 			}
 		}
@@ -66,10 +82,20 @@ public class Nostra {
 		int deno = 0;
 		for (Map<String, String> map : dif) {
 			if (map.get("voteType").equals("3")) {
-				point += Double.parseDouble(map.get("ort")) * 3;
+				double d = 0;
+				try {
+					d = Double.parseDouble(map.get("ort")) * 3;
+				} catch (NumberFormatException e) {
+				}
+				point += d;
 				deno += 3;
 			} else if (map.get("voteType").equals("4")) {
-				point += Double.parseDouble(map.get("ort")) * 7;
+				double d = 0;
+				try {
+					d = Double.parseDouble(map.get("ort")) * 7;
+				} catch (NumberFormatException e) {
+				}
+				point += d;
 				deno += 7;
 			}
 		}
@@ -118,13 +144,23 @@ public class Nostra {
 	}
 
 	public static String calcUserPoint(String say1, String ortalama) {
-		double say = Double.parseDouble(say1);
+		double say = 0;
+		try {
+			say = Double.parseDouble(say1);
+
+		} catch (Exception e) {
+		}
 		say = say / getMaxTahSay();
 
 		if (say < 0.5)
 			say = 0.5;
 
-		double ort = Double.parseDouble(ortalama);
+		double ort = 0;
+		try {
+			ort = Double.parseDouble(ortalama);
+
+		} catch (Exception e) {
+		}
 		ort = ort * say;
 		DecimalFormat df = new DecimalFormat("####0.0");
 		String string = df.format(ort);
@@ -136,14 +172,15 @@ public class Nostra {
 				Calendar.getInstance().getTime().getTime() - 48 * 3600 * 1000);
 		List<Map<String, String>> tahs = new Sql.Select().from("tahmin")
 				.join("user").doNotUsePrepared().on("tahmin.userId", "user.id")
-				
-				.where("occurTime<", FaceUtils.getFormattedTime()).getTable();
+
+				.getTable();
 
 		long tenMin = Calendar.getInstance().getTime().getTime() - 600 * 1000;
 		List<Map<String, String>> updateTable = new Sql.Select()
-				.from("updatetahmin")
+				.from("updatetahmin").doNotUsePrepared()
 				.where("tarih>", FaceUtils.getFormattedTime(new Date(tenMin)))
 				.getTable();
+		System.out.println(updateTable);
 		boolean doUpdate = false;
 		if (updateTable.size() == 0) {// no update in last 10 mins
 			doUpdate = true;
@@ -153,11 +190,11 @@ public class Nostra {
 
 			double dif1 = Double.parseDouble(Nostra.getDifPoint(tah.get("id")));
 			double hit1 = Double.parseDouble(Nostra.getHitPoint(tah.get("id")));
-			log.info("dif:" + dif1 + " hit:" + hit1);
+
 			double d = (dif1 * hit1) / 10.0;
 			tah.put("point", String.valueOf(d));
 			if (doUpdate) {
-				
+
 				new Sql.Update("tahmin").add("point", d).add("difPoint", dif1)
 						.add("hitPoint", hit1).where("id", tah.get("id")).run();
 			}
@@ -166,6 +203,17 @@ public class Nostra {
 			new Sql.Insert("updatetahmin").add("type", "1")
 					.add("tarih", FaceUtils.getFormattedTime()).run();
 		}
+		Iterator<Map<String, String>> iterator = tahs.iterator();
+		
+		while (iterator.hasNext()) {
+			
+			Map<String, String> next = iterator.next();
+			if (FaceUtils.getTimeFromString(next.get("occurTime")).after(
+					Calendar.getInstance().getTime())) {
+				iterator.remove();
+			}
+		}
+		
 		Collections.sort(tahs, new Comparator<Map<String, String>>() {
 
 			@Override

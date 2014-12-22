@@ -86,7 +86,7 @@ public class TahminDet extends BaseBean implements Serializable {
 	}
 
 	public boolean isVoted() {
-		log.info(isVoted + "");
+	
 		return isVoted;
 	}
 

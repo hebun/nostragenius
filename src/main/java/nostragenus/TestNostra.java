@@ -8,7 +8,7 @@ import admin.User;
 
 public class TestNostra {
 /**
- * CURRENT:
+ * CURRENT: non-logged in users making hitPoint
  * tahmin yap page.
  * ISSUES:
  * +datetime background
