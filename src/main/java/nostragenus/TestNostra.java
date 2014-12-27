@@ -39,6 +39,25 @@ public class TestNostra {
  * -content pages implementation
  * -dynamic columns in admin(primefaces)
  * CHECK: admin login check disabled
+ * 
+ * -sagda bi tip olacak
+ * -sonuclanmis tahmin listesinde text'ler
+ * -en iyi tahminde basina puan koysun.
+ * -en iyiler listelerinde tumu olsun. link seklinde
+ * -yorum yaptaki ifade tahmin yapa konulcak
+ * -ayni ifade yorum yapa da konulsun
+ * -giristeki reklam kalksin.
+ * -masterda zorluk, gerceklesme puani ver(72 deki tahminler)
+ * -48 den sonra ger.puani verilemesin.
+ * -tah.ortak sayisi 1 eksilteleim.
+ * -tah. ortaklara tuklaninca listesi gewlsin.
+ * -tah dercesi ortalamasi olsun ifade
+ * -tah ortaksayisi
+ * -uye olmayana sen de yorum tap yetrine giris yapinm olsun. yorumn sayisi link olsun
+ * -zorluk derecsi pencere seklinde olsun. verilmis olan ifade degissin.
+ * -tahmin detayi basta. tahmin basligi olsun.
+ * -sitede saat olsun.
+ * -tahmin detayda iki extra satir. tahmnin sureci henuz tamamlanmandi. (Islem suruyor)
  */
 	
 	

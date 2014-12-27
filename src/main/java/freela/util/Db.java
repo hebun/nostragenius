@@ -401,8 +401,13 @@ public class Db {
 				list.add(hash);
 
 			}
-			if (debug)
-				FaceUtils.log.info(sql);
+			if (debug){
+				String pars="";
+				for (String  p: params) {
+					pars+=p+",";
+				}
+				FaceUtils.log.info(sql+ " pars:"+pars);
+			}
 			return list;
 
 		} catch (ClassNotFoundException e) {

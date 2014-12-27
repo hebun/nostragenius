@@ -23,13 +23,7 @@
 					<span class="baslikKutu2">YORUM YAP - PUAN VER</span>
 					<div class="yorumYap">
 						<div class="uyeYorumGiris">
-							<span class="yorumYapBaslik"><img
-								src="_images/admin-icon.png" width="16" height="20"
-								class="imageLeft" />Üye Girişi Yapacağım ()</span><span
-								class="yorumYapBaslik"><img
-								src="_images/misafir-icon.png" width="20" height="20"
-								class="imageLeft" />Misafir Olarak Devam Edeceğim () </span>
-							<div class="clearLeft"></div>
+							
 
 							<h:form class="uyeOl" rendered="#{not login.loggedIn}">
 								<h:messages globalOnly="true" styleClass="error"></h:messages>
@@ -96,7 +90,7 @@
 								<ul>
 							<ui:repeat var="tah" value="#{resentTahmins.data}">
 											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
-													#{tah.hitPoint}</a></li>
+													#{tah.difPoint}</a></li>
 										</ui:repeat>
 
 								</ul>

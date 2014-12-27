@@ -59,7 +59,7 @@ public class Activation extends BaseBean implements Serializable {
 			new Sql.Update("user").add("state", "ACTIVE")
 					.where("id", this.record.get("userid"))
 					.and("state", "PENDING").run();
-			message = "Tebrikler Nostragenius.com   Üyeliğiniz Tamamlanmıştır. Şimdi Giriş Yapabilirsiniz.";
+			message = "Tebrikler Onlinetahmin.net   Üyeliğiniz Tamamlanmıştır. Şimdi Giriş Yapabilirsiniz.";
 
 		} else {
 			message = "Geçersiz Kod!";

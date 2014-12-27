@@ -3,6 +3,7 @@ package admin;
 import java.io.Serializable;
 import java.util.Map;
 
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
@@ -22,25 +23,48 @@ public class User extends CrudBase implements Serializable {
 	private Login login;
 
 	public User() {
-System.out.println("blablab");
-		this.table = "user";
-		Select select = new Sql.Select().from(this.table);
 
-		login.setUserType(UserType.ACTIVE);
-		if (login.getUserType() != UserType.SA) {
-			select.where("state<>", UserType.ADMIN.getCode()).and("state<>",
-					UserType.SA.getCode());
-		}
+		this.table = "user";
+
+		Select select = new Sql.Select().from(this.table).doNotUsePrepared();
+
+//		login.setUserType(UserType.ACTIVE);
+//		if (login.getUserType() != UserType.SA) {
+//			select.where("state<>", UserType.ADMIN.getCode()).and("state<>",
+//					UserType.SA.getCode());
+//		}
 		this.data = select.getTable();
-		FaceUtils.log.info(select.get());
+		System.out.println(this.data);
 		for (Map<String, String> row : data) {
 			for (Map.Entry<String, String> col : row.entrySet()) {
 				if (col.getValue().equals("NULL"))
 					col.setValue("");
 			}
 		}
-		initColumns();
+	
+	initColumns();
+	}
 
+	@PostConstruct
+	private void construct() {
+	
+			Select select = new Sql.Select().from(this.table).doNotUsePrepared();
+
+			login.setUserType(UserType.ACTIVE);
+			if (login.getUserType() != UserType.SA) {
+				select.where("state<>", UserType.ADMIN.getCode()).and("state<>",
+						UserType.SA.getCode());
+			}
+			this.data = select.getTable();
+			FaceUtils.log.warning(select.get());
+			for (Map<String, String> row : data) {
+				for (Map.Entry<String, String> col : row.entrySet()) {
+					if (col.getValue().equals("NULL"))
+						col.setValue("");
+				}
+			}
+		
+		initColumns();
 	}
 
 	public Login getLogin() {

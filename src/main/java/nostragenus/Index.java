@@ -79,7 +79,7 @@ public void setPageC(int pageC) {
 					.doNotUsePrepared().on("tahmin.userId", "user.id")
 					.where("creationTime<", FaceUtils.getFormattedTime())
 					.and("occurTime>", FaceUtils.getFormattedTime())
-					.order("occurTime").desc().getTable();
+					.order("occurTime").getTable();
 			System.out.println(allData);
 			this.activeTahmins=this.data;
 			loadData();

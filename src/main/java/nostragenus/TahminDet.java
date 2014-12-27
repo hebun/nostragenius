@@ -172,7 +172,7 @@ public class TahminDet extends BaseBean implements Serializable {
 		}
 
 		Insert tahminDif = new Sql.Insert("tahminpartner").doNotUsePrepared()
-				.add("userId", userId).add("tahminId", id + "").add("ownerId", record.get("user.id"));
+				.add("userId", userId).add("tahminId", id + "").add("ownerId", record.get("userId"));
 		tahminDif.run();
 		checkCounts();
 		checkPartner();

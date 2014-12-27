@@ -3,6 +3,7 @@ package nostragenus;
 import java.io.Serializable;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -29,6 +30,14 @@ public class ResentTahmins extends BaseBean implements Serializable {
 				.groupBy("tahmin.id,difPoint,hitPoint,name,occurTime,uname,uid")
 				.order("occurTime").desc();
 		allData = select.getTable();
+		for (Map<String, String> map : allData) {
+			if(map.get("difPoint").equals("NULL")){
+				map.put("difPoint",Nostra.getDifPoint(map.get("id")));
+			}
+			if(map.get("hitPoint").equals("NULL")){
+				map.put("hitPoint",Nostra.getHitPoint(map.get("id")));
+			}
+		}
 		loadData();
 	}
 }
