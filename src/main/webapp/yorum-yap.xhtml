@@ -20,6 +20,15 @@
 			<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>
 			<div class="ortaKutu">
 				<div class="masterPage">
+					<h:panelGroup rendered="#{not login.loggedIn}">
+							<div class="uyeUyari">
+								Bu işlemi yapabilmek için mutlaka üye girişi yapılması
+								gerekmektedir. Üye olmak için<a href="uye-ol.xhtml">
+									tıklayınız. </a> Üye iseniz
+								aşağıdan 
+								giriş yapabilirsiniz.
+							</div>
+						</h:panelGroup>
 					<span class="baslikKutu2">YORUM YAP - PUAN VER</span>
 					<div class="yorumYap">
 						<div class="uyeYorumGiris">
@@ -49,10 +58,7 @@
 							</h:form>
 
 						</div>
-						<div class="reklamAlan">
-							<span class="reklamKutu"><img
-								src="_images/nethizmet-banner.jpg" width="250" height="250" /></span>
-						</div>
+					
 						<div class="clearLeft"></div>
 						<span class="baslikKutu2">YORUM YAPABİLECEĞİNİZ BAŞLIKLAR
 							VEYA PUAN VEREBİLECEĞİNİZ TAHMİNLER</span>

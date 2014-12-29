@@ -60,7 +60,8 @@ public class Tahminci extends BaseBean implements Serializable {
 		this.record = new Sql.Select().from("user").where("id", userId)
 				.getTable().get(0);
 		select = new Sql.Select(
-				"tahmin.id,difPoint,hitPoint,name,occurTime,count(comment.id) as ccount,count(tahminpartner.id) as tpcount")
+				"tahmin.id,difPoint,hitPoint,name,occurTime,count(comment.id) as ccount,(count(tahminpartner.id)-1)"
+		+" as tpcount")
 				.from("tahmin").leftJoin("comment")
 				.on("comment.tahminId", "tahmin.id").leftJoin("tahminpartner")
 				.on("tahminpartner.tahminId", "tahmin.id")

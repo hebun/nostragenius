@@ -13,9 +13,9 @@
 
 	</ui:define>
 	<ui:define name="content">
-		<div class="contentSablon" >
-			<h:form  id="cs">
-				<div class="ortaKutu"  >
+		<div class="contentSablon">
+			<h:form id="cs">
+				<div class="ortaKutu">
 					<div class="masterPage">
 						<span class="baslikKutu2">TAHMİNCİLER</span>
 						<div class="yorumYap">
@@ -73,8 +73,11 @@
 									<span class="tahminBaslik">TAHMİN ORTAKLIĞI</span>
 									<ul>
 										<ui:repeat var="tah" value="#{tahminci.data}">
-											<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
-													#{tah.tpcount}</a></li>
+											<li>
+											<a href="tahmin-ortaklari.xhtml?tid=#{tah.id}">
+													#{tah.tpcount}</a>
+													
+													</li>
 										</ui:repeat>
 									</ul>
 								</div>

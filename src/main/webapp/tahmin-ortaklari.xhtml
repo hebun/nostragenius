@@ -1,0 +1,49 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition template="/master.xhtml"
+	xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:c="http://java.sun.com/jsp/jstl/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:free="http://java.sun.com/jsf/composite/free">
+	<ui:define name="head">
+
+	</ui:define>
+	<ui:define name="content">
+		<div class="contentSablon">
+			<div class="ortaKutu">
+				<div class="masterPage">
+					<div class="yorumYap">
+						<div class="clearLeft"></div>
+						<span class="baslikKutu2">TAHMİN ORTAKLARI</span>
+						<div class="tahminKutu">
+							<div class="enIyitahminciler">
+								<span class="tahminBaslik">TAHMİNCİ</span>
+								<ul>
+									<ui:repeat var="tah" value="#{tahminPartners.data}">
+										<li><a href="tahminciler.xhtml?taid=#{tah.taid}">
+												#{tah.uname}</a></li>
+									</ui:repeat>
+								</ul>
+							</div>
+
+							<div class="toplamPuan">
+								<span class="tahminBaslik">TOPLAM PUAN</span>
+								<ul>
+									<ui:repeat var="tah" value="#{tahminPartners.data}">
+										<li>#{tah.userort}</li>
+									</ui:repeat>
+								</ul>
+							</div>
+							<div class="clearLeft"></div>
+						</div>
+						<free:paging bean="#{tahminPartners}"></free:paging>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</ui:define>
+</ui:composition>

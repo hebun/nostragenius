@@ -23,27 +23,37 @@
 
 
 		<script type="text/javascript" src="_js/coin-slider.min.js"></script>
-
+		<style>
+.ui-clock {
+	border-radius: 0px !important;
+	float: left;
+	margin-top: 5px;
+margin-left: 10px;
+}
+</style>
 		<ui:insert name="head"></ui:insert>
 	</h:head>
 
 	<h:body>
-	<p:growl></p:growl>
+		<p:growl></p:growl>
 		<div class="ustHeader">
+		
 			<div class="ustSayfa">
 
 				<div class="logo">
 					<a href="index.xhtml"><img src="_images/nostragenius-logo.png"
 						width="132" height="91" /></a>
 				</div>
+				
 				<div class="aramaAlan">
 					<div class="aramaKutu">
 						<h:form id="searchForm">
 							<span class="aramaBaslik">Tahmin Ara</span>
 
-							<h:inputText name="Arama" styleClass="siteArama" value="#{master.searchText}"></h:inputText>
-							<h:commandButton styleClass="aramaButon" value="" image="_images/aramaButon.png"
-								action="#{master.search}">
+							<h:inputText name="Arama" styleClass="siteArama"
+								value="#{master.searchText}"></h:inputText>
+							<h:commandButton styleClass="aramaButon" value=""
+								image="_images/aramaButon.png" action="#{master.search}">
 								<f:param name="key" value="#{master.searchText}"></f:param>
 							</h:commandButton>
 
@@ -69,7 +79,9 @@
 			</div>
 		</div>
 		<div class="menuAlan">
+			<p:clock pattern="HH:mm:ss"  />
 			<div class="menuKutu">
+		
 				<div id="menu2" class="menu">
 					<ul>
 						<li><a href="index.xhtml">ANASAYFA</a></li>
@@ -77,6 +89,7 @@
 						<li><a href="yorum-yap.xhtml">YORUM YAP</a></li>
 						<li><a href="yorum-yap.xhtml">PUAN VER</a></li>
 						<li><a href="iletisim.xhtml">İLETİŞİM</a></li>
+						<li></li>
 					</ul>
 				</div>
 			</div>

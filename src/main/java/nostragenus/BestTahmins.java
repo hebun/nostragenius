@@ -15,13 +15,13 @@ import freela.util.Sql;
 public class BestTahmins extends BaseBean implements Serializable {
 	public BestTahmins() {
 
-		this.allData= Nostra.getBestTahmins();
+		this.allData = Nostra.getBestTahmins();
 
 		for (Map<String, String> tah : this.allData) {
 
 			tah.put("pcount",
-					new Sql.Count("tahminpartner").where("tahminId",
-							tah.get("id")).get()
+					(new Sql.Count("tahminpartner").where("tahminId",
+							tah.get("id")).get() - 1)
 							+ "");
 		}
 		loadData();

@@ -4,12 +4,18 @@ import static freela.util.FaceUtils.log;
 
 import java.io.Serializable;
 import java.text.DecimalFormat;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Map;
 
 import javax.faces.bean.ManagedBean;
+import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.ViewScoped;
+import javax.security.auth.message.callback.PrivateKeyCallback.Request;
 
+import membership.Login;
+
+import org.primefaces.context.RequestContext;
 import org.primefaces.event.RateEvent;
 
 import freela.util.ASCIITable;
@@ -28,6 +34,18 @@ public class TahminDet extends BaseBean implements Serializable {
 	int partnerCount, commentCount;
 	int vote;
 	boolean occured;
+	boolean done;
+
+	@ManagedProperty(value = "#{login}")
+	Login login;
+
+	public boolean isDone() {
+		return done;
+	}
+
+	public void setDone(boolean done) {
+		this.done = done;
+	}
 
 	public boolean isOccured() {
 		return occured;
@@ -48,6 +66,7 @@ public class TahminDet extends BaseBean implements Serializable {
 	}
 
 	String ownerId;
+
 	public String getOwnerId() {
 		return ownerId;
 	}
@@ -60,6 +79,15 @@ public class TahminDet extends BaseBean implements Serializable {
 	private String partnerText;
 	private boolean partnerDisabled;
 	private String difPoint;
+	private String hitPoint;
+
+	public String getHitPoint() {
+		return hitPoint;
+	}
+
+	public void setHitPoint(String hitPoint) {
+		this.hitPoint = hitPoint;
+	}
 
 	public String getDifPoint() {
 		return difPoint;
@@ -86,7 +114,7 @@ public class TahminDet extends BaseBean implements Serializable {
 	}
 
 	public boolean isVoted() {
-	
+
 		return isVoted;
 	}
 
@@ -118,6 +146,10 @@ public class TahminDet extends BaseBean implements Serializable {
 		this.commentCount = commentCount;
 	}
 
+	public void showRate() {
+		RequestContext.getCurrentInstance().openDialog("rate");
+	}
+
 	@SuppressWarnings("unchecked")
 	public void checkVote() {
 		Object obj = FaceUtils.getSession("user");
@@ -131,9 +163,10 @@ public class TahminDet extends BaseBean implements Serializable {
 
 		}
 		String hitTable = "difficulty";
-		if(occured)
-			hitTable="tahminhit";
-		String checkSql = "select * from " + hitTable + " where tahminId=" + id + "";
+		if (occured)
+			hitTable = "tahminhit";
+		String checkSql = "select * from " + hitTable + " where tahminId=" + id
+				+ "";
 
 		if (userId.equals("0")) {
 			checkSql += " and ip='" + FaceUtils.getIp() + "'";
@@ -155,6 +188,7 @@ public class TahminDet extends BaseBean implements Serializable {
 
 	public void calcDif() {
 		difPoint = Nostra.getDifPoint(id);
+		hitPoint = Nostra.getHitPoint(id);
 	}
 
 	@SuppressWarnings({ "unchecked" })
@@ -172,7 +206,8 @@ public class TahminDet extends BaseBean implements Serializable {
 		}
 
 		Insert tahminDif = new Sql.Insert("tahminpartner").doNotUsePrepared()
-				.add("userId", userId).add("tahminId", id + "").add("ownerId", record.get("userId"));
+				.add("userId", userId).add("tahminId", id + "")
+				.add("ownerId", record.get("userId"));
 		tahminDif.run();
 		checkCounts();
 		checkPartner();
@@ -196,15 +231,23 @@ public class TahminDet extends BaseBean implements Serializable {
 		}
 
 		String table2 = "difficulty";
-		if(occured)
-			table2="tahminhit";
+		if (occured)
+			table2 = "tahminhit";
 		Insert tahminDif = new Sql.Insert(table2).doNotUsePrepared()
 				.add("userId", userId).add("voteType", voteType)
 				.add("vote", vote + "").add("tahminId", id + "")
 				.add("ip", FaceUtils.getIp());
 		tahminDif.run();
 		checkVote();
-		FaceUtils.addInfo(!occured?"Zorluk derecesi kaydedildi.":"Gerçekleşme Derecesi Kaydedildi.");
+		if (!occured) {
+			FaceUtils.addInfo("Zorluk derecesi kaydedildi.");
+		} else {
+
+			RequestContext.getCurrentInstance().execute(
+					"PF('carDialog').hide()");
+		}
+		// FaceUtils.addInfo(!occured ? "Zorluk derecesi kaydedildi."
+		// : "Gerçekleşme Derecesi Kaydedildi.");
 
 	}
 
@@ -232,6 +275,15 @@ public class TahminDet extends BaseBean implements Serializable {
 				.where("id", id)
 				.and("occurTime<", FaceUtils.getFormattedTime()).getTable();
 		this.occured = list.size() > 0;
+		Calendar instance = Calendar.getInstance();
+		instance.add(Calendar.MILLISECOND, Nostra.TAHMIN_EVAL_TIME * (-1));
+		list = new Sql.Select()
+				.from("tahmin")
+				.where("id", id)
+				.and("occurTime<",
+						FaceUtils.getFormattedTime(instance.getTime()))
+				.getTable();
+		this.done = list.size() > 0;
 
 	}
 
@@ -240,7 +292,7 @@ public class TahminDet extends BaseBean implements Serializable {
 				.where("tahminId", id).getTable().get(0).get("say");
 
 		try {
-			this.partnerCount = Integer.parseInt(pcount);
+			this.partnerCount = Integer.parseInt(pcount) - 1;
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		}
@@ -286,6 +338,21 @@ public class TahminDet extends BaseBean implements Serializable {
 			partnerText = "Sen de Ortak Ol";
 
 		}
+	}
+
+	public boolean checkHit() {
+		log.info(occured + "" + done + " " + login.isLoggedIn());
+		if (occured && !done && login.isLoggedIn())
+			return true;
+		return false;
+	}
+
+	public Login getLogin() {
+		return login;
+	}
+
+	public void setLogin(Login login) {
+		this.login = login;
 	}
 
 }

@@ -20,54 +20,94 @@
 					<div class="yorumYap">
 						<h:form>
 							<p:growl id="messages" showDetail="false" />
-							<span class="spanBaslik">Tahminci : <span
-								style="font-weight: normal"> #{tahminDet.record.uname}</span></span>
+
 							<span class="spanBaslik">Tahmin : <span
 								style="font-weight: normal"> #{tahminDet.record.name}</span>
 							</span>
 							<span class="spanBaslik">TahminDetay : <span
-								style="font-weight: normal"> #{tahminDet.record.content}</span></span>
-							<span class="spanBaslik">Tahmin Ortakları : <h:panelGroup
-									id="pcount" style="font-weight: normal"> #{tahminDet.partnerCount}</h:panelGroup>
-								<p:commandLink styleClass="spanLink"
+								style="font-weight: normal"> #{tahminDet.record.content}</span>
+							</span>
+							<span class="spanBaslik">Tahminci : <span
+								style="font-weight: normal"> #{tahminDet.record.uname}</span></span>
+							<span class="spanBaslik">Tahmin Ortak Sayısı : <h:panelGroup
+									id="pcount" style="font-weight: normal">
+									<a href="tahmin-ortaklari.xhtml?tid=#{tahminDet.id}">#{tahminDet.partnerCount}</a>
+								</h:panelGroup> <p:commandLink styleClass="spanLink"
 									actionListener="#{tahminDet.onPartner}"
 									update="messages,makePartner,pcount" id="makePartner"
 									value="#{tahminDet.partnerText}"
-									disabled="#{tahminDet.partnerDisabled}"
-									rendered="#{not tahminDet.occured}">
+									rendered="#{not tahminDet.occured and not tahminDet.partnerDisabled}">
 
 								</p:commandLink>
+								<span style="float:right;" class="spanLink"> <h:outputText value="#{tahminDet.partnerText}"
+									rendered="#{tahminDet.partnerDisabled}"></h:outputText>
+									</span>
 							</span>
 							<span class="spanBaslik">Tahminin Olacağı Tarih ve Saat :
 								<span style="font-weight: normal">
 									#{tahminDet.record.occurTime}</span>
 							</span>
 
-							<span class="spanBaslik">Tahminin Zorluk Derecesi: <h:outputText
-									value="#{tahminDet.difPoint}"></h:outputText>
-									
-									 <span
-								style="padding-left: 310px;"><h:outputText
-										rendered="#{tahminDet.occured and login.loggedIn}"
-										value="Gerçekleşme Derecesi Gir:"></h:outputText>
-										
-									 <h:outputText	rendered="#{not tahminDet.occured}"
-										value="Sen de Zorluk Derecesi Gir:"></h:outputText>  </span> 
-										<p:rating rendered="#{not tahminDet.occured or login.loggedIn}"
-									pt:style="float:right" disabled="#{tahminDet.voted}"
-									value="#{tahminDet.vote}" id="rating" stars="10">
-									<p:ajax event="rate" listener="#{tahminDet.onrate}"
-										update="messages,rating" />
+							<span class="spanBaslik">Tahminin Zorluk Derecesi
+								Ortalaması: <h:outputText value="#{tahminDet.difPoint}"></h:outputText>
+								<span style=" float: right;"> <h:panelGroup
+										rendered="#{tahminDet.checkHit()}" id="hitPointPanel">
 
-								</p:rating>
-								
+										<p:commandLink rendered="#{not tahminDet.voted}"
+											value="Gerçekleşme Derecesi Gir"
+											onclick="PF('carDialog').show()">
+
+										</p:commandLink>
+										<h:outputText rendered="#{tahminDet.voted}"
+											value="Gerçekleşme Puanı Kullanıldı."></h:outputText>
+
+									</h:panelGroup> <h:panelGroup rendered="#{not tahminDet.occured}">
+										<h:outputText value="Sen de Zorluk Derecesi Gir:"></h:outputText>
+										<p:rating
+											rendered="#{not tahminDet.occured or login.loggedIn}"
+											pt:style="float:right" disabled="#{tahminDet.voted}"
+											value="#{tahminDet.vote}" id="rating" stars="10">
+											<p:ajax event="rate" listener="#{tahminDet.onrate}"
+												update="messages,rating" />
+
+										</p:rating>
+									</h:panelGroup></span>
 							</span>
 							<span class="spanBaslik">Tahminle İlgili Yapılmış Yorumlar
-								: <span style="font-weight: normal">
-									#{tahminDet.commentCount}</span> <a class="spanLink"
-								href="yapilmis-yorumlar.xhtml?tid=#{tahminDet.id}"> Sen de
-									Yorum Yap</a>
+								: <span style="font-weight: normal"> <a
+									href="yapilmis-yorumlar.xhtml?tid=#{tahminDet.id}">#{tahminDet.commentCount}</a></span>
+								<h:panelGroup rendered="#{not login.loggedIn}">
+									<a class="spanLink"
+										href="yapilmis-yorumlar.xhtml?tid=#{tahminDet.id}"> Yorum
+										Yapmak İçin Giriş Yapın</a>
+								</h:panelGroup>
 							</span>
+							<span class="spanBaslik">Tahminin Gerçekleşme Derecesi
+								Ortalaması: <span style="font-weight: normal"> <h:outputText
+										rendered="#{tahminDet.done}" value="#{tahminDet.hitPoint}"></h:outputText>
+									<h:outputText rendered="#{not tahminDet.done}"
+										value="Tahmin süreci tamamlanmadı. İşlem sürüyor."></h:outputText>
+							</span>
+
+							</span>
+							<span class="spanBaslik">Tahminin Toplam Puanı: <span
+								style="font-weight: normal"> <h:outputText
+										rendered="#{tahminDet.done}" value="#{tahminDet.record.point}"></h:outputText>
+									<h:outputText rendered="#{not tahminDet.done}"
+										value="Tahmin süreci tamamlanmadı. İşlem sürüyor."></h:outputText>
+							</span>
+
+							</span>
+							<p:dialog header="" widgetVar="carDialog" modal="true"
+								showEffect="slide" resizable="false">
+								<p:outputPanel id="carDetail" style="text-align:center;">
+									<p:rating disabled="#{tahminDet.voted}"
+										value="#{tahminDet.vote}" id="ratingH" stars="10">
+										<p:ajax event="rate" listener="#{tahminDet.onrate}"
+											update="hitPointPanel" />
+									</p:rating>
+								</p:outputPanel>
+							</p:dialog>
 						</h:form>
 					</div>
 				</div>

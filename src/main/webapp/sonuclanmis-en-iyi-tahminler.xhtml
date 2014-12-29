@@ -20,39 +20,13 @@
 					<div class="yorumYap">
 						<div class="clearLeft"></div>
 						<div class="tahminKutu">
-							<div class="tahminIcKutu1">
-								<span class="tahminBaslik">GERÇEKLEŞME DERECESİ</span>
-								<ul>
-									<ui:repeat var="tah" value="#{bestTahmins.data}">
-								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
-										#{tah.hitPoint}</a></li>
-							</ui:repeat>
-							</ul>
-							</div>
+						
 							<div class="tahminIcKutu2">
 								<span class="tahminBaslik">TAHMİN</span>
 								<ul>
 								<ui:repeat var="tah" value="#{bestTahmins.data}">
 								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
 										#{tah.name}</a></li>
-							</ui:repeat>
-								</ul>
-							</div>
-							<div class="tahminIcKutu3">
-								<span class="tahminBaslik">TAHMİNCİ</span>
-								<ul>
-										<ui:repeat var="tah" value="#{bestTahmins.data}">
-								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
-										#{tah.uname}</a></li>
-							</ui:repeat>
-								</ul>
-							</div>
-							<div class="tahminIcKutu4">
-								<span class="tahminBaslik">TAHMİN ORTAK SAYISI</span>
-								<ul>
-									<ui:repeat var="tah" value="#{bestTahmins.data}">
-								<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
-										#{tah.pcount}</a></li>
 							</ui:repeat>
 								</ul>
 							</div>
@@ -65,6 +39,25 @@
 							</ui:repeat>
 								</ul>
 							</div>
+							<div class="tahminIcKutu3">
+								<span class="tahminBaslik">TAHMİNCİ</span>
+								<ul>
+										<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahminciler.xhtml?taid=#{tah.userId}">
+										#{tah.uname}</a></li>
+							</ui:repeat>
+								</ul>
+							</div>
+							<div class="tahminIcKutu4">
+								<span class="tahminBaslik">TAHMİN ORTAK SAYISI</span>
+								<ul>
+									<ui:repeat var="tah" value="#{bestTahmins.data}">
+								<li><a href="tahmin-ortaklari.xhtml?tid=#{tah.id}">
+										#{tah.pcount}</a></li>
+							</ui:repeat>
+								</ul>
+							</div>
+							
 							<div class="clearLeft"></div>
 						</div>
 					</div>

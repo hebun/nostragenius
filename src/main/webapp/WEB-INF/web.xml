@@ -36,15 +36,7 @@
 			index.xhtml
 		</welcome-file>
 	</welcome-file-list>
-	<error-page>
-		<error-code>404</error-code>
-		<location>/404.xhtml</location>
-	</error-page>
-	<error-page>
-		<exception-type>java.lang.IndexOutOfBoundsException</exception-type>
-	
-		<location>/404.xhtml</location>
-	</error-page>
+
 	<context-param>
 		<param-name>jdbcurl</param-name>
 		<param-value>jdbc:mysql://localhost:3306/nostra?useUnicode=true&amp;characterEncoding=utf8
@@ -74,7 +66,7 @@
 
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
-		<param-value>Production</param-value>
+		<param-value>Development</param-value>
 	</context-param>
 	<context-param>
 		<param-name>org.apache.myfaces.ERROR_HANDLER</param-name>

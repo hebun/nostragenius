@@ -11,8 +11,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import javax.faces.context.FacesContext;
-
 import freela.util.ASCIITable;
 import freela.util.Db;
 import freela.util.FaceUtils;
@@ -20,8 +18,10 @@ import freela.util.Sql;
 import freela.util.Sql.Select;
 
 public class Nostra {
+	public static final int TAHMIN_EVAL_TIME = 72 * 60 * 60 * 1000;
 	public static final int RECORD_COUNT = 10;
-	public static final String BESTUSERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as ort,count(tp.id) as say FROM `tahminpartner` "
+	public static final String BESTUSERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as"
+			+ " ort,count(t.id) as say FROM `tahminpartner` "
 			+ "as tp join user as u on u.id=tp.userId join tahmin as t "
 			+ "		on tp.tahminId=t.id group by u.uname,taid";
 	public static final String BESTPARTNERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as ort,count(tp.id) as say FROM `tahminpartner` "
@@ -121,7 +121,7 @@ public class Nostra {
 			return Integer.parseInt(say);
 
 		} else {
-			log.info("maxtah is NOT null . got:" + maxtah);
+			
 			return Integer.parseInt(maxtah.toString());
 		}
 
@@ -169,7 +169,8 @@ public class Nostra {
 
 	public static List<Map<String, String>> getBestTahmins() {
 		Date time = new Date(
-				Calendar.getInstance().getTime().getTime() - 48 * 3600 * 1000);
+				Calendar.getInstance().getTime().getTime() - 72 * 3600 * 1000);
+
 		List<Map<String, String>> tahs = new Sql.Select().from("tahmin")
 				.join("user").doNotUsePrepared().on("tahmin.userId", "user.id")
 
@@ -204,16 +205,16 @@ public class Nostra {
 					.add("tarih", FaceUtils.getFormattedTime()).run();
 		}
 		Iterator<Map<String, String>> iterator = tahs.iterator();
-		
+
 		while (iterator.hasNext()) {
-			
+
 			Map<String, String> next = iterator.next();
 			if (FaceUtils.getTimeFromString(next.get("occurTime")).after(
-					Calendar.getInstance().getTime())) {
+					time )) {
 				iterator.remove();
 			}
 		}
-		
+
 		Collections.sort(tahs, new Comparator<Map<String, String>>() {
 
 			@Override
@@ -221,10 +222,10 @@ public class Nostra {
 				double d1 = Double.parseDouble(o1.get("point"));
 				double d2 = Double.parseDouble(o2.get("point"));
 
-				return d1 < d2 ? -1 : d1 > d2 ? 1 : 0;
+				return d1 < d2 ? 1 : d1 > d2 ? -1 : 0;
 			}
 		});
-		Collections.reverse(tahs);
+		// Collections.reverse(tahs);
 		return tahs;
 	}
 }

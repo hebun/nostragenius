@@ -2,7 +2,6 @@
 <ui:composition template="/master.xhtml"
 	xmlns="http://www.w3.org/1999/xhtml"
 	xmlns:f="http://java.sun.com/jsf/core"
-	
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
@@ -69,16 +68,41 @@
 		<div class="contentSablon">
 			<div class="ortaKutu">
 				<h:form id="cs">
-					<a href="sonuclanmis-en-iyi-tahminler.xhtml">sonuclanmis en iyi
-						tahminler</a> | 
-				 <a href="en-iyi-tahminciler.xhtml">en iyi tahminciler</a> | 
-				 <a href="en-iyi-tahmin-ortaklari.xhtml">en iyi tahmin ortaklari</a> | 
-				 
-				<span class="baslikKutu">İŞLEM YAPILABİLECEK EN SON TAHMİNLER
-						<h:panelGroup rendered="#{login.loggedIn}">
-							<span class="baslik3">Tahmin Ortağı Olabilirsiniz</span>
-							<span class="baslik3">Yorum Yapabilirsiniz</span>
-						</h:panelGroup> <span class="baslik3">Zorluk Derecesi Girebilirsiniz</span>
+					<span class="uyeUyari"> <b>Tahminlere</b> giriş yaparak
+						aşağıdaki işlemleri yapabilirsiniz;<br /> ( Yorum Yapmak ) (
+						Zorluk derecesi girmek ) ( Tahmin ortağı olmak ) ( Gerçekleşme
+						Puanı Girmek ) <p:button id="help"
+							style="width: 15px; height: 20px;  padding-bottom: 20px;"
+							icon="ui-icon-help">
+						</p:button>
+					</span>
+					<span class="baslikKutu">İŞLEM YAPILABİLECEK EN SON
+						TAHMİNLER <h:panelGroup id="tooltipContent">
+
+							<span class="baslik3"><p:tooltip id="toolTip" for="help">
+									<span class="uyeUyari"> <b>Yorum Yapmak:</b> Yapılmış
+										herhangi bir tahmin için görüşlerinizi, yorumlarınızı
+										belirtebilirsiniz.<br /> <br /> <b>Zorluk derecesi
+											girmek :</b> Yapılmış herhangi bir tahmin için tahminin zorluğuna
+										göre 1 ile 10 arasında <br /> olan bir zorluk derecesi
+										girebilirsiniz. Girdiğiniz bu puan tahminin ortalama zorluk
+										puanını <br /> etkileyecektir. <br /> <br /> <b>Tahmin
+											ortağı olmak:</b> Yapılmış herhangi bir tahmin için tahmini
+										destekliyorsanız veya sizin <br /> görüşlerinize de uygun ise
+										o zaman tahminin ortaklarından birisi olabilirsiniz. Tahminin
+										ileride alacağı <br /> puanın belli bir kısmı sizin başarı
+										puanınıza eklenecektir.<br /> <br /> <b>Gerçekleşme
+											Puanı Girmek :</b> Süresi tamamlanmış, tarihi dolmuş herhangi bir
+										tahmin için <br /> gerçekleşmesine göre bir puan
+										verebilirsiniz. 1 ile 10 arasında olacak bu
+										değerlendirmeniz, o <br /> tahminin toplam puanını,
+										dolayısıyla hem tahmini, hem tahminciyi, hem de tahmin
+										ortağını rating <br />açısından etkileyecektir.
+									</span>
+								</p:tooltip> </span>
+						</h:panelGroup>
+
+
 					</span>
 
 					<div class="tahminKutu">
@@ -113,21 +137,29 @@
 						<div class="clearLeft"></div>
 					</div>
 
-				<free:paging bean="#{tahminci}"></free:paging>
-					<span class="baslikKutu1">SONUÇLANMIŞ  EN İYİ ILK 10 (TAHMİNLER -
-						TAHMİNCİLER - TAHMİN ORTAKLARI ) BAŞARIYA GÖRE SIRALIDIR.</span>
+					<free:paging bean="#{tahminci}"></free:paging>
+					<span class="baslikKutu1">SONUÇLANMIŞ EN İYİ ILK 10
+						(TAHMİNLER - TAHMİNCİLER - TAHMİN ORTAKLARI ) BAŞARIYA GÖRE
+						SIRALIDIR.</span>
+					<span class="uyeUyari"> Aşağıdaki bölümde yer alan
+						tahminlerle ilgili işlemler sonuçlanmıştır. Yorum yapmak dışında
+						ek işlem yapamazsınız. Ancak Tahminlere giriş yaparak
+						inceleyebilir ve yorumlar yapabilirsiniz. Ayrıca, tahmincilere ve
+						tahmin ortaklarına giriş yaparak onların işlemlerini ve
+						performanslarını görebilirsiniz. </span>
 					<div class="tahminKutu">
 						<div class="tahminIcKutu1">
-							<span class="tahminBaslik">EN İYİ TAHMİNLER</span>
+							<span class="tahminBaslik">EN İYİ TAHMİNLER(<a href="sonuclanmis-en-iyi-tahminler.xhtml">Tümü</a>)</span>
 							<ul>
 								<ui:repeat var="tah" value="#{index.doneTahmins}">
-									<li><a href="tahmin-detay.xhtml?tid=#{tah.id}">
-											#{tah.name}</a></li>
+									<li><a href="tahmin-detay.xhtml?tid=#{tah.id}"> <b>
+												(#{tah.point}) </b> #{tah.name}
+									</a></li>
 								</ui:repeat>
 							</ul>
 						</div>
 						<div class="tahminIcKutu5">
-							<span class="tahminBaslik">EN İYİ TAHMİNCİLER</span>
+							<span class="tahminBaslik">EN İYİ TAHMİNCİLER(<a href="en-iyi-tahminciler.xhtml">Tümü</a>)</span>
 							<ul>
 								<ui:repeat var="tah" value="#{index.bestUsers}">
 									<li><a href="tahminciler.xhtml?taid=#{tah.taid}">
@@ -136,7 +168,7 @@
 							</ul>
 						</div>
 						<div class="tahminIcKutu6">
-							<span class="tahminBaslik">EN İYİ TAHMİN ORTAKLARI</span>
+							<span class="tahminBaslik">EN İYİ TAHMİN ORTAKLARI(<a href="en-iyi-tahmin-ortaklari.xhtml">Tümü</a>)</span>
 							<ul>
 								<ui:repeat var="tah" value="#{index.bestPartners}">
 									<li><a href="tahminciler.xhtml?taid=#{tah.taid}">
