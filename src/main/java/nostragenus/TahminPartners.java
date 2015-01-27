@@ -21,12 +21,22 @@ public class TahminPartners extends BaseBean implements Serializable {
 
 	public TahminPartners() {
 		this.table = "user";
-		this.allData = new Sql.Select(
-				"user.id as taid,uname,avg(tahmin.point) as ort,count(tahmin.id) as say")
-				.from(table).innerJoin("tahmin").on("tahmin.userId", "user.id")
-				.where("tahmin.id", FaceUtils.getGET("tid")).groupBy("user.id,uname")
-				.getTable();
+		// List<Map<String, String>> table2 = new Sql.Select(
+		// "user.id as taid,uname,avg(tahmin.point) as ort,count(tahmin.id) as say")
+		// .from(table).leftJoin("tahmin").on("tahmin.userId", "user.id")
+		// .leftJoin("tahminpartner")
+		// .on("tahminpartner.tahminId", "tahmin.id")
+		// .where("tahmin.id", FaceUtils.getGET("tid"))
+		// .and("tahminpartner.ownerId<>", "user.id")
+		// .groupBy("user.id,uname").getTable();
 
+		String sql = "select user.id as taid,uname,avg(tahmin.point) as ort,count(tahmin.id) as say from user "
+				+ " inner join tahminpartner on tahminpartner.userId=user.id left join tahmin on "
+				+ "tahminpartner.tahminId=tahmin.id where tahmin.id="
+				+ FaceUtils.getGET("tid")
+				+ "  and tahminpartner.ownerId<>tahminpartner.userId "
+				+ " group by user.id,uname";
+		this.allData = Db.selectTable(sql);
 		for (Map<String, String> u : allData) {
 			u.put("userort", Nostra.calcUserPoint(u.get("say"), u.get("ort")));
 		}

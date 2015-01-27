@@ -24,7 +24,8 @@ public class Nostra {
 			+ " ort,count(t.id) as say FROM `tahminpartner` "
 			+ "as tp join user as u on u.id=tp.userId join tahmin as t "
 			+ "		on tp.tahminId=t.id group by u.uname,taid";
-	public static final String BESTPARTNERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as ort,count(tp.id) as say FROM `tahminpartner` "
+	public static final String BESTPARTNERS_SQL = " SELECT u.id as taid,u.uname,avg(t.point) as ort"+
+			",count(tp.id) as say FROM `tahminpartner` "
 			+ "as tp join user as u on u.id=tp.userId join tahmin as t "
 			+ "		on tp.tahminId=t.id where tp.userId<>tp.ownerId group by u.uname,taid";
 

@@ -84,7 +84,7 @@ public class Index extends BaseBean implements Serializable {
 				.where("occurTime>",
 						FaceUtils.getFormattedTime(instance.getTime()))
 				.order("occurTime").getTable();
-		System.out.println(allData);
+		
 		this.activeTahmins = this.data;
 		loadData();
 
@@ -125,12 +125,6 @@ public class Index extends BaseBean implements Serializable {
 		});
 		Collections.reverse(bestPartners);
 
-		try {
-			ASCIITable asciiTable = new ASCIITable();
-			asciiTable.printTable(bestPartners, true);
-		} catch (Exception e) {
-
-		}
 	}
 
 }
