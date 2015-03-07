@@ -111,13 +111,8 @@ public class Login implements Serializable {
 
 			this.userType = UserType.valueOf(user.get("state"));
 
-			if (preUrl == null)
-				return "index";
-			else {
-				String hold = preUrl;
-				preUrl = null;
-				return hold;
-			}
+			return "index";
+
 		} else {
 			FaceUtils.addError("Kullanıcı ve/veya şifre yanlış.");
 			loggedIn = false;
@@ -128,14 +123,18 @@ public class Login implements Serializable {
 	public String forgotPassword() {
 
 		List<Map<String, String>> userTable = new Sql.Select().from("user")
-				.where("email", username).and("state", "ACTIVE").getTable();
+				.where("email", username).getTable();
 
 		if (userTable.size() == 0) {
 			FaceUtils
 					.addError("Bu E-Mail adresi ile kayıtlı kullanıcı bulunamadı.");
 			return null;
 		}
-
+		if (userTable.get(0).get("state").equals("PENDING")) {
+			FaceUtils
+					.addError("E-mail adresinize daha önce yollanmış olan aktivasyon işlemini yapınız.");
+			return null;
+		}
 		List<Map<String, String>> table = new Sql.Select().from("mailcontent")
 				.where("name", "resetpassword").getTable();
 

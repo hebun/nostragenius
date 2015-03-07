@@ -3,6 +3,8 @@ package nostragenus;
 import static freela.util.FaceUtils.log;
 
 import java.io.Serializable;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -33,6 +35,15 @@ public class NewTahmin extends BaseBean implements Serializable {
 		this.app = app;
 	}
 
+	private String tomorrow;
+	public String getTomorrow() {
+		return tomorrow;
+	}
+
+	public void setTomorrow(String tomorrow) {
+		this.tomorrow = tomorrow;
+	}
+
 	private Date occurTime;
 
 	public Date getOccurTime() {
@@ -56,6 +67,13 @@ public class NewTahmin extends BaseBean implements Serializable {
 	public NewTahmin() {
 		this.table = "tahmin";
 		this.record = new HashMap<String, String>();
+		Calendar instance = Calendar.getInstance();
+		 instance.add(Calendar.DAY_OF_MONTH,1);
+		
+		SimpleDateFormat dateFormat = new SimpleDateFormat("dd-MM-yyyy");
+
+		String formattedTime = dateFormat.format(instance.getTime());
+		this.tomorrow=formattedTime;
 
 	}
 

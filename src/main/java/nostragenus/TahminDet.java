@@ -341,7 +341,7 @@ public class TahminDet extends BaseBean implements Serializable {
 	}
 
 	public boolean checkHit() {
-		log.info(occured + "" + done + " " + login.isLoggedIn());
+		//log.info(occured + "" + done + " " + login.isLoggedIn());
 		if (occured && !done && login.isLoggedIn())
 			return true;
 		return false;

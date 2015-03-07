@@ -25,40 +25,104 @@
 							<div class="uyeUyari">
 								Bu işlemi yapabilmek için mutlaka üye girişi yapılması
 								gerekmektedir. Üye olmak için<a href="uye-ol.xhtml">
-									tıklayınız. </a> Üye iseniz
-								<a href="yorum-yap.xhtml">buradan</a>
+									tıklayınız. </a> Üye iseniz <a href="yorum-yap.xhtml">buradan</a>
 								giriş yapabilirsiniz.
 							</div>
 						</h:panelGroup>
+
+						<div class="uyeUyari">Bu form ile ileriye yönelik
+							tahmininizi girebilirsiniz</div>
 						<span class="baslikKutu2">TAHMİN YAP</span>
 						<h:form id="addTahmin" rendered="#{login.loggedIn}">
 
+							<h:panelGroup id="tooltipContent">
+								<span class="baslik3"><p:tooltip id="toolTip" for="tadi">
+										<span class="uyeUyari"> Tahmininize bir isim verin. </span>
+									</p:tooltip> </span>
+								<span class="baslik3"> <p:tooltip id="toolTip1"
+										for="tcont">
+										<span class="uyeUyari">Bu alanda tahmininizi detaylı ve
+											anlaşılır bir şekilde yazın.</span>
+									</p:tooltip>
+								</span>
+								<span class="baslik3"> <p:tooltip id="toolTip2" for="tts">
+										<span class="uyeUyari"> Alttaki alana tıkladığınız
+											zaman tahmininizin olacağını düşündüğünüz zamanı, <br /> "
+											yıl,ay,gün, saat, dakika, saniye " olarak girebilirsiniz
+										</span>
+									</p:tooltip>
+								</span>
+								<span class="baslik3"> <p:tooltip id="toolTip3" for="tak">
+										<span class="uyeUyari"> Max 10 adet kelime olmak üzere,
+											aralarına virgül (,) koyunuz veya kelimeleri alt alta her
+											satıra 1 anahtar kelime giriniz. </span>
+									</p:tooltip>
+								</span>
+								<span class="baslik3"> <p:tooltip id="toolTip4" for="tzd">
+										<span class="uyeUyari"> Yaptığınız kendi tahmininiz
+											için yıldızlar üzerine tıklayarak 10 üzerinden zorluk
+											derecesi giriniz </span>
+									</p:tooltip>
+								</span>
+							</h:panelGroup>
+
 							<h:messages globalOnly="true" styleClass="error"></h:messages>
 							<ui:param name="reqMessage" value="Lütfen bu alanı doldurun."></ui:param>
-
-							<label for="Rumuz">Tahmin Adı</label>
+							<h:panelGrid columns="2">
+								<label for="Rumuz">Tahmin Adı</label>
+								<p:button id="tadi" style="width: 15px; height: 20px;"
+									icon="ui-icon-help">
+								</p:button>
+							</h:panelGrid>
 							<h:inputText name="Rumuz" id="Rumuz" styleClass="textField"
 								value="#{newTahmin.record.name}" required="true"
 								requiredMessage="#{reqMessage}"></h:inputText>
-							<h:message for="Rumuz" styleClass="error"></h:message>
-							<label for="AdSoyad">Tahminin ne olduğu</label>
 
+							<h:message for="Rumuz" styleClass="error"></h:message>
+
+							<h:panelGrid columns="2">
+								<label for="AdSoyad">Tahminin ne olduğu</label>
+								<p:button id="tcont" style="width: 15px; height: 20px;"
+									icon="ui-icon-help">
+								</p:button>
+							</h:panelGrid>
 							<h:inputTextarea name="AdSoyad" id="AdSoyad"
 								value="#{newTahmin.record.content}" required="true"
 								requiredMessage="#{reqMessage}"></h:inputTextarea>
 							<h:message for="AdSoyad" styleClass="error"></h:message>
-							<label for="Parola">Tahminin olacağı tarih ve saat</label>
+							<h:panelGrid columns="2">
 
+								<label for="Parola">Tahminin olacağı tarih ve saat</label>
+								<p:button id="tts" style="width: 15px; height: 20px;"
+									icon="ui-icon-help">
+								</p:button>
+							</h:panelGrid>
 
 							<p:calendar id="datetime" value="#{newTahmin.occurTime}"
-								pattern="y-M-d H:m:s" locale="tr" required="true"
-								requiredMessage="#{reqMessage}" />
+								pattern="dd-MM-yyyy HH:mm:ss" locale="tr" required="true"
+								requiredMessage="#{reqMessage}" mindate="#{newTahmin.tomorrow}" />
 							<h:message for="datetime" styleClass="error"></h:message>
-							<label for="ParolaTekrar">Tahminle ilgili anahtar
-								kelimeler ( Maksimum 10 Adet )</label>
+
+							<h:panelGrid columns="2">
+
+								<label for="ParolaTekrar">Tahminle ilgili anahtar
+									kelimeler ( Maksimum 10 Adet )</label>
+
+								<p:button id="tak" style="width: 15px; height: 20px;"
+									icon="ui-icon-help">
+								</p:button>
+							</h:panelGrid>
 							<h:inputTextarea name="ParolaTekrar"
 								value="#{newTahmin.record.keywords}" rows="4"></h:inputTextarea>
-							<span class="zorlukDerece">Tahminle İlgili Zorluk Derecesi</span>
+							<h:panelGrid columns="2">
+								<span class="zorlukDerece">Tahminle İlgili Zorluk
+									Derecesi</span>
+
+								<p:button id="tzd" style="width: 15px; height: 20px;"
+									icon="ui-icon-help">
+								</p:button>
+							</h:panelGrid>
+
 							<span class="zorlukDerece"> <p:rating
 									value="#{newTahmin.vote}" id="rating" stars="10" /></span>
 

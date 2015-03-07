@@ -1,4 +1,4 @@
-Nostragenius.com
+﻿Nostragenius.com
 
 Herkes  diledigini tahmin etsin ve yine herkes bu tahminlere Puan versin. Puanlama 2 çeşit olsun. 1. Puanlama 
 girilen tahminin zorluk 
@@ -163,15 +163,14 @@ Site ile ilgili bazı kontrolleri yaptım sana bir rapor yolluyorum hatalar ve e
 
 1- Tahmin yap menüsüne girilince gelen ekran doğru ancak, üye iseniz linkine girilince sadece üye
 	 girişi olmalı. bu ekranda Yorum yap - puan ver ve onun altındaki " yorum yapabileceğiniz başlıklar 
-	 veya puan verebileceğiniz tahminler " kalkacak. üye girişi olunca ana sayfa açılacak.
-	Aynısı üst menülerdeki  yorum yap- puan ver menülerine girilince de olacak aynen.  Bu arada 
-	üst menülerde "Gerçekleşme puanı ver" menüsü de olacaktı. ilave edelim.
+	 veya puan verebileceğiniz tahminler " kalkacak. üye girişi olunca ana sayfa açılacak.	Aynısı üst menülerdeki  yorum yap- puan ver menülerine girilince de olacak aynen.  Bu arada üst menülerde "Gerçekleşme puanı ver" menüsü de olacaktı. ilave edelim.
+[Bastaki dediginizi duzelttim ama “Gerçekleşme puanı ver" menusu eklenince  ordaki tasarim bozuldu.Menuye sigmiyor. Duzeltmeye calistim olmadi. Orada ya menunun ismini kisaltmamiz lazim ya da ilkerin tasarimi uzun menulere gore degistirip gondermesi lazim. Aynisi “zorluk derecesi gir” icin de gecerli]
 
 2- üye girişinde mutlaka ana sayfaya gelecek üyeler. Sonrasında hangi menüye girilirse o
-	 menünün yapısı gelecek.
+	 menünün yapısı gelecek.[OK]
 
 3-tahmin yap menüsüne üye olarak girilince; üstte bir metin olacak. Bu metinde " Bu form ile
- ileriye yönelik tahmininizi girebilirsiniz " olacak. 
+ ileriye yönelik tahmininizi girebilirsiniz " olacak. [OK]
 
 4- İsmet bazı giriş alanlarının yanında ? info olsun ve oraya mause ile gelince o giriş için 
 bilgi versin örnek olarak;
@@ -183,10 +182,11 @@ Tahminle ilgili anahtar kelimeler: " Max 10 adet kelime olmak üzere, aralarına
 koyunuz veya kelimeleri alt alta her satıra 1 anahtar kelime giriniz. "
 Tahminle ilgili zorluk derecesi; " Yaptığınız kendi tahmininiz  için yıldızlar üzerine 
 tıklayarak 10 üzerinden zorluk derecesi giriniz"
+[OK]
 
 5- Yorum yap menüsüne üye olarak girince üst tarafa bir text gireceğiz.
 " Bu sayfada görünen tahminler üzerine tıklayarak açılan sayfada ilgili tahmin için çeşitli 
-işlemler yapabilirsiniz. " yazacağız.
+işlemler yapabilirsiniz. " yazacağız.[OK]
 
 6- Herhangi bir tahmine girilince ise yine üst tarafta bir text gireceğiz.
 " Bu sayfada görünen tahmin için;
@@ -195,13 +195,13 @@ işlemler yapabilirsiniz. " yazacağız.
 3- Bu tahminin ortağı olabilirsiniz "   yazacak.
 
 Bir de bu sayfadan "geri tuşu " ile yorumlar sayfasına dönüş olmalı.
-
+[Metni ekledim. Tamamlanmis tahminler icin 2. ve 3. maddeler gecersiz oluyor. Onlari sadece devam edenler icin gostereyim mi?. Geri tusu zaten bir onceki sayfaya atiyordu, ordaki sorunu goremedim]
 7-  Sen de ortak ol'a tıklayınca ortak oluyor ancak daha sonra tekrar tıklayınca uyarı 
 görünmüyor. yani " Siz zaten bu tahminin ortağısınız veya siz zaten bu tahminin sahibisiniz 
-" demesi gerek.  Çünkü sahibi olan kişi de tıklamaya çalışabilir ortaklık linkini.
+" demesi gerek.  Çünkü sahibi olan kişi de tıklamaya çalışabilir ortaklık linkini.[OK]
 
 8- Tahminle ilgili yorumlara girilince o sayfadan geri tuşu olmalı.
-Ve gerçekte bu geri tuşu olayı işlem yapılan tüm sayfalardan hep olmalı. " ÖNEMLİ !
+Ve gerçekte bu geri tuşu olayı işlem yapılan tüm sayfalardan hep olmalı. " ÖNEMLİ ![Geri tusu bende normal calisiyor. Sorunu gor	emedim. ]	
 
 9- Puan ver  yerine    " Zorluk derecesi gir " olacaktı düzeltelim.
 Bu menüye de üye olarak girince yine üst tarafa bir text gireceğiz. 
@@ -209,7 +209,7 @@ Bu menüye de üye olarak girince yine üst tarafa bir text gireceğiz.
 1- Yorum yapabilirsiniz
 2- Zorluk derecesi girebilirsiniz
 3- Bu tahminin ortağı olabilirsiniz "   yazacak.
-
+[O menuye girilince bir tahmin degil de tahminler listesi geliyor. Dediginiz bu metni tahmin detayina yazdik. Bu menu de diger iki menu(ger. Puani ver ve yorum yap) ile ayni sayfaya bakiyor normalde. Oraya da “Bu sayfada görünen tahminler üzerine tıklayarak açılan sayfada ilgili tahmin için çeşitli işlemler yapabilirsiniz. ” metnini ekledik. ]
 
 İsmet şimdilik bunlar gördüklerim ve incelediklerim.
 

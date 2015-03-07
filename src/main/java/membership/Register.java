@@ -2,6 +2,7 @@ package membership;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.GregorianCalendar;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,7 @@ public class Register implements Serializable {
 
 	public Register() {
 		user = new HashMap<String, String>();
+		birthday=new GregorianCalendar(1900, 0, 2).getTime();
 	}
 
 	public String save() {

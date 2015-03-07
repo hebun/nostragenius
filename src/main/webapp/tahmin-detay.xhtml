@@ -17,8 +17,11 @@
 			<div class="ortaKutu">
 				<div class="masterPage">
 					<span class="baslikKutu2">TAHMİN DETAY</span>
+					<div class="uyeUyari">Bu sayfada görünen tahmin için;<br/> 1- Yorum
+						yapabilirsiniz<br/> 2- Zorluk derecesi girebilirsiniz<br/> 3- Bu tahminin
+						ortağı olabilirsiniz</div>
 					<div class="yorumYap">
-						<h:form>
+						<h:form id="tahminDetForm">
 							<p:growl id="messages" showDetail="false" />
 
 							<span class="spanBaslik">Tahmin : <span
@@ -28,20 +31,23 @@
 								style="font-weight: normal"> #{tahminDet.record.content}</span>
 							</span>
 							<span class="spanBaslik">Tahminci : <span
-								style="font-weight: normal"> #{tahminDet.record.uname}</span></span>
+								style="font-weight: normal"> 
+								<a href="tahminciler.xhtml?taid=#{tahminDet.record.userId}">
+											
+								#{tahminDet.record.uname}</a> </span></span>
 							<span class="spanBaslik">Tahmin Ortak Sayısı : <h:panelGroup
 									id="pcount" style="font-weight: normal">
 									<a href="tahmin-ortaklari.xhtml?tid=#{tahminDet.id}">#{tahminDet.partnerCount}</a>
 								</h:panelGroup> <p:commandLink styleClass="spanLink"
 									actionListener="#{tahminDet.onPartner}"
-									update="messages,makePartner,pcount" id="makePartner"
+									update="tahminDetForm" id="makePartner"
 									value="#{tahminDet.partnerText}"
 									rendered="#{not tahminDet.occured and not tahminDet.partnerDisabled}">
 
-								</p:commandLink>
-								<span style="float:right;" class="spanLink"> <h:outputText value="#{tahminDet.partnerText}"
-									rendered="#{tahminDet.partnerDisabled}"></h:outputText>
-									</span>
+								</p:commandLink> <span style="float: right;" class="spanLink"> <h:outputText
+										value="#{tahminDet.partnerText}"
+										rendered="#{tahminDet.partnerDisabled}"></h:outputText>
+							</span>
 							</span>
 							<span class="spanBaslik">Tahminin Olacağı Tarih ve Saat :
 								<span style="font-weight: normal">
@@ -50,7 +56,7 @@
 
 							<span class="spanBaslik">Tahminin Zorluk Derecesi
 								Ortalaması: <h:outputText value="#{tahminDet.difPoint}"></h:outputText>
-								<span style=" float: right;"> <h:panelGroup
+								<span style="float: right;"> <h:panelGroup
 										rendered="#{tahminDet.checkHit()}" id="hitPointPanel">
 
 										<p:commandLink rendered="#{not tahminDet.voted}"

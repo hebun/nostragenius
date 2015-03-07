@@ -78,7 +78,7 @@
 								requiredMessage="#{reqMessage}" tabindex="6"
 								value="#{register.birthday}"
 								converterMessage="Tarih uygun degil">
-								<f:convertDateTime pattern="dd.M.yyyy"></f:convertDateTime>
+								<f:convertDateTime pattern="dd.MM.yyyy"></f:convertDateTime>
 							</h:inputText>
 							<h:commandButton id="Gonder" action="#{register.save()}"
 								value="Gönder"></h:commandButton>

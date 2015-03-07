@@ -46,7 +46,9 @@ Ilk 3 maddedeki ozellikler geçicidir, sayfa yenilenince eski haline gelir. Diğ
 				paginatorPosition="bottom" paginatorAlwaysVisible="false"
 				rowsPerPageTemplate="20,50,100" emptyMessage="Kayit Bulunamadi"
 				draggableColumns="true" rowKey="#{u.id}"
-				selection="#{user.selected}" selectionMode="single">
+				selection="#{user.selected}" selectionMode="single"
+				rowStyleClass="#{u.state=='PENDING'?'pendinguser':''}"
+				>
 				<f:facet name="header">
 
 					<p:outputPanel>
