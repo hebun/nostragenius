@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import freela.util.FaceUtils;
 import freela.util.Sql;
 
 @SuppressWarnings("serial")
@@ -15,11 +16,12 @@ import freela.util.Sql;
 public class Tahmin extends CrudBase implements Serializable{
 
 	private List<Map<String,String>> tahmins;
-	private Map<String,String> selected;
+	
 	
 	public Tahmin() {
 		this.table="tahmin";
-		tahmins=new  Sql.Select().from(this.table).join("user").on("tahmin.userId", "user.id").getTable();
+		tahmins=new  Sql.Select().from(this.table).doNotUsePrepared().join("user").on("tahmin.userId", "user.id").getTable();
+		this.data=tahmins;
 		initColumns();
 	}
 
@@ -31,12 +33,6 @@ public class Tahmin extends CrudBase implements Serializable{
 		this.tahmins = tahmins;
 	}
 
-	public Map<String,String> getSelected() {
-		return selected;
-	}
 
-	public void setSelected(Map<String,String> selected) {
-		this.selected = selected;
-	}
 	
 }

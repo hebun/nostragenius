@@ -4,76 +4,122 @@
 	xmlns:c="http://java.sun.com/jsp/jstl/core"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
+	xmlns:pt="http://xmlns.jcp.org/jsf/passthrough"
+	xmlns:p="http://primefaces.org/ui">
 	<ui:define name="content">
-		
-	
 
-		<h:form>
+
+
+		<h:form id="form">
+			<p:growl id="message" />
 			<h:panelGrid style="width:100%;" rendered="#{tahmin.hasMessage}">
 				<h4 class="#{tahmin.messageType}">#{tahmin.message}</h4>
 			</h:panelGrid>
+			<header>
+				<h3 class="tabs_involved">Kullanicilar</h3>
 
-			<article class="module width_3_quarter" style="width: 95%;">
+			</header>
+			<p:fieldset legend="Yardim" toggleable="true" collapsed="true"
+				toggleTitle="Yardim" toggleSpeed="500">
+				<ul style="margin-left: 20px;">
+					<li>Bir alana göre sıralamak için o alanın başlıgına tıklayın.
+						Ters yönde sıralama için bir daha tıklayın.<br />
+					</li>
+					<li>Alanların yerlerini sürükle-bırak ile değiştirebilirsiniz.</li>
+					<li>Alanların büyüklüklerini değiştirebilrsiniz.</li>
+					<li>Sütun başlıklarını değiştirmek veya tablodan kaldırmak
+						için tabloyu düzenle bütonuna tıklayın.</li>
+					<li>Bir kayıt ile ilgili işlem yapmak için o kaydın üstüne sağ
+						tıklayın.</li>
+				</ul>
+Ilk 3 maddedeki ozellikler geçicidir, sayfa yenilenince eski haline gelir. Diğerleri ise kalıcıdır ve bütün kullanıcıları etkiler.
+</p:fieldset>
+			<p:contextMenu for="betDt2">
+				<p:menuitem value="Düzenle" icon="ui-icon-search" />
+				<p:menuitem value="Sil" icon="ui-icon-close"
+					onclick="PF('deleteDialog').show()" />
 
-				<header>
-					<h3 class="tabs_involved">Tahminler</h3>
+			</p:contextMenu>
+			<p:dataTable resizableColumns="true" value="#{tahmin.data}" var="u"
+				id="betDt2" widgetVar="usersDt" rows="50" paginator="true"
+				paginatorTemplate="{PreviousPageLink} {PageLinks} {NextPageLink} {RowsPerPageDropdown} "
+				paginatorPosition="bottom" paginatorAlwaysVisible="false"
+				rowsPerPageTemplate="20,50,100" emptyMessage="Kayit Bulunamadi"
+				draggableColumns="true" rowKey="#{u.id}"
+				selection="#{tahmin.selected}" selectionMode="single"
+				rowStyleClass="#{u.state=='PENDING'?'pendinguser':''}"
+				>
+				<f:facet name="header">
 
-				</header>
+					<p:outputPanel>
 
-				<div class="tab_container">
+						<h:outputText value="Butun Alanlarda Ara:" />
+						<p:inputText id="globalFilter" onkeyup="PF('usersDt').filter()"
+							style="width:150px" placeholder="Aranacak Kelime" />
 
-					<div id="tab1" class="tab_content">
-						<h:dataTable value="#{tahmin.tahmins}" var="m" id="betDt1"
-							styleClass="tablesorter"
-							columnClasses="column1,column2,column3,column4,column5">
-							<c:forEach items="#{tahmin.columns}" var="c">
+					</p:outputPanel>
 
-								<h:column>
-									<f:facet name="header">#{c.header}</f:facet>
+				</f:facet>
+				<c:forEach items="#{tahmin.columns}" var="c">
 
-									<h:outputLink rendered="#{c.name=='pname'}"
-										value="proDetail?id=#{m.id}">#{m[c.name]}</h:outputLink>
-									<h:outputLink rendered="#{c.name=='uname'}"
-										value="userDetail?id=#{m.userid}">#{m[c.name]}</h:outputLink>
+					<p:column rendered="#{not empty c.header}" filterBy="#{u[c.name]}"
+						sortBy="#{u[c.name]}" filterStyle="display:none">
+						<f:facet name="header">#{c.header}</f:facet>
 
-									<h:outputText rendered="#{c.name!='pname' and c.name!='uname'}">#{m[c.name]}</h:outputText>
 
-								</h:column>
-							</c:forEach>
-						
+						<p:outputLabel>#{u[c.name]}</p:outputLabel>
 
-						</h:dataTable>
+					</p:column>
+				</c:forEach>
+				<f:facet name="footer">
+					<p:commandButton process="betDt2" type="button"
+						value="Tabloyu Duzenle" update=":form:carDetail"
+						onclick="PF('carDialog').show()" />
+				</f:facet>
+			</p:dataTable>
 
-					</div>
-				</div>
-			</article>
+			<p:dialog header="Tablo Alanlar" widgetVar="carDialog" modal="true"
+				showEffect="slide" hideEffect="explode" resizable="false">
+				<p:outputPanel id="carDetail" style="text-align:center;">
+					<h:outputText value="Bir alanı tablodan kaldırmak için boş bırakın"></h:outputText>
+					<p:panelGrid columns="2" columnClasses="label,value">
+						<f:facet name="header">
+						</f:facet>
+
+
+						<c:forEach items="#{tahmin.columns}" var="col">
+
+							<h:outputLabel value="#{col.name}"></h:outputLabel>
+
+							<h:inputText value="#{col.header}"></h:inputText>
+						</c:forEach>
+
+						<f:facet name="footer">
+
+							<p:commandButton style="margin-left:120px" update=":form:betDt2"
+								value="Kaydet" action="#{tahmin.updateColumns}"></p:commandButton>
+						</f:facet>
+					</p:panelGrid>
+				</p:outputPanel>
+			</p:dialog>
 
 		</h:form>
-
-		<h:outputScript>
-$(document).ready(function() 
-    	{ 
-      	  $(".tablesorter").tablesorter(); 
-   	 } 
-	);
-	</h:outputScript>
-
+		<h:form>
+			<!--*********** BEGIN DELETE Dialog Box ***********-->
+			<p:confirmDialog message="Bu kaydı silmek istediğinize emin misniz?"
+				header="Kaydı Sil" severity="alert" widgetVar="deleteDialog">
+				<p:commandButton id="confirm" value="Evet"
+					update=":form:betDt2 :form:message"
+					oncomplete="PF('deleteDialog').hide()"
+					actionListener="#{tahmin.delete()}" />
+				<p:commandButton id="decline" value="Hayır" style="float:right"
+					onclick="PF('deleteDialog').hide()" type="button" />
+			</p:confirmDialog>
+			<!--*********** END DELETE Dialog Box ***********-->
+		</h:form>
 	</ui:define>
 	<ui:define name="head">
-		<script type="text/javascript" src="js/jquery.tablesorter.min.js"></script>
-		<style type="text/css">
-.delButton {
-	background-image: url(images/icn_trash.png)
-}
 
-.column1 {
-	width: 15%;
-}
-.column2 {
-	width: 30%;
-}
-</style>
 
 	</ui:define>
 </ui:composition>

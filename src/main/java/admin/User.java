@@ -34,7 +34,7 @@ public class User extends CrudBase implements Serializable {
 //					UserType.SA.getCode());
 //		}
 		this.data = select.getTable();
-		System.out.println(this.data);
+
 		for (Map<String, String> row : data) {
 			for (Map.Entry<String, String> col : row.entrySet()) {
 				if (col.getValue().equals("NULL"))

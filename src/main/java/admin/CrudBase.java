@@ -33,10 +33,15 @@ public class CrudBase {
 	}
 
 	public void delete() {
-		new Sql.Delete(table).where("id", selected.get("id")).run();
-		data.remove(selected);
-		selected = null;
-		FaceUtils.addInfo("Kayit Silindi");
+		try {
+			new Sql.Delete(table).where("id", selected.get("id")).run();
+			data.remove(selected);
+			selected = null;
+			FaceUtils.addInfo("Kayit Silindi");
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	public void updateColumns() {

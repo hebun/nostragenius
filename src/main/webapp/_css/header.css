@@ -26,21 +26,21 @@ margin-right:auto;
 }
 
 .logo{
-	width: 140px;
+	width: 260px;
 	text-align: right;
 	float: left;
 	height: 90px;
 	padding-top: 5px;
 	padding-bottom: 5px;
-	margin-left: 60px;
+	margin-left: 10px;
 
 }
 
 .aramaAlan{
 	width: 716px;
 	float: right;
-	margin-left: 74px;
-	margin-top: 26px;
+	margin-left: 0px;
+	margin-top: 6px;
 	height: 76px;
 	background-image: url(../_images/menuGolge.png);
 	background-repeat: no-repeat;
@@ -49,7 +49,7 @@ margin-right:auto;
 
 .aramaKutu{
 	width: 670px;
-	margin-top:23px;
+	margin-top:43px;
 	line-height:40px;
 	padding-top:15px;
 	height: 40px;

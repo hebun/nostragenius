@@ -26,22 +26,24 @@
 							<div id="gamesHolder">
 								<div id="games">
 
+									<img src="_slider/banner-1.jpg" alt="" width="505" height="230" />
 
-									<img src="_slider/img1.jpg" alt="Mini Ninjas" width="505"
-										height="230" /> <img src="_slider/img2.jpg"
-										alt="Price of Persia" width="505" height="230" /> <img
-										src="_slider/img3.jpg" alt="Spiderman: Shattered Dimensions"
-										width="505" height="230" /> <img src="_slider/img4.jpg"
-										alt="Brink" width="505" height="230" /> <img
-										src="_slider/img5.jpg" alt="God of War III" width="505"
-										height="230" /> <img src="_slider/img6.jpg" alt="Borderlands"
-										width="505" height="230" /> <img src="_slider/img7.jpg"
-										alt="Star Wars: The Old Republic" width="505" height="230" />
+									<img src="_slider/banner-2.jpg" alt="" width="505" height="230" />
+
+									<img src="_slider/banner-3.jpg" alt="" width="505" height="230" />
 
 
 
-									<img src="_slider/img8.jpg" alt="Batman: Arkham Asylum"
-										width="505" height="230" />
+									<img src="_slider/banner-4.jpg" alt="" width="505" height="230" />
+
+
+									<img src="_slider/banner-5.jpg" alt="" width="505" height="230" />
+
+
+
+									<img src="_slider/banner-6.jpg" alt="" width="505" height="230" />
+
+
 
 
 								</div>
@@ -59,8 +61,8 @@
 					</div>
 				</div>
 				<div class="adminOl">
-					<a href="iletisim.xhtml"><img
-						src="_images/admin-olmak-ister-misin.png" width="195" height="218" /></a>
+					<a href="iletisim.xhtml"><img src="_images/hediye-kazan.jpg"
+						width="195" height="218" /></a>
 				</div>
 			</div>
 
@@ -94,10 +96,10 @@
 										puanınıza eklenecektir.<br /> <br /> <b>Gerçekleşme
 											Puanı Girmek :</b> Süresi tamamlanmış, tarihi dolmuş herhangi bir
 										tahmin için <br /> gerçekleşmesine göre bir puan
-										verebilirsiniz. 1 ile 10 arasında olacak bu
-										değerlendirmeniz, o <br /> tahminin toplam puanını,
-										dolayısıyla hem tahmini, hem tahminciyi, hem de tahmin
-										ortağını rating <br />açısından etkileyecektir.
+										verebilirsiniz. 1 ile 10 arasında olacak bu değerlendirmeniz,
+										o <br /> tahminin toplam puanını, dolayısıyla hem tahmini,
+										hem tahminciyi, hem de tahmin ortağını rating <br />açısından
+										etkileyecektir.
 									</span>
 								</p:tooltip> </span>
 						</h:panelGroup>
@@ -149,7 +151,9 @@
 						performanslarını görebilirsiniz. </span>
 					<div class="tahminKutu">
 						<div class="tahminIcKutu1">
-							<span class="tahminBaslik">EN İYİ TAHMİNLER(<a href="sonuclanmis-en-iyi-tahminler.xhtml">Tümü</a>)</span>
+							<span class="tahminBaslik">EN İYİ TAHMİNLER(<a
+								href="sonuclanmis-en-iyi-tahminler.xhtml">Tümü</a>)
+							</span>
 							<ul>
 								<ui:repeat var="tah" value="#{index.doneTahmins}">
 									<li><a href="tahmin-detay.xhtml?tid=#{tah.id}"> <b>
@@ -159,7 +163,9 @@
 							</ul>
 						</div>
 						<div class="tahminIcKutu5">
-							<span class="tahminBaslik">EN İYİ TAHMİNCİLER(<a href="en-iyi-tahminciler.xhtml">Tümü</a>)</span>
+							<span class="tahminBaslik">EN İYİ TAHMİNCİLER(<a
+								href="en-iyi-tahminciler.xhtml">Tümü</a>)
+							</span>
 							<ul>
 								<ui:repeat var="tah" value="#{index.bestUsers}">
 									<li><a href="tahminciler.xhtml?taid=#{tah.taid}">
@@ -168,7 +174,9 @@
 							</ul>
 						</div>
 						<div class="tahminIcKutu6">
-							<span class="tahminBaslik">EN İYİ TAHMİN ORTAKLARI(<a href="en-iyi-tahmin-ortaklari.xhtml">Tümü</a>)</span>
+							<span class="tahminBaslik">EN İYİ TAHMİN ORTAKLARI(<a
+								href="en-iyi-tahmin-ortaklari.xhtml">Tümü</a>)
+							</span>
 							<ul>
 								<ui:repeat var="tah" value="#{index.bestPartners}">
 									<li><a href="tahminciler.xhtml?taid=#{tah.taid}">
